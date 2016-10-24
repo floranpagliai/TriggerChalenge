@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ app_name }}</title>
+    <meta name="description" content="{{ app_description }}"/>
+    {% stylesheets filter='cssrewrite'
+        'bundles/bmatznerfontawesome/css/font-awesome.min.css'
+        'bundles/front/css/*'
+    %}
+    <link rel="stylesheet" href="{{ asset_url }}" type="text/css"/>
+    {% endstylesheets %}
+</head>
+<body>
+<div class="container">
+    {% block navbar %}{% endblock %}
+    {% block body %}{% endblock %}
+</div><!-- /container -->
+{% block footer_javascripts %}
+    {% javascripts
+        'public/js/jquery-3.1.1.min.js'
+    %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+
+    {% endjavascripts %}
+    <script>
+        $(document).ready(function () {
+            $('.grid-item').each(function() {
+                var childImg = $(this).find('img');
+                if (childImg.width() < childImg.height()) {
+                    childImg.addClass('portrait');
+                }
+                $(this).css({'height':$(this).width()+'px'});
+            });
+        });
+
+    </script>
+{% endblock %}
+</body>
+</html>

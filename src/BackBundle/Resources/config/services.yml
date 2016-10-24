@@ -1,0 +1,4 @@
+services:
+    manager.post:
+        class: BackBundle\Manager\PostManager
+        arguments: ["@doctrine.orm.default_entity_manager", BackBundle\Entity\Post]
