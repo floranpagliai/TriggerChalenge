@@ -26,13 +26,19 @@
 
     {% endjavascripts %}
     <script>
-        $(document).ready(function () {
+        function squareGrid() {
             $('.grid-item').each(function() {
-                var childImg = $(this).find('img');
+                var childImg = $(this).find('.grid-item-picture');
                 if (childImg.width() < childImg.height()) {
                     childImg.addClass('portrait');
                 }
                 $(this).css({'height':$(this).width()+'px'});
+            });
+        }
+        $(document).ready(function () {
+            squareGrid();
+            $( window ).resize(function() {
+                squareGrid();
             });
         });
 

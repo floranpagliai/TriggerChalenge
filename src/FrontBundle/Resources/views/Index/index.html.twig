@@ -7,25 +7,27 @@
 {% block body %}
     <div class="main">
         <section class="grid">
-            <header class="top-bar">
-                <h2>Latest articles</h2>
-                <div class="top-bar-filter">
-                    <span>Filter by:</span>
-                    <span>Popular</span>
-                </div>
-            </header>
+            {#<header class="top-bar">#}
+                {#<h2>Latest articles</h2>#}
+                {#<div class="top-bar-filter">#}
+                    {#<span>Filter by:</span>#}
+                    {#<span>Popular</span>#}
+                {#</div>#}
+            {#</header>#}
             {% for post in posts %}
                 <div class="grid-item">
-                    <img src="{{ post.coverPicture.url }}"/>
+                    <img class="grid-item-picture" src="{{ post.coverPicture.url }}"/>
+                    <div class="overlay"></div>
                     <div>
                         <h2 class="grid-item-title">{{ post.title }}</h2>
                         {#<div class="loader"></div>#}
                         {#<span class="category">Life &amp; Death</span>#}
-                        {#<div class="meta meta--preview">#}
-                            {#<img class="meta__avatar" src="{{ asset('bundles/front/img/authors/1.png') }}" alt="author05"/>#}
-                        {#<span class="meta__date"><i class="fa fa-calendar-o"></i>{{ post.createdAt|date('d M') }}</span>#}
-                        {#<span class="meta__reading-time"><i class="fa fa-clock-o"></i> 2 min read</span>#}
-                        {#</div>#}
+                        <div class="grid-item-footer">
+                            {#<span class="meta__reading-time"><i class="fa fa-clock-o"></i> 2 min read</span>#}
+                            <img class="avatar" src="{{ asset('bundles/front/img/authors/1.png') }}" alt=""/>
+                            <span>{{ post.author.firstName }} {{ post.author.lastName }}</span>
+                            <span class="meta"><i class="fa fa-calendar-o"></i>{{ post.createdAt|date('d M') }}</span>
+                        </div>
                     </div>
                 </div>
             {% endfor %}
