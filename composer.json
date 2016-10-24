@@ -54,7 +54,6 @@
         "compile": [
             "bin/console assetic:dump --env=prod",
             "bin/console assets:install --env=prod",
-            "bin/console doctrine:database:create",
             "bin/console doctrine:schema:update --force"
         ]
     },
