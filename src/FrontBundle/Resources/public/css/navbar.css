@@ -16,7 +16,13 @@ Modules - reusable parts of our design
     display: table;
     clear: both;
 }
-
+.cd-img-replace {
+    /* replace text with a background-image */
+    display: inline-block;
+    overflow: hidden;
+    text-indent: 100%;
+    white-space: nowrap;
+}
 /* -------------------------------- 
 
 xheader 
@@ -38,10 +44,14 @@ header {
         height: 80px;
     }
 }
-
 header h1 {
     color: #FFA000;
     font-family: 'Satisfy', cursive;
+}
+@media only screen and (max-width: 1200px) {
+    header h1 {
+        display: none;
+    }
 }
 
 #logo {
@@ -82,7 +92,7 @@ header h1 {
     left: 0;
 }
 #cd-hamburger-menu a {
-    background: #26292f url("../img/cd-hamburger-menu.svg") no-repeat center center;
+    background: #26292f url("bundles/front/img/cd-hamburger-menu.svg") no-repeat center center;
 }
 @media only screen and (min-width: 1200px) {
     #cd-hamburger-menu {
