@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Oswald:300,400,700');
+@import url('https://fonts.googleapis.com/css?family=Satisfy');
 
 .dark-primary-color    { background: #FFA000; }
 .default-primary-color { background: #FFC107; }
@@ -8,6 +9,15 @@
 .secondary-text-color  { color: #757575; }
 .divider-color         { border-color: #BDBDBD; }
 
+*:focus {
+    outline: none;
+}
+
+html * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
 body {
     background: #fff;
     color: #212121;
@@ -16,6 +26,11 @@ body {
     -moz-osx-font-smoothing: grayscale;
     overflow: hidden;
     overflow-y: scroll;
+}
+
+a {
+    color: #212121;
+    text-decoration: none;
 }
 
 /* Top bar */
@@ -40,6 +55,10 @@ body {
     text-align: right;
     font-size: 0.75em;
     margin-left: auto;
+}
+
+.main {
+    margin-top: 88px;
 }
 
 /* Grid container */
@@ -138,6 +157,50 @@ body {
 
 .avatar {
     border-radius: 50%;
+    width: 40px;
+    height: 40px;
+}
+.control-group {
+    margin-bottom: 10px;
+}
+
+input {
+    text-align: center;
+    background-color: #ECF0F1;
+    border: 2px solid transparent;
+    border-radius: 3px;
+    font-size: 16px;
+    font-weight: 200;
+    padding: 10px 0;
+    width: 250px;
+    transition: border .5s;
+}
+
+input:focus {
+    border: 2px solid #3498DB;
+    box-shadow: none;
+}
+
+.btn {
+    border: 2px solid transparent;
+    background: #3498DB;
+    color: #ffffff;
+    font-size: 16px;
+    line-height: 25px;
+    padding: 10px 0;
+    text-decoration: none;
+    text-shadow: none;
+    border-radius: 3px;
+    box-shadow: none;
+    transition: 0.25s;
+    display: block;
+    width: 250px;
+    margin: 0 auto;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #2980B9;
 }
 
 @media screen and (min-width: 600px) {

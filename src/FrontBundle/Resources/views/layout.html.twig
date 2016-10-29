@@ -8,19 +8,32 @@
     <meta name="description" content="{{ app_description }}"/>
     {% stylesheets filter='cssrewrite'
         'bundles/bmatznerfontawesome/css/font-awesome.min.css'
-        'bundles/front/css/*'
+        '@FrontBundle/Resources/public/css/*'
     %}
     <link rel="stylesheet" href="{{ asset_url }}" type="text/css"/>
     {% endstylesheets %}
 </head>
 <body>
 <div class="container">
-    {% block navbar %}{% endblock %}
+    <header>
+        <div id="logo"><img src="{{ asset('bundles/front/img/cd-logo.svg') }}" alt="Homepage"></div>
+        <h1>TriggerChallenge</h1>
+        <div id="cd-hamburger-menu"><a class="cd-img-replace" href="#0">Menu</a></div>
+    </header>
+
+    <nav id="main-nav">
+        <ul>
+            <li><a href="{{ path('front_homepage') }}"><i class="fa fa-camera-retro fa-2x"></i></a></li>
+            <li><a href="{{ path('front_login') }}"><i class="fa fa-user fa-2x"></i></a></li>
+        </ul>
+    </nav>
     {% block body %}{% endblock %}
 </div><!-- /container -->
 {% block footer_javascripts %}
     {% javascripts
         'public/js/jquery-3.1.1.min.js'
+        '@FrontBundle/Resources/public/js/modernizr.js'
+        '@FrontBundle/Resources/public/js/main.js'
     %}
     <script type="text/javascript" src="{{ asset_url }}"></script>
 

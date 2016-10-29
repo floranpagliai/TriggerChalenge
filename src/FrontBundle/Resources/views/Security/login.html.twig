@@ -1,0 +1,33 @@
+{% extends "FrontBundle::layout.html.twig" %}
+
+{% block body %}
+
+    {% if error %}
+        <div>{{ error.message }}</div>
+    {% endif %}
+
+    <div class="main login">
+        <div class="login-screen">
+            <h1>Login</h1>
+            <div class="login-form">
+                <form action="{{ path('front_login') }}" method="post">
+                    <div class="control-group">
+                        <input type="text" class="login-field" value="{{ last_username }}" placeholder="username"
+                               id="username" name="_username">
+                        <label class="login-field-icon fui-user" for="username"></label>
+                    </div>
+
+                    <div class="control-group">
+                        <input type="password" class="login-field" value="" placeholder="password" id="password"
+                               name="_password">
+                        <label class="login-field-icon fui-lock" for="password"></label>
+                    </div>
+
+                    <input class="btn btn-primary btn-large btn-block" type="submit" value="Login"/>
+                    <a class="login-link" href="#">Lost your password?</a>
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

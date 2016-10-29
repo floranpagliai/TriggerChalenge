@@ -24,7 +24,11 @@
                         {#<span class="category">Life &amp; Death</span>#}
                         <div class="grid-item-footer">
                             {#<span class="meta__reading-time"><i class="fa fa-clock-o"></i> 2 min read</span>#}
-                            <img class="avatar" src="{{ asset('bundles/front/img/authors/1.png') }}" alt=""/>
+                            {% if post.author.profilePicture is not null  %}
+                                <img class="avatar" src="{{  post.author.profilePicture.url }}" alt="{{ post.author.firstName }}"/>
+                            {% else %}
+                                <img class="avatar" src="https://avatars3.githubusercontent.com/u/2648131?v=3&s=466" alt="{{ post.author.firstName }}"/>
+                            {% endif %}
                             <span>{{ post.author.firstName }} {{ post.author.lastName }}</span>
                             <span class="meta"><i class="fa fa-calendar-o"></i>{{ post.createdAt|date('d M') }}</span>
                         </div>
