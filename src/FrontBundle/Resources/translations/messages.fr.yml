@@ -1,3 +1,4 @@
+"Bad credentials.": "Nom d'utilisateur ou mot de passe incorrect."
 user:
     title:
         login: "Connexion"
@@ -15,6 +16,8 @@ user:
     paragraph:
         reset_password: "Mot de passe oublié?"
         already_registered: "Déjà inscrit?"
+    warning:
+        unique_email: "Cet email est déjà utilisé."
 user_invite:
     warning:
         not_invited: "Cet email n'a pas été invité."

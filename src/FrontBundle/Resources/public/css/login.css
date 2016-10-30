@@ -1,6 +1,7 @@
 .login {
     margin: 20px auto;
     width: 300px;
+    max-height: 0vh;
 }
 .login-screen {
     background-color: #FFF;
@@ -12,6 +13,7 @@
 }
 .login-screen h1 {
     text-align: center;
+    margin-top: 0;
 }
 .login-form {
     text-align: center;

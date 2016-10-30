@@ -26,6 +26,6 @@ class UserInviteManager extends AbstractManager
             ->where('ui.email = :email')->setParameter('email', $email)
             ->orderBy('expireAt', 'DESC');
 
-        return $q->getQuery()->getArrayResult();
+        return $q->getQuery()->getResult();
     }
 }

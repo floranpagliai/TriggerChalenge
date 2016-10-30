@@ -36,6 +36,9 @@ class SecurityController extends Controller
 
     public function registerAction(Request $request)
     {
+        if ($this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
+            return $this->redirectToRoute('front_homepage');
+        }
         $email = $request->get('email');
         $invitationCode = $request->get('code');
 
@@ -51,18 +54,20 @@ class SecurityController extends Controller
         $form = $this->createForm(RegistrationType::class, $user);
 
         $form->handleRequest($request);
+        $errors = $this->get('validator')->validate($user);
         if ($form->isSubmitted() && $form->isValid()) {
             $password = $this->get('security.password_encoder')->encodePassword($user, $user->getPassword());
             $user->setPassword($password);
 
             $this->get('manager.user')->save($user);
+            // TODO : add flash
 
-            return $this->redirectToRoute('front_homepage');
+            return $this->redirectToRoute('front_login');
         }
 
         return $this->render(
             'FrontBundle:Security:register.html.twig',
-            array('form' => $form->createView())
+            array('form' => $form->createView(), 'errors' => $errors)
         );
     }
 

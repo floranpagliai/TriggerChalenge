@@ -7,19 +7,24 @@
             <h1>{{ 'user.title.register'|trans }}</h1>
             <div class="login-form">
                 {{ form_start(form) }}
-                    <div class="control-group">
+                {% if errors is not null %}
+                    {% for error in errors %}
+                        <div class="control-group error-message"><p>{{ error.message|trans }}</p></div>
+                    {% endfor %}
+                {% endif %}
+                    <div class="control-group{% if form.email.vars.errors|length %} has-danger{% endif %}">
                         {{ form_widget(form.email) }}
                     </div>
-                    <div class="control-group">
+                    <div class="control-group{% if form.firstName.vars.errors|length %} has-danger{% endif %}">
                         {{ form_widget(form.firstName) }}
                     </div>
-                    <div class="control-group">
+                    <div class="control-group{% if form.lastName.vars.errors|length %} has-danger{% endif %}">
                         {{ form_widget(form.lastName) }}
                     </div>
-                    <div class="control-group">
+                    <div class="control-group{% if form.password.first.vars.errors|length %} has-danger{% endif %}">
                         {{ form_widget(form.password.first) }}
                     </div>
-                    <div class="control-group">
+                    <div class="control-group{% if form.password.first.vars.errors|length %} has-danger{% endif %}">
                         {{ form_widget(form.password.second) }}
                     </div>
 

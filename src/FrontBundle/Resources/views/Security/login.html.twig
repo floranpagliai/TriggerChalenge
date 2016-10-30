@@ -6,7 +6,9 @@
             <h1>{{ 'user.title.login'|trans }}</h1>
             <div class="login-form">
                 {% if error %}
-                    <div>{{ error.message }}</div>
+                    <div class="control-group error-message">
+                        <p>{{ error.message|trans }}</p>
+                    </div>
                 {% endif %}
                 <form action="{{ path('front_login') }}" method="post">
                     <div class="control-group">

@@ -11,11 +11,13 @@ use BackBundle\Model\TimestampableInterface;
 use BackBundle\Traits\TimestampableTrait;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity
  * @ORM\Table(name="users")
  * @ORM\HasLifecycleCallbacks
+ * @UniqueEntity("email", message="user.warning.unique_email")
  */
 class User implements UserInterface, TimestampableInterface
 {
