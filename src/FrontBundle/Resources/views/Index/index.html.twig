@@ -7,13 +7,6 @@
 {% block body %}
     <div class="main">
         <section class="grid">
-            {#<header class="top-bar">#}
-                {#<h2>Latest articles</h2>#}
-                {#<div class="top-bar-filter">#}
-                    {#<span>Filter by:</span>#}
-                    {#<span>Popular</span>#}
-                {#</div>#}
-            {#</header>#}
             {% for post in posts %}
                 <div class="grid-item">
                     <img class="grid-item-picture" src="{{ post.coverPicture.url }}"/>

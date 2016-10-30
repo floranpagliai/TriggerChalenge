@@ -5,7 +5,7 @@
  * Time: 15:13
  */
 
-namespace BackBundle\Entity;
+namespace BackBundle\Traits;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -41,7 +41,7 @@ trait TimestampableTrait
      *
      * @param \DateTime $createdAt
      */
-    public function setCreatedAt($createdAt)
+    public function setCreatedAt(\DateTime $createdAt)
     {
         $this->createdAt = $createdAt;
     }
@@ -61,25 +61,8 @@ trait TimestampableTrait
      *
      * @param \DateTime $updatedAt
      */
-    public function setUpdatedAt($updatedAt)
+    public function setUpdatedAt(\DateTime $updatedAt)
     {
         $this->updatedAt = $updatedAt;
-    }
-
-    /**
-     * @ORM\PrePersist
-     */
-    public function prePersist()
-    {
-        $now = new \Datetime;
-        $this->createdAt = $now;
-        $this->updatedAt = $now;
-    }
-    /**
-     * @ORM\PreUpdate
-     */
-    public function preUpdate()
-    {
-        $this->updatedAt = new \DateTime;
     }
 }

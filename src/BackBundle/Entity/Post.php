@@ -7,13 +7,15 @@
 
 namespace BackBundle\Entity;
 
+use BackBundle\Model\TimestampableInterface;
+use BackBundle\Traits\TimestampableTrait;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
  * @ORM\Table(name="posts")
  */
-class Post
+class Post implements TimestampableInterface
 {
     use TimestampableTrait;
 

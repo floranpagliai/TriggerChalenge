@@ -7,14 +7,17 @@
 
 namespace BackBundle\Entity;
 
+use BackBundle\Model\TimestampableInterface;
+use BackBundle\Traits\TimestampableTrait;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity
  * @ORM\Table(name="users")
+ * @ORM\HasLifecycleCallbacks
  */
-class User implements UserInterface
+class User implements UserInterface, TimestampableInterface
 {
     use TimestampableTrait;
 
@@ -61,6 +64,14 @@ class User implements UserInterface
      * @ORM\Column(name="roles", type="string")
      */
     private $roles;
+
+    /**
+     * User constructor.
+     */
+    public function __construct()
+    {
+        $this->roles = 'ROLE_USER';
+    }
 
     /**
      * @return mixed
@@ -163,7 +174,7 @@ class User implements UserInterface
      */
     public function getRoles()
     {
-        return array('ROLE_USER');
+        return array($this->roles);
     }
 
     /**
@@ -187,6 +198,11 @@ class User implements UserInterface
     public function getUsername()
     {
         return $this->email;
+    }
+
+    public function getFullName()
+    {
+        return $this->firstName . ' ' . $this->lastName;
     }
 
     /**

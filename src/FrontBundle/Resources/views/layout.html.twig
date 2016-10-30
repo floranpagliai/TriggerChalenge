@@ -14,18 +14,30 @@
     <link rel="stylesheet" href="{{ asset_url }}" type="text/css"/>
     {% endstylesheets %}
 </head>
-<body>
+<body class="{% block body_class %}{% endblock %}">
 <div class="container">
     <header>
-        <div id="logo"><img src="{{ asset('bundles/front/img/cd-logo.svg') }}" alt="Homepage"></div>
-        <h1>TriggerChallenge</h1>
-        <div id="cd-hamburger-menu"><a class="cd-img-replace" href="#0">Menu</a></div>
+        <a href="{{ path('front_homepage') }}">
+            <div id="logo"><img src="{{ asset('bundles/front/img/logo.png') }}" alt="Homepage"></div>
+            <h1>{{ app_name }}</h1>
+        </a>
+        <div id="cd-hamburger-menu"><a class="cd-img-replace" href="#">Menu</a></div>
     </header>
 
     <nav id="main-nav">
         <ul>
             <li><a href="{{ path('front_homepage') }}"><i class="fa fa-camera-retro fa-2x"></i></a></li>
-            <li><a href="{{ path('front_login') }}"><i class="fa fa-user fa-2x"></i></a></li>
+            <li>
+                {% if is_granted('ROLE_USER') %}
+                    <a href="{{ path('front_user_profile', {'userId': app.user.id, 'fullName': app.user.fullName|lower|replace({' ':''})}) }}">
+                        <i class="fa fa-user fa-2x"></i>
+                    </a>
+                {% else %}
+                    <a href="{{ path('front_login') }}">
+                        <i class="fa fa-user fa-2x"></i>
+                    </a>
+                {% endif %}
+            </li>
         </ul>
     </nav>
     {% block body %}{% endblock %}

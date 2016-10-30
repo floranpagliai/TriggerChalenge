@@ -4,5 +4,11 @@ front_homepage:
 front_login:
     path:     /login
     defaults:  { _controller: FrontBundle:Security:login }
+front_register:
+    path:     /register
+    defaults:  { _controller: FrontBundle:Security:register }
 front_logout:
-   path: /logout
+   path:      /logout
+front_user_profile:
+    path:     /user/{fullName}/{userId}
+    defaults:  { _controller: FrontBundle:User:profile }

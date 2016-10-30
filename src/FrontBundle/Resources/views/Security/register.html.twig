@@ -1,0 +1,33 @@
+{% extends "FrontBundle::layout.html.twig" %}
+{% block body_class %}full-picture{% endblock %}
+{% block body %}
+
+    <div class="main login">
+        <div class="login-screen">
+            <h1>{{ 'user.title.register'|trans }}</h1>
+            <div class="login-form">
+                {{ form_start(form) }}
+                    <div class="control-group">
+                        {{ form_widget(form.email) }}
+                    </div>
+                    <div class="control-group">
+                        {{ form_widget(form.firstName) }}
+                    </div>
+                    <div class="control-group">
+                        {{ form_widget(form.lastName) }}
+                    </div>
+                    <div class="control-group">
+                        {{ form_widget(form.password.first) }}
+                    </div>
+                    <div class="control-group">
+                        {{ form_widget(form.password.second) }}
+                    </div>
+
+                    <input class="btn btn-primary btn-large btn-block" type="submit" value="{{ 'user.action.register'|trans }}"/>
+                    <a class="login-link" href="{{ path('front_login') }}">{{ 'user.paragraph.already_registered'|trans }}</a>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

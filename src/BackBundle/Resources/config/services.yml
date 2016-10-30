@@ -1,4 +1,24 @@
 services:
+# MANAGERS
     manager.post:
         class: BackBundle\Manager\PostManager
         arguments: ["@doctrine.orm.default_entity_manager", BackBundle\Entity\Post]
+    manager.user:
+        class: BackBundle\Manager\UserManager
+        arguments: ["@doctrine.orm.default_entity_manager", BackBundle\Entity\User]
+    manager.user_invite:
+        class: BackBundle\Manager\UserInviteManager
+        arguments: ["@doctrine.orm.default_entity_manager", BackBundle\Entity\UserInvite]
+# PROVIDERS
+    provider.user_invite:
+        class: BackBundle\Provider\UserInviteProvider
+        arguments: ["@manager.user_invite"]
+# SERVICES
+    timestampable_entity.pre_persist.listener:
+        class: BackBundle\EventListener\PrePersistListener
+        tags:
+            - { name: doctrine.event_listener, event: "prePersist" }
+    timestampable_entity.pre_update.listener:
+        class: BackBundle\EventListener\PreUpdateListener
+        tags:
+            - { name: doctrine.event_listener, event: "preUpdate" }

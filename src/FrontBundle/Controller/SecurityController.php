@@ -7,6 +7,8 @@
 
 namespace FrontBundle\Controller;
 
+use BackBundle\Entity\User;
+use FrontBundle\Form\RegistrationType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -30,6 +32,38 @@ class SecurityController extends Controller
             'last_username' => $authenticationUtils->getLastUsername(),
             'error'         => $authenticationUtils->getLastAuthenticationError(),
         ));
+    }
+
+    public function registerAction(Request $request)
+    {
+        $email = $request->get('email');
+        $invitationCode = $request->get('code');
+
+        try {
+            $this->get('provider.user_invite')->verify($email, $invitationCode);
+        } catch (\Exception $e) {
+            $this->addFlash('error', $e->getMessage());
+            return $this->redirectToRoute('front_homepage');
+        }
+
+        $user = new User();
+        $user->setEmail($email);
+        $form = $this->createForm(RegistrationType::class, $user);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $password = $this->get('security.password_encoder')->encodePassword($user, $user->getPassword());
+            $user->setPassword($password);
+
+            $this->get('manager.user')->save($user);
+
+            return $this->redirectToRoute('front_homepage');
+        }
+
+        return $this->render(
+            'FrontBundle:Security:register.html.twig',
+            array('form' => $form->createView())
+        );
     }
 
     public function checkAction()

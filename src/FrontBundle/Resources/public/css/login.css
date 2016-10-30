@@ -5,7 +5,10 @@
 .login-screen {
     background-color: #FFF;
     padding: 20px;
-    border-radius: 5px
+    border-radius: 5px;
+    margin-top: 50vh;
+    transform: translateY(-50%);
+    opacity: 0.9;
 }
 .login-screen h1 {
     text-align: center;
