@@ -152,8 +152,8 @@ header h1 {
     padding: 0 1em;
     border-bottom: 1px solid #e0e6ef;
 }
-#main-nav ul .current {
-    box-shadow: inset 3px 0 #435779;
+#main-nav ul .active {
+    box-shadow: inset 3px 0 #FF5252;
 }
 @media only screen and (min-width: 1200px) {
     #main-nav {
@@ -184,12 +184,11 @@ header h1 {
         color: rgba(255, 255, 255, 0.8);
         border-radius: 0.25em;
     }
-    #main-nav ul a.current {
+    #main-nav ul .active {
         box-shadow: none;
-        background: #435779;
-        color: #FFF;
     }
-    .no-touch #main-nav ul a:hover {
+    .no-touch #main-nav ul a:hover,
+    #main-nav ul .active a{
         color: #FFF;
     }
 }

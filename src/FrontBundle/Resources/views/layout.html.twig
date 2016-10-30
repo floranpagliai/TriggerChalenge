@@ -26,10 +26,13 @@
         <div id="cd-hamburger-menu"><a class="cd-img-replace" href="#">Menu</a></div>
     </header>
 
+    {% set currentPath = app.request.attributes.get('_route') %}
     <nav id="main-nav">
         <ul>
-            <li><a href="{{ path('front_homepage') }}"><i class="fa fa-camera-retro fa-2x"></i></a></li>
-            <li>
+            <li class="{% if currentPath == 'front_homepage'  %}active{% endif %}">
+                <a href="{{ path('front_homepage') }}"><i class="fa fa-camera-retro fa-2x"></i></a>
+            </li>
+            <li class="{% if currentPath == 'front_user_profile' or currentPath == 'front_login' or currentPath == 'front_register' %}active{% endif %}">
                 {% if is_granted('ROLE_USER') %}
                     <a href="{{ path('front_user_profile', {'userId': app.user.id, 'fullName': app.user.fullName|lower|replace({' ':''})}) }}">
                         <i class="fa fa-user fa-2x"></i>
