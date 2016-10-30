@@ -2,7 +2,6 @@ jQuery(document).ready(function($){
 	//if you change this breakpoint in the style.css file (or _layout.scss if you use SASS), don't forget to update this value as well
 	var $L = 1200,
 		$menu_navigation = $('#main-nav'),
-		$cart_trigger = $('#cd-cart-trigger'),
 		$hamburger_icon = $('#cd-hamburger-menu'),
 		$lateral_cart = $('#cd-cart'),
 		$shadow_layer = $('#cd-shadow-layer');
@@ -13,14 +12,6 @@ jQuery(document).ready(function($){
 		//close cart panel (if it's open)
 		$lateral_cart.removeClass('speed-in');
 		toggle_panel_visibility($menu_navigation, $shadow_layer, $('body'));
-	});
-
-	//open cart
-	$cart_trigger.on('click', function(event){
-		event.preventDefault();
-		//close lateral menu (if it's open)
-		$menu_navigation.removeClass('speed-in');
-		toggle_panel_visibility($lateral_cart, $shadow_layer, $('body'));
 	});
 
 	//close lateral cart or lateral menu

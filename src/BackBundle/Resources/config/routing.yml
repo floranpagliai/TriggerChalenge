@@ -1,0 +1,6 @@
+back_user_invite_index:
+    path:     /invitations
+    defaults: { _controller: BackBundle:UserInvite:index }
+back_user_invite_add:
+    path:     /invitations/add
+    defaults: { _controller: BackBundle:UserInvite:add }

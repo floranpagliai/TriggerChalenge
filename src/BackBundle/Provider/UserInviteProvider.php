@@ -27,21 +27,15 @@ class UserInviteProvider
 
     public function verify($email, $code)
     {
-        $invitations = $this->userInviteManager->getByEmailOrderByExpireAt($email);
+        $invitation = $this->userInviteManager->getByEmailAndCode($email, $code);
 
-        if (count($invitations) == 0)
+        if (!$invitation)
         {
             throw new \Exception('user_invite.warning.not_invited');
         }
-        $invitation = $invitations[0];
         if ($invitation->getExpireAt() < new \DateTime())
         {
             throw new \Exception('user_invite.warning.expired');
-        }
-
-        if ($invitation->getCode() !== $code)
-        {
-            throw new \Exception('user_invite.warning.wrong_code');
         }
     }
 }

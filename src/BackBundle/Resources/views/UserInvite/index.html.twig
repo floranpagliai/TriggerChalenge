@@ -1,0 +1,11 @@
+<table>
+    {% for invite in invitations %}
+        <tr>
+            <td>{{ invite.email }}</td>
+            <td>{{ invite.code }}</td>
+            <td>{{ invite.invitingUser.fullName }}</td>
+            <td>{{ url('front_register', {'email': invite.email, 'code': invite.code})|trim }}</td>
+        </tr>
+{% endfor %}
+</table>
+<a href="{{ path('back_user_invite_add') }}">{{ 'user_invite.action.invite'|trans }}</a>

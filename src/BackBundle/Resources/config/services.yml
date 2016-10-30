@@ -13,6 +13,9 @@ services:
     provider.user_invite:
         class: BackBundle\Provider\UserInviteProvider
         arguments: ["@manager.user_invite"]
+    provider.mailer:
+        class: BackBundle\Provider\MailerProvider
+        arguments: ["@mailer", "@templating"]
 # SERVICES
     timestampable_entity.pre_persist.listener:
         class: BackBundle\EventListener\PrePersistListener

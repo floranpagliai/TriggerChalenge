@@ -7,13 +7,14 @@
 
 namespace BackBundle\Entity;
 
+use BackBundle\Model\TimestampableInterface;
 use BackBundle\Traits\TimestampableTrait;
 use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity
  * @ORM\Table(name="user_invites")
  */
-class UserInvite
+class UserInvite implements TimestampableInterface
 {
     use TimestampableTrait;
 
@@ -51,9 +52,12 @@ class UserInvite
 
     /**
      * UserInvite constructor.
+     *
+     * @param User $invitingUser
      */
-    public function __construct()
+    public function __construct(User $invitingUser)
     {
+        $this->invitingUser = $invitingUser;
         $this->setCode(uniqid('UI'));
     }
 

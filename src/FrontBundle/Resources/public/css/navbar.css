@@ -52,6 +52,10 @@ header h1 {
     header h1 {
         display: none;
     }
+
+    #main-nav ul {
+        margin: 0;
+    }
 }
 
 #logo {
@@ -81,12 +85,12 @@ header h1 {
     }
 }
 
-#cd-hamburger-menu, #cd-cart-trigger {
+#cd-hamburger-menu {
     position: absolute;
     top: 0;
     height: 100%;
 }
-#cd-hamburger-menu a, #cd-cart-trigger a {
+#cd-hamburger-menu a {
     width: 60px;
     height: 100%;
 }
@@ -103,11 +107,10 @@ header h1 {
     }
 }
 
-#main-nav, #cd-cart {
+#main-nav {
     position: fixed;
     top: 0;
     height: 100%;
-    width: 260px;
     /* header height */
     padding-top: 50px;
     overflow-y: auto;
@@ -116,12 +119,12 @@ header h1 {
     z-index: 3;
 }
 @media only screen and (min-width: 768px) {
-    #main-nav, #cd-cart {
+    #main-nav {
         width: 350px;
     }
 }
 @media only screen and (min-width: 1200px) {
-    #main-nav, #cd-cart {
+    #main-nav {
         width: 30%;
         /* header height has changed */
         padding-top: 80px;

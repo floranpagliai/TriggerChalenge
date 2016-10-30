@@ -16,16 +16,17 @@ class UserInviteManager extends AbstractManager
     /**
      * @param $email
      *
-     * @return UserInvite[]
+     * @return UserInvite
      */
-    public function getByEmailOrderByExpireAt($email)
+    public function getByEmailAndCode($email, $code)
     {
         $q = $this->em->createQueryBuilder()
             ->select('ui')
             ->from($this->class, 'ui')
             ->where('ui.email = :email')->setParameter('email', $email)
-            ->orderBy('expireAt', 'DESC');
+            ->andWhere('ui.code = :code')->setParameter('code', $code)
+            ->setMaxResults(1);
 
-        return $q->getQuery()->getResult();
+        return $q->getQuery()->getOneOrNullResult();
     }
 }

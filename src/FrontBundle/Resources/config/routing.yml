@@ -10,5 +10,5 @@ front_register:
 front_logout:
    path:      /logout
 front_user_profile:
-    path:     /user/{fullName}/{userId}
+    path:     /users/{fullName}/{userId}
     defaults:  { _controller: FrontBundle:User:profile }
