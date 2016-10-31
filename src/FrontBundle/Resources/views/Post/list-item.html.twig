@@ -1,0 +1,22 @@
+<div class="grid-item">
+    <img class="grid-item-picture" src="{{ post.coverPicture.url }}"/>
+    <a href="{{ path('front_post_show') }}">
+        <div class="overlay"></div>
+        <div>
+            <h2 class="grid-item-title">{{ post.title }}</h2>
+            {#<div class="loader"></div>#}
+            {#<span class="category">Life &amp; Death</span>#}
+            <div class="grid-item-footer">
+                {#<span class="meta__reading-time"><i class="fa fa-clock-o"></i> 2 min read</span>#}
+                {% if post.author.profilePicture is not null %}
+                    <img class="avatar" src="{{ post.author.profilePicture.url }}" alt="{{ post.author.firstName }}"/>
+                {% else %}
+                    <img class="avatar" src="{{ asset('bundles/front/img/user-unknow.png') }}"
+                         alt="{{ post.author.firstName }}"/>
+                {% endif %}
+                <span>{{ post.author.firstName }} {{ post.author.lastName }}</span>
+                <span class="meta"><i class="fa fa-calendar-o"></i>{{ post.createdAt|date('d M') }}</span>
+            </div>
+        </div>
+    </a>
+</div>

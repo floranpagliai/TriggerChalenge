@@ -1,0 +1,5 @@
+Bonjour,
+<br/><br/>
+{{ invite.invitingUser.firstName }} vous invite à rejoindre TriggerChallenge !<br/>
+Inscris toi avec le lien ci-dessous :<br/>
+<a href="{{ url('front_register', {'email': invite.email, 'code': invite.code}) }}">S'inscrire</a>

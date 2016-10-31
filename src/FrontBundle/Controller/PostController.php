@@ -7,8 +7,15 @@
 
 namespace FrontBundle\Controller;
 
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-class PostController
+class PostController extends Controller
 {
 
+    public function showAction()
+    {
+        return $this->render(
+            'FrontBundle:Post:show.html.twig'
+        );
+    }
 }

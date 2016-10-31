@@ -12,3 +12,6 @@ front_logout:
 front_user_profile:
     path:     /users/{fullName}/{userId}
     defaults:  { _controller: FrontBundle:User:profile }
+front_post_show:
+    path:     /picture
+    defaults:  { _controller: FrontBundle:Post:show }

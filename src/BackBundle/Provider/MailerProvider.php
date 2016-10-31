@@ -35,7 +35,7 @@ class MailerProvider
         $fromName = 'Floran Pagliai';
         $to = $userInvite->getEmail();
         $subject = 'Bienvenue dans l\'aventure photographique !';
-        $body = $this->templating->render('BackBundle:Mails:invitation.txt.twig', array('invite' => $userInvite));
+        $body = $this->templating->render('BackBundle:Mails:invitation.html.twig', array('invite' => $userInvite));
 
         $this->sendMail($from, $fromName, $to, $subject, $body);
     }
