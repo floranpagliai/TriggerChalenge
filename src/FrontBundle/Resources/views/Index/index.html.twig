@@ -4,7 +4,7 @@
     <div class="main">
         <section class="grid">
             {% for post in posts %}
-                {% include '@Front/Post/list-item.html.twig' with { 'post': post } %}
+                {% include 'FrontBundle:Post:list-item.html.twig' with { 'post': post } %}
             {% endfor %}
 
             {#<footer class="page-meta">#}

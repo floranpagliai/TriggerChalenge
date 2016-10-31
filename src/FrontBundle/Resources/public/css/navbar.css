@@ -34,7 +34,7 @@ header {
     left: 0;
     height: 50px;
     width: 100%;
-    background: #31353d;
+    background: #FFF;
     text-align: center;
     box-shadow: 0 2px 0 rgba(0, 0, 0, 0.1);
     z-index: 4;
@@ -91,7 +91,7 @@ header h1 {
     height: 100%;
 }
 #cd-hamburger-menu a {
-    width: 60px;
+    width: 64px;
     height: 100%;
 }
 
@@ -99,7 +99,7 @@ header h1 {
     left: 0;
 }
 #cd-hamburger-menu a {
-    background: #26292f url("../../../bundles/front/img/cd-hamburger-menu.svg") no-repeat center center;
+    background: #FFC107 url("../../../bundles/front/img/cd-hamburger-menu.svg") no-repeat center center;
 }
 @media only screen and (min-width: 1200px) {
     #cd-hamburger-menu {
@@ -146,6 +146,7 @@ header h1 {
     padding-left: 0;
 }
 #main-nav ul a {
+    text-align: center;
     display: block;
     height: 50px;
     line-height: 50px;
@@ -181,7 +182,7 @@ header h1 {
         line-height: 1;
         padding: 0.5em 0.7em;
         border-bottom: none;
-        color: rgba(255, 255, 255, 0.8);
+        color: black;
         border-radius: 0.25em;
     }
     #main-nav ul .active {
@@ -189,7 +190,7 @@ header h1 {
     }
     .no-touch #main-nav ul a:hover,
     #main-nav ul .active a{
-        color: #FFF;
+        color: #757575;
     }
 }
 .no-js #main-nav {
