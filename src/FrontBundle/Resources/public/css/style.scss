@@ -1,5 +1,5 @@
 
-.dark-primary-color    { background: #FFA000; }
+$dark-primary-color: #FFA000;
 .default-primary-color { background: #FFC107; }
 .light-primary-color   { background: #FFECB3; }
 .accent-color          { background: #FF5252; }
@@ -111,7 +111,7 @@ a {
     color: #FFF;
 }
 .grid-item:hover .grid-item-title {
-    color: #FFA000;
+    color: $dark-primary-color;
 }
 .grid-item-footer {
     text-align: left;
@@ -165,7 +165,7 @@ input:focus {
 
 .btn {
     border: 2px solid transparent;
-    background: #FFA000;
+    background: $dark-primary-color;
     color: #ffffff;
     font-size: 16px;
     line-height: 25px;

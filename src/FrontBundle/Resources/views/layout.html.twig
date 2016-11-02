@@ -9,8 +9,8 @@
     <link rel="shortcut icon" href="{{ asset('bundles/front/img/favicon.ico') }}" type="image/x-icon">
     <link rel="icon" href="{{ asset('bundles/front/img/favicon.ico') }}" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css?family=Oswald:300,400,700|Satisfy" rel="stylesheet">
-    {% stylesheets filter='cssrewrite'
-        'bundles/bmatznerfontawesome/css/font-awesome.min.css'
+    <link rel="stylesheet" href="{{ asset('bundles/bmatznerfontawesome/css/font-awesome.css') }}" type="text/css"/>
+    {% stylesheets filter='scssphp' output="css/app.css"
         '@FrontBundle/Resources/public/css/*'
     %}
     <link rel="stylesheet" href="{{ asset_url }}" type="text/css"/>
