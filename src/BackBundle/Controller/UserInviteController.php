@@ -49,7 +49,10 @@ class UserInviteController extends Controller
 
         return $this->render(
             'BackBundle:UserInvite:add.html.twig',
-            array('form' => $form->createView(), 'errors' => $errors)
+            array(
+                'form' => $form->createView(),
+                'errors' => $errors
+            )
         );
     }
 }

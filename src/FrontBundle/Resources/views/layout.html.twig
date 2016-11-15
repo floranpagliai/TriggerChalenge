@@ -10,7 +10,10 @@
     <link rel="icon" href="{{ asset('bundles/front/img/favicon.ico') }}" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css?family=Oswald:300,400,700|Satisfy" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('bundles/bmatznerfontawesome/css/font-awesome.css') }}" type="text/css"/>
+    <link href="https://file.myfontastic.com/6FgmP4oJ7DyT3k5QBFvddi/icons.css" rel="stylesheet">
     {% stylesheets filter='scssphp' output="css/app.css"
+        'public/css/animate.css'
+        'public/css/iconfont.css'
         '@FrontBundle/Resources/public/css/*'
     %}
     <link rel="stylesheet" href="{{ asset_url }}" type="text/css"/>
@@ -30,16 +33,16 @@
     <nav id="main-nav">
         <ul>
             <li class="{% if currentPath == 'front_homepage'  %}active{% endif %}">
-                <a href="{{ path('front_homepage') }}"><i class="fa fa-camera-retro fa-2x"></i></a>
+                <a href="{{ path('front_homepage') }}"><i class="icon-home icon-1_5x"></i></a>
             </li>
             <li class="{% if currentPath == 'front_user_profile' or currentPath == 'front_login' or currentPath == 'front_register' %}active{% endif %}">
                 {% if is_granted('ROLE_USER') %}
                     <a href="{{ path('front_user_profile', {'userId': app.user.id, 'fullName': app.user.fullName|lower|replace({' ':''})}) }}">
-                        <i class="fa fa-user fa-2x"></i>
+                        <i class="icon-user icon-1_5x"></i>
                     </a>
                 {% else %}
                     <a href="{{ path('front_login') }}">
-                        <i class="fa fa-user fa-2x"></i>
+                        <i class="icon-user icon-1_5x"></i>
                     </a>
                 {% endif %}
             </li>

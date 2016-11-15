@@ -9,7 +9,7 @@
                 {{ form_start(form) }}
                 {% if errors is not null %}
                     {% for error in errors %}
-                        <div class="control-group error-message"><p>{{ error.message|trans }}</p></div>
+                        <div class="control-group error-message animated jello"><p>{{ error.message|trans }}</p></div>
                     {% endfor %}
                 {% endif %}
                     <div class="control-group{% if form.email.vars.errors|length %} has-danger{% endif %}">

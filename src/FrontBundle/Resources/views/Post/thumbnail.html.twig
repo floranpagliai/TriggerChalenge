@@ -1,6 +1,6 @@
 <div class="grid-item">
     <img class="grid-item-picture" src="{{ post.coverPicture.url }}" width="300" height="300"/>
-    <a href="{{ path('front_post_show') }}">
+    <a href="{{ path('front_post_show', {'postId': post.id}) }}">
         <div class="overlay"></div>
         <div>
             <h2 class="grid-item-title">{{ post.title }}</h2>

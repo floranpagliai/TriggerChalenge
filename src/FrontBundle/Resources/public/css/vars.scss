@@ -1,0 +1,17 @@
+$dark-primary-color: #FFA000;
+$default-primary-color: #FFC107;
+$light-primary-color: #FFECB3;
+$accent-color: #e94b35;
+$primary-text-color: #212121;
+$secondary-text-color: #757575;
+$divider-color: #BDBDBD;
+
+$body-background-color: #FFF;
+$input-focus-color: #3498DB;
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  -ms-border-radius: $radius;
+  border-radius: $radius;
+}

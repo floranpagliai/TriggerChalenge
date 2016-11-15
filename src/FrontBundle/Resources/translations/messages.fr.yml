@@ -23,3 +23,14 @@ user_invite:
         not_invited: "Cet email n'a pas été invité."
         expired: "L'invitation à expiré."
         wrong_code: "Le code d'invitation est faux."
+post:
+    form:
+        placeholder:
+            title: "Titre"
+            coverPictureUrl: "Url de l'image"
+    action:
+        publish: "Publier"
+picture:
+    message:
+        error:
+            invalid_url: "L'url de l'image n'est pas valide"

@@ -1,3 +1,4 @@
+# SECURITY ROUTING #
 front_homepage:
     path:     /
     defaults: { _controller: FrontBundle:Front:index }
@@ -9,9 +10,14 @@ front_register:
     defaults:  { _controller: FrontBundle:Security:register }
 front_logout:
    path:      /logout
+# USER ROUTING #
 front_user_profile:
     path:     /users/{fullName}/{userId}
     defaults:  { _controller: FrontBundle:User:profile }
+# POST ROUTING #
 front_post_show:
-    path:     /picture
+    path:     /pictures/{postId}
     defaults:  { _controller: FrontBundle:Post:show }
+front_post_add:
+    path:     /pictures/add
+    defaults:  { _controller: FrontBundle:Post:add }

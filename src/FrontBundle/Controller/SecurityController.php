@@ -28,10 +28,12 @@ class SecurityController extends Controller
 
         $authenticationUtils = $this->get('security.authentication_utils');
 
-        return $this->render('FrontBundle:Security:login.html.twig', array(
-            'last_username' => $authenticationUtils->getLastUsername(),
-            'error'         => $authenticationUtils->getLastAuthenticationError(),
-        ));
+        return $this->render('FrontBundle:Security:login.html.twig',
+            array(
+                'last_username' => $authenticationUtils->getLastUsername(),
+                'error'         => $authenticationUtils->getLastAuthenticationError(),
+            )
+        );
     }
 
     public function registerAction(Request $request)
@@ -67,7 +69,10 @@ class SecurityController extends Controller
 
         return $this->render(
             'FrontBundle:Security:register.html.twig',
-            array('form' => $form->createView(), 'errors' => $errors)
+            array(
+                'form' => $form->createView(),
+                'errors' => $errors
+            )
         );
     }
 

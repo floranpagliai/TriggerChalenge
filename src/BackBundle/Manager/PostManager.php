@@ -12,6 +12,18 @@ use BackBundle\Entity\Post;
 class PostManager extends AbstractManager
 {
 
+    public function getAll($orderBy = 'DESC')
+    {
+        $q = $this->em->createQueryBuilder()
+            ->select('post')
+            ->from($this->class, 'post')
+            ->leftJoin("post.coverPicture", "coverPicture")
+            ->leftJoin("post.author", "author")
+            ->orderBy('post.createdAt', $orderBy);
+
+        return $q->getQuery()->getResult();
+    }
+
     /**
      * @param $userId
      * @param string $orderBy

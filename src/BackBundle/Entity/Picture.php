@@ -59,4 +59,16 @@ class Picture
     {
         $this->url = $url;
     }
+
+    public function isBroken()
+    {
+        if (filter_var($this->url, FILTER_VALIDATE_URL) !== FALSE) {
+            $headers = getimagesize($this->url);
+            if (is_array($headers)) {
+                return false;
+            }
+        }
+
+        return true;
+    }
 }
