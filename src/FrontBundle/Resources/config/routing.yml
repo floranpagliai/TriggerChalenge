@@ -14,10 +14,14 @@ front_logout:
 front_user_profile:
     path:     /users/{fullName}/{userId}
     defaults:  { _controller: FrontBundle:User:profile }
+    requirements:
+        userId: \d+
 # POST ROUTING #
 front_post_show:
     path:     /pictures/{postId}
     defaults:  { _controller: FrontBundle:Post:show }
+    requirements:
+        postId: \d+
 front_post_add:
     path:     /pictures/add
     defaults:  { _controller: FrontBundle:Post:add }
