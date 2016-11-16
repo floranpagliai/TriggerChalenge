@@ -45,7 +45,7 @@ class SecurityController extends Controller
         $invitationCode = $request->get('code');
 
         try {
-            //$this->get('provider.user_invite')->verify($email, $invitationCode);
+            $this->get('provider.user_invite')->verify($email, $invitationCode);
         } catch (\Exception $e) {
             $this->addFlash('error', $e->getMessage());
 
