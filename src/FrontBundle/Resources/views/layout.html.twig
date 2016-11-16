@@ -11,10 +11,10 @@
     <link href="https://fonts.googleapis.com/css?family=Oswald:300,400,700|Satisfy" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('bundles/bmatznerfontawesome/css/font-awesome.css') }}" type="text/css"/>
     <link href="https://file.myfontastic.com/6FgmP4oJ7DyT3k5QBFvddi/icons.css" rel="stylesheet">
-    {% stylesheets filter='scssphp' output="css/app.css"
+    {% stylesheets filter='cssrewrite, scssphp' output="css/app.css"
         'public/css/animate.css'
         'public/css/iconfont.css'
-        '@FrontBundle/Resources/public/css/*'
+        'bundles/front/css/*'
     %}
     <link rel="stylesheet" href="{{ asset_url }}" type="text/css"/>
     {% endstylesheets %}
