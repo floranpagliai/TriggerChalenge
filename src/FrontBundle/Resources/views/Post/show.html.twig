@@ -2,6 +2,13 @@
 
 {% block body %}
     <div class="main">
-        <img src="{{ post.coverPicture.url }}"/>
+        <div class="post">
+            <div class="post-photo">
+                <img src="{{ post.coverPicture.url }}"/>
+            </div>
+            <div class="post-sidebar">
+                {{ post.author.fullName }}
+            </div>
+        </div>
     </div>
 {% endblock %}

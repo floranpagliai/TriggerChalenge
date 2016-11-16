@@ -33,7 +33,7 @@ a {
 }
 
 .main {
-  margin-top: 88px;
+  margin-top: 60px;
 }
 
 /* Grid container */
@@ -206,6 +206,10 @@ input:focus {
   /* 4 columns */
   .grid .grid-item {
     width: 25%;
+  }
+
+  .main {
+    margin-top: 88px;
   }
 }
 
