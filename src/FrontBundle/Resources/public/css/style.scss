@@ -39,6 +39,7 @@ a {
 /* Grid container */
 .grid {
   position: relative;
+  padding-top: 8px;
 }
 
 .grid-item {
@@ -65,9 +66,10 @@ a {
 .grid-item .grid-item-picture {
   position: absolute;
   height: 100%;
-  width: auto;
+  width: 100%;
   z-index: -10;
-  transition: transform .2s ease-in-out;
+  transition: transform 0.2s ease-in-out;
+  object-fit: cover;
 }
 
 .grid-item:hover .grid-item-picture {
@@ -95,10 +97,6 @@ a {
 }
 
 .grid-item .grid-item-title {
-  font-size: 30px;
-  font-weight: 300;
-  letter-spacing: 12px;
-  text-transform: uppercase;
   color: #FFF;
 }
 
@@ -120,11 +118,12 @@ a {
   vertical-align: middle;
 }
 
-.grid-item-footer .meta {
+.small {
   font-size: 12px;
+  font-weight: 100;
 }
 
-.grid-item-footer .meta .fa {
+.fa {
   margin-right: 4px;
   font-size: initial;
 }
@@ -209,7 +208,7 @@ input:focus {
   }
 
   .main {
-    margin-top: 88px;
+    margin-top: 80px;
   }
 }
 
@@ -264,9 +263,11 @@ span.tooltip {
   @include border-radius(3px);
   font-weight: 100;
   text-align: center;
+  color: #ffffff;
 
   &.has-danger {
     border: 2px solid $accent-color;
+    background-color: $accent-color;
 
     &:after {
       border-style: solid;
@@ -283,4 +284,11 @@ span.tooltip {
     top: 10px;
     left: -20px;
   }
+}
+
+.picture-title {
+  font-size: 30px;
+  font-weight: 300;
+  letter-spacing: 12px;
+  text-transform: uppercase;
 }

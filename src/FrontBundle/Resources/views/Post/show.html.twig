@@ -3,11 +3,20 @@
 {% block body %}
     <div class="main">
         <div class="post">
+            <div class="post-title">
+                <h2 class="picture-title">{{ post.title }}</h2>
+            </div>
             <div class="post-photo">
                 <img src="{{ post.coverPicture.url }}"/>
             </div>
             <div class="post-sidebar">
-                {{ post.author.fullName }}
+                    {% if post.author.profilePicture is not null %}
+                        <img class="avatar" src="{{ post.author.profilePicture.url }}" alt="{{ post.author.firstName }}"/>
+                    {% else %}
+                        <img class="avatar" src="{{ asset('bundles/front/img/user-unknow.png') }}" alt="{{ post.author.firstName }}"/>
+                    {% endif %}
+                <span>{{ post.author.fullName }}</span>
+                <span class="small"><i class="fa fa-calendar-o"></i>{{ post.createdAt|date('d M') }}</span>
             </div>
         </div>
     </div>

@@ -2,26 +2,28 @@
 front_homepage:
     path:     /
     defaults: { _controller: FrontBundle:Front:index }
+    methods:  [GET]
 front_login:
     path:     /login
     defaults:  { _controller: FrontBundle:Security:login }
+    methods:  [GET, POST]
 front_register:
     path:     /register
     defaults:  { _controller: FrontBundle:Security:register }
+    methods:  [GET, POST]
 front_logout:
    path:      /logout
 # USER ROUTING #
 front_user_profile:
-    path:     /users/{fullName}/{userId}
+    path:     /users/{fullName}/u{userId}
     defaults:  { _controller: FrontBundle:User:profile }
-    requirements:
-        userId: \d+
+    methods:  [GET]
 # POST ROUTING #
 front_post_show:
-    path:     /pictures/{postId}
+    path:     /pictures/p{postId}
     defaults:  { _controller: FrontBundle:Post:show }
-    requirements:
-        postId: \d+
+    methods:  [GET]
 front_post_add:
     path:     /pictures/add
     defaults:  { _controller: FrontBundle:Post:add }
+    methods:  [GET, POST]

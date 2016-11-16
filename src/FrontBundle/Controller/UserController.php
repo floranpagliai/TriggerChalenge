@@ -15,8 +15,13 @@ class UserController extends Controller
 
     public function profileAction($userId)
     {
+        $user = $this->get('manager.user')->loadOneBy(array('publicId' => $userId));
+        if (!$user) {
+
+            return $this->redirect($this->generateUrl('front_homepage'));
+        }
         /** @var Post[] $posts */
-        $posts = $this->get('manager.post')->getByUserId($userId);
+        $posts = $this->get('manager.post')->getByUserId($user->getId());
 
         return $this->render('FrontBundle:Index:index.html.twig',
             array(

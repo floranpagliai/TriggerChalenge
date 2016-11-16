@@ -4,15 +4,32 @@
   width: 100%;
   margin: auto;
 
+  .post-title {
+    text-align: center;
+    padding: 1px;
+  }
+
   .post-photo {
     height: 500px;
     overflow: hidden;
     background-color: $body-background-second-color;
     text-align: center;
-    margin: -10px -10px 0;
+    margin: 0 -10px 0;
+    box-shadow: 0 2px 0 rgba(0, 0, 0, 0.1) inset;
+
     img {
       display: inline;
       max-height: 100%;
+      vertical-align: middle;
+    }
+  }
+
+  .post-sidebar {
+    margin-top: 5px;
+    text-align: center;
+
+    span, img {
+      margin-left: 8px;
       vertical-align: middle;
     }
   }

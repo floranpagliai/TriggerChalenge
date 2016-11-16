@@ -27,6 +27,12 @@ class Post implements TimestampableInterface
     protected $id;
 
     /**
+     * @var string
+     * @ORM\Column(name="public_id", type="string")
+     */
+    private $publicId;
+
+    /**
      * @var User
      * @ORM\ManyToOne(targetEntity="BackBundle\Entity\User")
      * @ORM\JoinColumn(name="author_user_id", referencedColumnName="id", nullable=false)
@@ -47,6 +53,15 @@ class Post implements TimestampableInterface
     private $title;
 
     /**
+     * Post constructor.
+     */
+    public function __construct()
+    {
+        $this->publicId = uniqid();
+    }
+
+
+    /**
      * @return mixed
      */
     public function getId()
@@ -60,6 +75,22 @@ class Post implements TimestampableInterface
     public function setId($id)
     {
         $this->id = $id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPublicId()
+    {
+        return $this->publicId;
+    }
+
+    /**
+     * @param mixed $publicId
+     */
+    public function setPublicId($publicId)
+    {
+        $this->publicId = $publicId;
     }
 
     /**
@@ -107,6 +138,6 @@ class Post implements TimestampableInterface
      */
     public function setTitle($title)
     {
-        $this->title = $title;
+        $this->title = ucfirst(strtolower($title));
     }
 }

@@ -37,7 +37,7 @@
             </li>
             <li class="{% if currentPath == 'front_user_profile' or currentPath == 'front_login' or currentPath == 'front_register' %}active{% endif %}">
                 {% if is_granted('ROLE_USER') %}
-                    <a href="{{ path('front_user_profile', {'userId': app.user.id, 'fullName': app.user.fullName|lower|replace({' ':''})}) }}">
+                    <a href="{{ path('front_user_profile', {'userId': app.user.publicId, 'fullName': app.user.fullName|lower|replace({' ':''})}) }}">
                         <i class="icon-user icon-1_5x"></i>
                     </a>
                 {% else %}
@@ -59,7 +59,7 @@
     <script type="text/javascript" src="{{ asset_url }}"></script>
 
     {% endjavascripts %}
-    <script>
+    <script type="text/javascript">
         function squareGrid() {
             $('.grid-item').each(function() {
                 var childImg = $(this).find('.grid-item-picture');
@@ -69,6 +69,7 @@
                 $(this).css({'height':$(this).width()+'px'});
             });
         }
+
         $(document).ready(function () {
             squareGrid();
             $( window ).resize(function() {

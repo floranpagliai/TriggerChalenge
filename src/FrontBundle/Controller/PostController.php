@@ -18,7 +18,11 @@ class PostController extends Controller
 
     public function showAction($postId)
     {
-        $post = $this->get('manager.post')->load($postId);
+        $post = $this->get('manager.post')->loadOneBy(array('publicId' => $postId));
+        if (!$post) {
+
+            return $this->redirect($this->generateUrl('front_homepage'));
+        }
 
         return $this->render(
             'FrontBundle:Post:show.html.twig',
@@ -48,6 +52,8 @@ class PostController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $this->get('manager.post')->save($post);
             // TODO : Add flash
+
+            return $this->redirect($this->generateUrl('front_post_show', array('postId' => $post->getId())));
         }
 
         return $this->render(

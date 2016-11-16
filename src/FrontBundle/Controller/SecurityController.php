@@ -39,15 +39,16 @@ class SecurityController extends Controller
     public function registerAction(Request $request)
     {
         if ($this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
-            //return $this->redirectToRoute('front_homepage');
+            return $this->redirectToRoute('front_homepage');
         }
         $email = $request->get('email');
         $invitationCode = $request->get('code');
 
         try {
-            $this->get('provider.user_invite')->verify($email, $invitationCode);
+            //$this->get('provider.user_invite')->verify($email, $invitationCode);
         } catch (\Exception $e) {
             $this->addFlash('error', $e->getMessage());
+
             return $this->redirectToRoute('front_homepage');
         }
 

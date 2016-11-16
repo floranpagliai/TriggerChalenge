@@ -31,6 +31,12 @@ class User implements UserInterface, TimestampableInterface
     protected $id;
 
     /**
+     * @var string
+     * @ORM\Column(name="public_id", type="string")
+     */
+    private $publicId;
+
+    /**
      * @var Picture
      * @ORM\ManyToOne(targetEntity="BackBundle\Entity\Picture")
      * @ORM\JoinColumn(name="profile_picture_id", referencedColumnName="id", nullable=true)
@@ -73,6 +79,7 @@ class User implements UserInterface, TimestampableInterface
     public function __construct()
     {
         $this->roles = 'ROLE_USER';
+        $this->publicId = uniqid();
     }
 
     /**
@@ -89,6 +96,22 @@ class User implements UserInterface, TimestampableInterface
     public function setId($id)
     {
         $this->id = $id;
+    }
+
+    /**
+     * @return int
+     */
+    public function getPublicId()
+    {
+        return $this->publicId;
+    }
+
+    /**
+     * @param int $publicId
+     */
+    public function setPublicId($publicId)
+    {
+        $this->publicId = $publicId;
     }
 
     /**
@@ -120,7 +143,7 @@ class User implements UserInterface, TimestampableInterface
      */
     public function setEmail($email)
     {
-        $this->email = $email;
+        $this->email = strtolower($email);
     }
 
     /**
@@ -136,7 +159,7 @@ class User implements UserInterface, TimestampableInterface
      */
     public function setFirstName($firstName)
     {
-        $this->firstName = $firstName;
+        $this->firstName = ucfirst(strtolower($firstName));
     }
 
     /**
@@ -152,7 +175,7 @@ class User implements UserInterface, TimestampableInterface
      */
     public function setLastName($lastName)
     {
-        $this->lastName = $lastName;
+        $this->lastName = ucfirst(strtolower($lastName));
     }
 
     /**

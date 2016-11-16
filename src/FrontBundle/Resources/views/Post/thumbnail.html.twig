@@ -1,9 +1,9 @@
 <div class="grid-item">
     <img class="grid-item-picture" src="{{ post.coverPicture.url }}" width="300" height="300"/>
-    <a href="{{ path('front_post_show', {'postId': post.id}) }}">
+    <a href="{{ path('front_post_show', {'postId': post.publicId}) }}">
         <div class="overlay"></div>
         <div>
-            <h2 class="grid-item-title">{{ post.title }}</h2>
+            <h2 class="grid-item-title picture-title">{{ post.title }}</h2>
             {#<div class="loader"></div>#}
             {#<span class="category">Life &amp; Death</span>#}
             <div class="grid-item-footer">
@@ -15,7 +15,7 @@
                          alt="{{ post.author.firstName }}"/>
                 {% endif %}
                 <span>{{ post.author.fullName }}</span>
-                <span class="meta"><i class="fa fa-calendar-o"></i>{{ post.createdAt|date('d M') }}</span>
+                <span class="small"><i class="fa fa-calendar-o"></i>{{ post.createdAt|date('d M') }}</span>
             </div>
         </div>
     </a>
