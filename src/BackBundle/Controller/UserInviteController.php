@@ -45,7 +45,7 @@ class UserInviteController extends Controller
 
                 $mailer = $this->get('provider.mailer');
                 $mailer->sendUserInvitation($userInvite);
-                
+
                 return $this->redirectToRoute('back_user_invite_index');
             } catch(\Exception $e) {
                 $this->addFlash('error', $e->getMessage());

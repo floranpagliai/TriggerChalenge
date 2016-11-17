@@ -48,6 +48,13 @@
                     </a>
                 {% endif %}
             </li>
+            <li class="{% if currentPath == 'back_index' %}active{% endif %}">
+                {% if is_granted('ROLE_ADMIN') %}
+                    <a href="{{ path('back_index') }}">
+                        <i class="icon-monitor icon-1_5x"></i>
+                    </a>
+                {% endif %}
+            </li>
         </ul>
     </nav>
     {% block body %}{% endblock %}
