@@ -1,11 +1,36 @@
-<table>
-    {% for invite in invitations %}
-        <tr>
-            <td>{{ invite.email }}</td>
-            <td>{{ invite.code }}</td>
-            <td>{{ invite.invitingUser.fullName }}</td>
-            <td>{{ url('front_register', {'email': invite.email, 'code': invite.code})|trim }}</td>
-        </tr>
-{% endfor %}
-</table>
-<a href="{{ path('back_user_invite_add') }}">{{ 'user_invite.action.invite'|trans }}</a>
+{% extends '@Back/layout.html.twig' %}
+
+{% block body %}
+    <div class="card">
+        <div class="header">
+            <h4 class="title">User Invites</h4>
+            <p class="category">Here is all the user invited</p>
+        </div>
+        <div class="content table-responsive table-full-width">
+            <table class="table table-hover table-striped">
+                <thead>
+                <tr>
+                    <th>Email</th>
+                    <th>Code</th>
+                    <th>Full Name</th>
+                    <th>Url</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for invite in invitations %}
+                    <tr>
+                        <td>{{ invite.email }}</td>
+                        <td>{{ invite.code }}</td>
+                        <td>{{ invite.invitingUser.fullName }}</td>
+                        <td>{{ url('front_register', {'email': invite.email, 'code': invite.code})|trim }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <a href="{{ path('back_user_invite_add') }}">
+        <button class="btn btn-info btn-fill">{{ 'user_invite.action.invite'|trans }}</button>
+    </a>
+{% endblock %}

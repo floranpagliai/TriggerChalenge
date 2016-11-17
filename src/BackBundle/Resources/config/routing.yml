@@ -1,3 +1,6 @@
+back_index:
+    path:     /
+    defaults: { _controller: BackBundle:Back:index }
 back_user_invite_index:
     path:     /invitations
     defaults: { _controller: BackBundle:UserInvite:index }

@@ -7,7 +7,7 @@
                 <h2 class="picture-title">{{ post.title }}</h2>
             </div>
             <div class="post-photo">
-                <img src="{{ post.coverPicture.url }}"/>
+                <img class="img-centered" src="{{ post.coverPicture.url }}"/>
             </div>
             <div class="post-sidebar">
                     {% if post.author.profilePicture is not null %}

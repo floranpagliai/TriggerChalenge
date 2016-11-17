@@ -69,8 +69,29 @@ swiftmailer:
 assetic:
     debug:          "%kernel.debug%"
     use_controller: "%kernel.debug%"
-    bundles:        [ FrontBundle ]
+    bundles:        [ FrontBundle, BackBundle ]
     filters:
         cssrewrite: ~
         scssphp:
             formatter: 'Leafo\ScssPhp\Formatter\Compressed'
+    assets:
+        bootstrap_css:
+            inputs:
+                - %kernel.root_dir%/../vendor/twbs/bootstrap/scss/bootstrap.scss
+            filters:
+                - scssphp
+                - cssrewrite
+            output: css/bootstrap.css
+        bootstrap_js:
+            inputs:
+                - %kernel.root_dir%/../vendor/twbs/bootstrap/js/src/alert.js
+                - %kernel.root_dir%/../vendor/twbs/bootstrap/js/src/button.js
+                - %kernel.root_dir%/../vendor/twbs/bootstrap/js/src/carousel.js
+                - %kernel.root_dir%/../vendor/twbs/bootstrap/js/src/collapse.js
+                - %kernel.root_dir%/../vendor/twbs/bootstrap/js/src/dropdown.js
+                - %kernel.root_dir%/../vendor/twbs/bootstrap/js/src/modal.js
+                - %kernel.root_dir%/../vendor/twbs/bootstrap/js/src/tooltip.js
+                - %kernel.root_dir%/../vendor/twbs/bootstrap/js/src/popover.js
+                - %kernel.root_dir%/../vendor/twbs/bootstrap/js/src/scrollspy.js
+                - %kernel.root_dir%/../vendor/twbs/bootstrap/js/src/tab.js
+            output: js/bootstrap.js

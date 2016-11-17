@@ -36,15 +36,20 @@ class UserInviteController extends Controller
         $errors = $this->get('validator')->validate($userInvite);
         if ($form->isSubmitted() && $form->isValid()) {
 
-            $this->get('manager.user_invite')->save($userInvite);
-            // TODO : add flash
-            // send mail
-            // use your saved credentials
+            try {
+                $this->get('provider.user_invite')->isAlreadyInvited($userInvite->getEmail());
+                $this->get('manager.user_invite')->save($userInvite);
+                // TODO : add flash
+                // send mail
+                // use your saved credentials
 
-            $mailer = $this->get('provider.mailer');
-            $mailer->sendUserInvitation($userInvite);
-
-            return $this->redirectToRoute('back_user_invite_index');
+                $mailer = $this->get('provider.mailer');
+                $mailer->sendUserInvitation($userInvite);
+                
+                return $this->redirectToRoute('back_user_invite_index');
+            } catch(\Exception $e) {
+                $this->addFlash('error', $e->getMessage());
+            }
         }
 
         return $this->render(

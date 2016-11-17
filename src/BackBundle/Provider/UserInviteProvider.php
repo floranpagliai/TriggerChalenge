@@ -38,4 +38,14 @@ class UserInviteProvider
             throw new \Exception('user_invite.warning.expired');
         }
     }
+
+    public function isAlreadyInvited($email)
+    {
+        $invitation = $this->userInviteManager->getOneByEmailNonExpired($email);
+
+        if ($invitation)
+        {
+            throw new \Exception('user_invite.warning.already_invited');
+        }
+    }
 }
