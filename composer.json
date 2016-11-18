@@ -82,8 +82,8 @@
                 "database_password": "DATABASE_PASSWORD",
                 "mailer_transport": "MAILER_TRANSPORT",
                 "mailer_host": "MAILER_HOST",
-                "mailer_port": "MAILLER_PORT",
-                "mailer_user": "MAILLER_USER",
+                "mailer_port": "MAILER_PORT",
+                "mailer_user": "MAILER_USER",
                 "mailer_password": "MAILER_PASSWORD"
           }
         }
