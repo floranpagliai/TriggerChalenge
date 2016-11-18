@@ -9,8 +9,8 @@
     <link rel="shortcut icon" href="{{ asset('bundles/front/img/favicon.ico') }}" type="image/x-icon">
     <link rel="icon" href="{{ asset('bundles/front/img/favicon.ico') }}" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css?family=Oswald:300,400,700|Satisfy" rel="stylesheet">
-    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}" type="text/css"/>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
+    {#<link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}" type="text/css"/>#}
     <link rel="stylesheet" href="{{ asset('bundles/bmatznerfontawesome/css/font-awesome.css') }}" type="text/css"/>
     <link href="https://file.myfontastic.com/6FgmP4oJ7DyT3k5QBFvddi/icons.css" rel="stylesheet">
     {% stylesheets filter='cssrewrite, scssphp' output="css/admin.css"
@@ -24,7 +24,7 @@
 <body>
 
 <div class="wrapper">
-    <div class="sidebar" data-color="purple" data-image="assets/img/sidebar-5.jpg">
+    <div class="sidebar" data-color="purple" data-image="{{ asset('bundles/back/img/sidebar.jpg') }}">
 
         <!--
 
@@ -43,13 +43,13 @@
             <ul class="nav">
                 <li>
                     <a href="{{ path('back_index') }}">
-                        <i class="pe-7s-graph"></i>
+                        <i class="fa fa-television"></i>
                         <p>Dashboard</p>
                     </a>
                 </li>
                 <li>
                     <a href="{{ path('back_user_invite_index') }}">
-                        <i class="pe-7s-user"></i>
+                        <i class="fa fa-address-book-o"></i>
                         <p>User Invite</p>
                     </a>
                 </li>
@@ -106,6 +106,7 @@
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 Dropdown
+                                <span class="caret"></span>
                             </a>
                             <ul class="dropdown-menu">
                                 <li><a href="#">Action</a></li>
