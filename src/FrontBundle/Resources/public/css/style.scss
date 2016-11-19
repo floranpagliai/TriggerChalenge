@@ -32,6 +32,12 @@ a {
   text-decoration: none;
 }
 
+a:hover,
+a:focus,
+a:active {
+  text-decoration: none;
+}
+
 .main {
   margin-top: 60px;
 }
@@ -173,8 +179,12 @@ input:focus {
   cursor: pointer;
 }
 
-.btn:hover {
-  background-color: $dark-primary-color;
+.btn:hover,
+.btn:focus,
+.btn:active
+.btn:visited {
+  background-color: $dark-primary-color !important;
+  outline: none;
 }
 
 @media screen and (min-width: 600px) {
@@ -291,4 +301,11 @@ span.tooltip {
   font-weight: 300;
   letter-spacing: 12px;
   text-transform: uppercase;
+  margin-top: 0.83em;
+  margin-bottom: 0.83em;
+}
+
+.container-fluid {
+  padding-left: 5px;
+  padding-right: 5px;
 }

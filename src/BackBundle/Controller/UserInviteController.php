@@ -11,6 +11,7 @@ use BackBundle\Entity\UserInvite;
 use BackBundle\Form\UserInvitationForm;
 use Mailjet\Api\RequestApi;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Form\FormError;
 use Symfony\Component\HttpFoundation\Request;
 
 class UserInviteController extends Controller
@@ -48,7 +49,7 @@ class UserInviteController extends Controller
 
                 return $this->redirectToRoute('back_user_invite_index');
             } catch(\Exception $e) {
-                $this->addFlash('error', $e->getMessage());
+                $form->addError(new FormError($e->getMessage()));
             }
         }
 

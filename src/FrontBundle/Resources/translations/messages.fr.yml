@@ -16,6 +16,9 @@ user:
     paragraph:
         reset_password: "Mot de passe oublié?"
         already_registered: "Déjà inscrit?"
+    message:
+        error:
+            unique_email: "Cet email est déjà utilisé."
     warning:
         unique_email: "Cet email est déjà utilisé."
 user_invite:

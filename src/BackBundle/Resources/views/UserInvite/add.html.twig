@@ -8,8 +8,8 @@
         </div>
         <div class="content">
             {{ form_start(form) }}
-            {% if errors is not null %}
-                {% for error in errors %}
+            {% if form.vars.errors|length %}
+                {% for error in form.vars.errors %}
                     <div class="control-group error-message"><p>{{ error.message|trans }}</p></div>
                 {% endfor %}
             {% endif %}

@@ -12,7 +12,7 @@ services:
 # PROVIDERS
     provider.user_invite:
         class: BackBundle\Provider\UserInviteProvider
-        arguments: ["@manager.user_invite"]
+        arguments: ["@manager.user_invite", "@manager.user"]
     provider.mailer:
         class: BackBundle\Provider\MailerProvider
         arguments: ["@mailer", "@templating"]

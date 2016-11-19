@@ -9,6 +9,7 @@
     <link rel="shortcut icon" href="{{ asset('bundles/front/img/favicon.ico') }}" type="image/x-icon">
     <link rel="icon" href="{{ asset('bundles/front/img/favicon.ico') }}" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css?family=Oswald:300,400,700|Satisfy" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}" type="text/css"/>
     <link rel="stylesheet" href="{{ asset('bundles/bmatznerfontawesome/css/font-awesome.css') }}" type="text/css"/>
     <link href="https://file.myfontastic.com/6FgmP4oJ7DyT3k5QBFvddi/icons.css" rel="stylesheet">
     {% stylesheets filter='cssrewrite, scssphp' output="css/app.css"
@@ -22,41 +23,16 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 </head>
 <body class="{% block body_class %}{% endblock %}">
-<div class="container">
+<div class="container-fluid">
     <header>
         <a href="{{ path('front_homepage') }}">
             <div id="logo"><img src="{{ asset('bundles/front/img/logo.png') }}" alt="Homepage"></div>
-            <h1>{{ app_name }}</h1>
+            <h1 class="app-title">{{ app_name }}</h1>
         </a>
         <div id="cd-hamburger-menu"><a class="cd-img-replace" href="#">Menu</a></div>
     </header>
 
-    {% set currentPath = app.request.attributes.get('_route') %}
-    <nav id="main-nav">
-        <ul>
-            <li class="{% if currentPath == 'front_homepage'  %}active{% endif %}">
-                <a href="{{ path('front_homepage') }}"><i class="icon-home icon-1_5x"></i></a>
-            </li>
-            <li class="{% if currentPath == 'front_user_profile' or currentPath == 'front_login' or currentPath == 'front_register' %}active{% endif %}">
-                {% if is_granted('ROLE_USER') %}
-                    <a href="{{ path('front_user_profile', {'userId': app.user.publicId, 'fullName': app.user.fullName|lower|replace({' ':''})}) }}">
-                        <i class="icon-user icon-1_5x"></i>
-                    </a>
-                {% else %}
-                    <a href="{{ path('front_login') }}">
-                        <i class="icon-user icon-1_5x"></i>
-                    </a>
-                {% endif %}
-            </li>
-            <li class="{% if currentPath == 'back_index' %}active{% endif %}">
-                {% if is_granted('ROLE_ADMIN') %}
-                    <a href="{{ path('back_index') }}">
-                        <i class="icon-monitor icon-1_5x"></i>
-                    </a>
-                {% endif %}
-            </li>
-        </ul>
-    </nav>
+    {% include '@Front/navbar.html.twig' %}
     {% block body %}{% endblock %}
 </div><!-- /container -->
 {% block footer_javascripts %}
