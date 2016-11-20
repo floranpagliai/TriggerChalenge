@@ -14,9 +14,9 @@
     <link rel="stylesheet" href="{{ asset('bundles/bmatznerfontawesome/css/font-awesome.css') }}" type="text/css"/>
     <link href="https://file.myfontastic.com/6FgmP4oJ7DyT3k5QBFvddi/icons.css" rel="stylesheet">
     {% stylesheets filter='cssrewrite, scssphp' output="css/admin.css"
-        'public/css/animate.css'
-        'bundles/back/css/*' %}
-        <link rel="stylesheet" href="{{ asset_url }}" type="text/css"/>
+    'public/css/animate.css'
+    'bundles/back/css/*' %}
+    <link rel="stylesheet" href="{{ asset_url }}" type="text/css"/>
     {% endstylesheets %}
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
@@ -170,32 +170,15 @@
 
     </div>
 </div>
-
-
-</body>
-
-{% javascripts
+{% block javascript %}
+    {% javascripts
     'public/js/jquery-3.1.1.min.js'
     'js/bootstrap.js'
+    'public/js/ajax-request.js'
     'bundles/back/js/*' %}
     <script type="text/javascript" src="{{ asset_url }}"></script>
-{% endjavascripts %}
-
-<script type="text/javascript">
-    $(document).ready(function () {
-
-        demo.initChartist();
-
-        $.notify({
-            icon: 'pe-7s-gift',
-            message: "Welcome to <b>Light Bootstrap Dashboard</b> - a beautiful freebie for every web developer."
-
-        }, {
-            type: 'info',
-            timer: 4000
-        });
-
-    });
-</script>
+    {% endjavascripts %}
+{% endblock %}
+</body>
 
 </html>

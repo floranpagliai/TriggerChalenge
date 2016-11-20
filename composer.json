@@ -31,7 +31,8 @@
         "incenteev/composer-parameter-handler": "^2.0",
         "bmatzner/fontawesome-bundle": "^4.7",
         "leafo/scssphp": "^0.6.6",
-        "twbs/bootstrap": "4.0.0-alpha.5"
+        "twbs/bootstrap": "4.0.0-alpha.5",
+        "doctrine/doctrine-migrations-bundle": "^1.0"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",
@@ -55,7 +56,7 @@
         "compile": [
             "bin/console assetic:dump --env=prod",
             "bin/console assets:install --env=prod",
-            "bin/console doctrine:schema:update --force"
+            "bin/console doctrine:migrations:migrate"
         ]
     },
     "config": {

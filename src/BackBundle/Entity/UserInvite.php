@@ -58,7 +58,7 @@ class UserInvite implements TimestampableInterface
     public function __construct(User $invitingUser)
     {
         $this->invitingUser = $invitingUser;
-        $this->setCode(uniqid('UI'));
+        $this->setCode(uniqid('ui'));
     }
 
     /**

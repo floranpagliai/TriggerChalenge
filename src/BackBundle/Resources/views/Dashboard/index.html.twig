@@ -211,3 +211,12 @@
         </div>
     </div>
 {% endblock %}
+
+{% block javascript %}
+    {{ parent() }}
+    <script type="text/javascript">
+        $(document).ready(function () {
+            demo.initChartist();
+        });
+    </script>
+{% endblock %}

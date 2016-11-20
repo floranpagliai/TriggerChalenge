@@ -36,7 +36,6 @@ class UserInviteController extends Controller
         $form->handleRequest($request);
         $errors = $this->get('validator')->validate($userInvite);
         if ($form->isSubmitted() && $form->isValid()) {
-
             try {
                 $this->get('provider.user_invite')->isAlreadyInvited($userInvite->getEmail());
                 $this->get('manager.user_invite')->save($userInvite);

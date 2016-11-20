@@ -27,11 +27,15 @@ user_invite:
               email: "Email de la personne à inviter"
     action:
         invite: "Inviter utilisateur "
+    message:
+        success:
+            deleted: "L'invitation a bien été supprimé"
     warning:
         already_invited: "Cet email a déjà été invité."
         not_invited: "Cet email n'a pas été invité."
         expired: "L'invitation à expiré."
         wrong_code: "Le code d'invitation est faux."
+
 post:
     form:
         placeholder:

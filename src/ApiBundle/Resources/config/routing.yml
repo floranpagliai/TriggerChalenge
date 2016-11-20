@@ -1,0 +1,6 @@
+api_user_invite_delete:
+    path:     /invitations/delete/{idUserInvite}
+    defaults: { _controller: ApiBundle:UserInvite:delete }
+    methods:  [DELETE]
+    requirements:
+            idUserInvite: '\d+'

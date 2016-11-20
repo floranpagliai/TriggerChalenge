@@ -14,15 +14,21 @@
                     <th>Code</th>
                     <th>Full Name</th>
                     <th>Url</th>
+                    <th></th>
                 </tr>
                 </thead>
                 <tbody>
                 {% for invite in invitations %}
-                    <tr>
+                    <tr id="user-invite-{{ invite.id }}">
                         <td>{{ invite.email }}</td>
                         <td>{{ invite.code }}</td>
                         <td>{{ invite.invitingUser.fullName }}</td>
                         <td>{{ url('front_register', {'email': invite.email, 'code': invite.code})|trim }}</td>
+                        <td class="td-actions text-right">
+                            <button type="button" title="" class="btn btn-danger btn-simple btn-xs ajax-remove" data-url="{{ path('api_user_invite_delete', {'idUserInvite': invite.id}) }}" data-target="#user-invite-{{ invite.id }}">
+                                <i class="fa fa-times"></i>
+                            </button>
+                        </td>
                     </tr>
                 {% endfor %}
                 </tbody>

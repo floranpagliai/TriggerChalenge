@@ -47,6 +47,13 @@ class Post implements TimestampableInterface
     private $coverPicture;
 
     /**
+     * @var ChallengeSubject
+     * @ORM\ManyToOne(targetEntity="BackBundle\Entity\ChallengeSubject")
+     * @ORM\JoinColumn(name="challenge_subject_id", referencedColumnName="id")
+     */
+    private $challengeSubject;
+
+    /**
      * @var string
      * @ORM\Column(name="title", type="string")
      */
@@ -123,6 +130,22 @@ class Post implements TimestampableInterface
     public function setCoverPicture($coverPicture)
     {
         $this->coverPicture = $coverPicture;
+    }
+
+    /**
+     * @return ChallengeSubject
+     */
+    public function getChallengeSubject()
+    {
+        return $this->challengeSubject;
+    }
+
+    /**
+     * @param ChallengeSubject $challengeSubject
+     */
+    public function setChallengeSubject($challengeSubject)
+    {
+        $this->challengeSubject = $challengeSubject;
     }
 
     /**
