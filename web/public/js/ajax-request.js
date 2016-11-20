@@ -28,6 +28,18 @@ function ajaxRequestDelete(url, params, target, method) {
     });
 }
 
+function ajaxRequestRender(url, params, target, method) {
+    $.ajax({
+        url: url,
+        type: method,
+        dataType: 'json',
+        data: params,
+        success: function (result) {
+            $(target).html(result.content);
+        }
+    });
+}
+
 $(document).ready(function () {
     $(document).on('click', '.ajax-remove', function () {
         var url = $(this).attr('data-url');
@@ -46,5 +58,25 @@ $(document).ready(function () {
             method = 'DELETE'
         }
         ajaxRequestDelete(url, params, target, method)
+    });
+
+    $('.ajax-render').each(function (i, obj) {
+        console.log('test');
+        var url = $(obj).attr('data-url');
+        var params = $(obj).attr('data-params');
+        if (typeof params !== 'undefined') {
+            params = JSON.parse(params);
+        }
+        var target = $(obj).attr('data-target');
+        if (typeof target !== 'undefined') {
+            target = $(target);
+        } else {
+            target = obj;
+        }
+        var method = $(obj).attr('data-method');
+        if (typeof method === 'undefined') {
+            method = 'GET'
+        }
+        ajaxRequestRender(url, params, target, method)
     });
 });

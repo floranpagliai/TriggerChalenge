@@ -12,7 +12,13 @@ use BackBundle\Entity\Post;
 class PostManager extends AbstractManager
 {
 
-    public function getAll($orderBy = 'DESC')
+    /**
+     * @param null $limit
+     * @param string $orderBy
+     *
+     * @return Post[]
+     */
+    public function getAll($limit = null, $orderBy = 'DESC')
     {
         $q = $this->em->createQueryBuilder()
             ->select('post')
@@ -20,17 +26,21 @@ class PostManager extends AbstractManager
             ->leftJoin("post.coverPicture", "coverPicture")
             ->leftJoin("post.author", "author")
             ->orderBy('post.createdAt', $orderBy);
+        if ($limit != null) {
+            $q->setMaxResults($limit);
+        }
 
         return $q->getQuery()->getResult();
     }
 
     /**
      * @param $userId
+     * @param null $limit
      * @param string $orderBy
      *
      * @return \BackBundle\Entity\Post[]
      */
-    public function getByUserId($userId, $orderBy = 'DESC')
+    public function getByUserId($userId, $limit = null, $orderBy = 'DESC')
     {
         $q = $this->em->createQueryBuilder()
             ->select('post')
@@ -39,6 +49,9 @@ class PostManager extends AbstractManager
             ->leftJoin("post.author", "author")
             ->where('post.author = :userId')->setParameter('userId', $userId)
             ->orderBy('post.createdAt', $orderBy);
+        if ($limit != null) {
+            $q->setMaxResults($limit);
+        }
 
         return $q->getQuery()->getResult();
     }

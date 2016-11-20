@@ -2,14 +2,20 @@
 
 {% block body %}
     <div class="main">
+        <section>
+            <h2 class="section-title">Challenges</h2>
+            {% for challengeSubject in challengeSubjects %}
+                <div class="row">
+                    {% include 'FrontBundle:ChallengeSubject:thumbnail.html.twig' with { 'challengeSubject': challengeSubject} %}
+                </div>
+            {% endfor %}
+        </section>
+
         <section class="grid">
+            <h2 class="section-title">Dernières photos</h2>
             {% for post in posts %}
                 {% include 'FrontBundle:Post:thumbnail.html.twig' with { 'post': post } %}
             {% endfor %}
-
-            {#<footer class="page-meta">#}
-                {#<span>Load more...</span>#}
-            {#</footer>#}
         </section>
     </div>
 {% endblock %}

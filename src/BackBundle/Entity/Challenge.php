@@ -7,6 +7,7 @@
 
 namespace BackBundle\Entity;
 
+use BackBundle\DBAL\ChallengeFrequencyType;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -27,4 +28,58 @@ class Challenge
      * @ORM\Column(name="name", type="string")
      */
     private $name;
+
+    /**
+     * @var ChallengeFrequencyType
+     * @ORM\Column(name="frequency", type="challengefrequency")
+     */
+    private $frequency;
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param mixed $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param string $name
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
+
+    /**
+     * @return ChallengeFrequencyType
+     */
+    public function getFrequency()
+    {
+        return $this->frequency;
+    }
+
+    /**
+     * @param ChallengeFrequencyType $frequency
+     */
+    public function setFrequency($frequency)
+    {
+        $this->frequency = $frequency;
+    }
 }

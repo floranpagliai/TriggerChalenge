@@ -8,7 +8,9 @@ $divider-color: #BDBDBD;
 
 $body-background-color: #FFF;
 $body-background-second-color: #BDBDBD;
-$input-focus-color: #3498DB;
+$footer-background-color: $dark-primary-color;
+$footer-color: #FFF;
+$input-focus-color: #296DB2;
 
 @mixin border-radius($radius) {
   -webkit-border-radius: $radius;

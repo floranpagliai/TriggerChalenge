@@ -64,4 +64,21 @@ class PostController extends Controller
             )
         );
     }
+
+    public function ajaxRenderAddFormAction(Request $request)
+    {
+        $post = new Post();
+        $post->setAuthor($this->getUser());
+        $form = $this->createForm(AddPostType::class, $post, array(
+            'action' => $this->generateUrl('api_post_add')
+        ));
+
+        $form->handleRequest($request);
+        return $this->render(
+            'FrontBundle:Post:form.html.twig',
+            array(
+                'form' => $form->createView()
+            )
+        );
+    }
 }

@@ -1,3 +1,4 @@
+# User Invite Routing
 api_user_invite_delete:
     path:     /invitations/delete/{idUserInvite}
     defaults: { _controller: ApiBundle:UserInvite:delete }

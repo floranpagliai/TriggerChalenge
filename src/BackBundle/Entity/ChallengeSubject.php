@@ -8,6 +8,7 @@
 namespace BackBundle\Entity;
 
 use BackBundle\DBAL\ChallengeSubjectType;
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -47,6 +48,18 @@ class ChallengeSubject
      * @ORM\Column(name="description", type="string")
      */
     private $description;
+
+    /**
+     * @var DateTime
+     * @ORM\Column(name="start_submission_date", type="datetime", nullable=true)
+     */
+    private $startSubmissionDate;
+
+    /**
+     * @var DateTime
+     * @ORM\Column(name="end_submission_date", type="datetime", nullable=true)
+     */
+    private $endSubmissionDate;
 
     /**
      * @return mixed
@@ -126,5 +139,47 @@ class ChallengeSubject
     public function setDescription($description)
     {
         $this->description = $description;
+    }
+
+    /**
+     * @return DateTime
+     */
+    public function getStartSubmissionDate()
+    {
+        return $this->startSubmissionDate;
+    }
+
+    /**
+     * @param DateTime $startSubmissionDate
+     */
+    public function setStartSubmissionDate($startSubmissionDate)
+    {
+        $this->startSubmissionDate = $startSubmissionDate;
+    }
+
+    /**
+     * @return DateTime
+     */
+    public function getEndSubmissionDate()
+    {
+        return $this->endSubmissionDate;
+    }
+
+    /**
+     * @param DateTime $endSubmissionDate
+     */
+    public function setEndSubmissionDate($endSubmissionDate)
+    {
+        $this->endSubmissionDate = $endSubmissionDate;
+    }
+
+    public function isOpen()
+    {
+        $now = new DateTime();
+        if ($this->startSubmissionDate <= $now && $this->endSubmissionDate >=  $now) {
+            return true;
+        }
+
+        return false;
     }
 }

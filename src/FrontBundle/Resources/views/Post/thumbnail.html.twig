@@ -4,10 +4,7 @@
         <div class="overlay"></div>
         <div>
             <h2 class="grid-item-title picture-title">{{ post.title }}</h2>
-            {#<div class="loader"></div>#}
-            {#<span class="category">Life &amp; Death</span>#}
             <div class="grid-item-footer">
-                {#<span class="meta__reading-time"><i class="fa fa-clock-o"></i> 2 min read</span>#}
                 {% if post.author.profilePicture is not null %}
                     <img class="avatar" src="{{ post.author.profilePicture.url }}" alt="{{ post.author.firstName }}"/>
                 {% else %}

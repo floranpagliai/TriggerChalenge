@@ -1,5 +1,8 @@
 services:
 # MANAGERS
+    manager.challenge_subject:
+        class: BackBundle\Manager\ChallengeSubjectManager
+        arguments: ["@doctrine.orm.default_entity_manager", BackBundle\Entity\ChallengeSubject]
     manager.post:
         class: BackBundle\Manager\PostManager
         arguments: ["@doctrine.orm.default_entity_manager", BackBundle\Entity\Post]

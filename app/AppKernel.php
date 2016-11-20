@@ -19,6 +19,7 @@ class AppKernel extends Kernel
             new Bmatzner\FontAwesomeBundle\BmatznerFontAwesomeBundle(),
             new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
             new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
+            new Knp\Bundle\TimeBundle\KnpTimeBundle(),
 
             new FrontBundle\FrontBundle(),
             new BackBundle\BackBundle(),
