@@ -58,7 +58,7 @@
             "bin/console assetic:dump --env=prod",
             "bin/console assets:install --env=prod",
             "bin/console --no-interaction doctrine:migrations:migrate",
-            "bin/console doctrine:fixtures:load"
+            "bin/console doctrine:fixtures:load --append"
         ]
     },
     "config": {

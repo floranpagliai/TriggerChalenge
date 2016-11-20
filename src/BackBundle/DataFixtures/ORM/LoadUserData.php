@@ -5,7 +5,7 @@
  * Time: 18:20
  */
 
-namespace BackBundle\DataFixtures;
+namespace BackBundle\DataFixtures\ORM;
 
 use BackBundle\Entity\User;
 use Doctrine\Common\DataFixtures\FixtureInterface;
