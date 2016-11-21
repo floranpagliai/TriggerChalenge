@@ -37,7 +37,7 @@ class Challenge
 
     /**
      * @var ChallengeSubject[]
-     * @ORM\OneTomany(targetEntity="BackBundle\Entity\ChallengeSubject", mappedBy="challenge")
+     * @ORM\OneToMany(targetEntity="BackBundle\Entity\ChallengeSubject", mappedBy="challenge")
      */
     private $subjects;
 
