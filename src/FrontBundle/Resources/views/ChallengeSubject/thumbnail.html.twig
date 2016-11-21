@@ -1,18 +1,18 @@
-<div class="col-sm-4">
+<div class="col-md-4">
     <div class="card">
-        {% if challengeSubject.isOpen == false %}
-            <div class="overlay">
-                <p class="text-center lead">
-                    Opening in {{ challengeSubject.startSubmissionDate|ago }}
-                </p>
-            </div>
-        {% endif %}
+        {#{% if challengeSubject.isOpen == false %}#}
+            {#<div class="overlay">#}
+                {#<p class="text-center lead">#}
+                    {#Opening in {{ challengeSubject.startSubmissionDate|ago }}#}
+                {#</p>#}
+            {#</div>#}
+        {#{% endif %}#}
         <img class="card-img-top img-fluid" src="{{ challengeSubject.coverPicture.url }}" alt="" style="width: 100%;">
         <div class="card-block">
             <div class="card-block text-xs-center">
                 <h4 class="card-title">{{ challengeSubject.name }}</h4>
                 <p class="card-text">{{ challengeSubject.description }}</p>
-                <a href="#" class="btn btn-primary">Show subject</a>
+                <a href="#" class="btn btn-primary btn-block">Show subject</a>
             </div>
         </div>
     </div>

@@ -35,7 +35,9 @@
     {% include '@Front/navbar.html.twig' %}
     {% block body %}{% endblock %}
 </div><!-- /container -->
-{% include 'FrontBundle::footer.html.twig' %}
+{% block footer %}
+    {% include 'FrontBundle::footer.html.twig' %}
+{% endblock %}
 {% block footer_javascripts %}
     {% javascripts
         'public/js/jquery-3.1.1.min.js'
