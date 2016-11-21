@@ -9,7 +9,6 @@ namespace BackBundle\Controller;
 
 use BackBundle\Entity\UserInvite;
 use BackBundle\Form\UserInvitationForm;
-use Mailjet\Api\RequestApi;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\FormError;
 use Symfony\Component\HttpFoundation\Request;

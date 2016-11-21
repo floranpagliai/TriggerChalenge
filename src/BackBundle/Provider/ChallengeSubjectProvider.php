@@ -10,7 +10,6 @@ namespace BackBundle\Provider;
 
 use BackBundle\Manager\ChallengeManager;
 use BackBundle\Manager\ChallengeSubjectManager;
-use DateTime;
 
 class ChallengeSubjectProvider
 {
@@ -39,13 +38,10 @@ class ChallengeSubjectProvider
         foreach ($featuredChallenges as $featuredChallenge) {
             $ongoingSubjects = $this->challengeSubjectManager->getOngoing(1);
             $subjectToShow -= sizeof($ongoingSubjects);
-            var_dump($subjectToShow);
             $previousSubjects = $this->challengeSubjectManager->getPrevious(1);
             $subjectToShow -= sizeof($previousSubjects);
-            var_dump($subjectToShow);
             $nextSubject = $this->challengeSubjectManager->getNext($subjectToShow);
             $subjectToShow -= sizeof($nextSubject);
-            var_dump($subjectToShow);
             if ($subjectToShow > 0) {
                 $subjectToShow += sizeof($previousSubjects);
                 $previousSubjects = $this->challengeSubjectManager->getPrevious($subjectToShow);

@@ -24,7 +24,7 @@ class PostManager extends AbstractManager
             ->select('post')
             ->from($this->class, 'post')
             ->orderBy('post.createdAt', $orderBy);
-        if ($limit != null) {
+        if ($limit !== null) {
             $q->setMaxResults($limit);
         }
 
@@ -47,7 +47,7 @@ class PostManager extends AbstractManager
             ->leftJoin("post.author", "author")
             ->where('post.author = :userId')->setParameter('userId', $userId)
             ->orderBy('post.createdAt', $orderBy);
-        if ($limit != null) {
+        if ($limit !== null) {
             $q->setMaxResults($limit);
         }
 

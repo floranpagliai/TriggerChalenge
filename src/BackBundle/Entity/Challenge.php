@@ -45,7 +45,7 @@ class Challenge
      * @var boolean
      * @ORM\Column(name="is_featured", type="boolean", options={"default" : false})
      */
-    private $isFeatured = false;
+    private $featured = false;
 
     /**
      * @return mixed
@@ -114,16 +114,16 @@ class Challenge
     /**
      * @return boolean
      */
-    public function isIsFeatured()
+    public function isFeatured()
     {
-        return $this->isFeatured;
+        return $this->featured;
     }
 
     /**
-     * @param boolean $isFeatured
+     * @param boolean $featured
      */
-    public function setIsFeatured($isFeatured)
+    public function setFeatured($featured)
     {
-        $this->isFeatured = $isFeatured;
+        $this->featured = $featured;
     }
 }

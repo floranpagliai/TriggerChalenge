@@ -12,7 +12,13 @@
             <div class="card-block text-xs-center">
                 <h4 class="card-title">{{ challengeSubject.name }}</h4>
                 <p class="card-text">{{ challengeSubject.description }}</p>
-                <a href="#" class="btn btn-primary btn-block">Show subject</a>
+                <a href="#" class="btn btn-primary btn-block">
+                    {% if challengeSubject.isOpen %}
+                        Ouvert
+                    {% else %}
+                        Non ouvert
+                    {% endif %}
+                </a>
             </div>
         </div>
     </div>

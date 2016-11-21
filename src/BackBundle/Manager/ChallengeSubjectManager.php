@@ -16,7 +16,7 @@ class ChallengeSubjectManager extends AbstractManager
     /**
      * @param null $limit
      *
-     * @return \BackBundle\Entity\ChallengeSubject[]
+     * @return ChallengeSubject[]
      */
     public function getOngoing($limit = null)
     {
@@ -26,13 +26,18 @@ class ChallengeSubjectManager extends AbstractManager
             ->andWhere('cs.startSubmissionDate <= :now')
             ->andWhere('cs.endSubmissionDate >= :now')
             ->setParameter('now', new DateTime());
-        if ($limit != null) {
+        if ($limit !== null) {
             $q->setMaxResults($limit);
         }
 
         return $q->getQuery()->getResult();
     }
 
+    /**
+     * @param null $limit
+     *
+     * @return ChallengeSubject[]
+     */
     public function getPrevious($limit = null)
     {
         $q = $this->em->createQueryBuilder()
@@ -41,13 +46,18 @@ class ChallengeSubjectManager extends AbstractManager
             ->andWhere('cs.startSubmissionDate <= :now')
             ->setParameter('now', new DateTime())
             ->orderBy('cs.startSubmissionDate' , 'ASC');
-        if ($limit != null) {
+        if ($limit !== null) {
             $q->setMaxResults($limit);
         }
 
         return $q->getQuery()->getResult();
     }
 
+    /**
+     * @param null $limit
+     *
+     * @return ChallengeSubject[]
+     */
     public function getNext($limit = null)
     {
         $q = $this->em->createQueryBuilder()
@@ -56,7 +66,7 @@ class ChallengeSubjectManager extends AbstractManager
             ->andWhere('cs.startSubmissionDate >= :now')
             ->setParameter('now', new DateTime())
             ->orderBy('cs.startSubmissionDate' , 'ASC');
-        if ($limit != null) {
+        if ($limit !== null) {
             $q->setMaxResults($limit);
         }
 
