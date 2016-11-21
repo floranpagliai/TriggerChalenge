@@ -61,6 +61,7 @@ class SecurityController extends Controller
             $user->setPassword($password);
 
             $this->get('manager.user')->save($user);
+
             // TODO : add flash
 
             return $this->redirectToRoute('front_login');
@@ -69,7 +70,7 @@ class SecurityController extends Controller
         return $this->render(
             'FrontBundle:Security:register.html.twig',
             array(
-                'form' => $form->createView(),
+                'form'   => $form->createView(),
                 'errors' => $errors
             )
         );

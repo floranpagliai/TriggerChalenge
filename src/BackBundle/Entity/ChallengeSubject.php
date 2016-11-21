@@ -199,7 +199,19 @@ class ChallengeSubject
     public function isOpen()
     {
         $now = new DateTime();
-        if ($this->startSubmissionDate <= $now && $this->endSubmissionDate >=  $now) {
+        if ($this->startSubmissionDate <= $now && $this->endSubmissionDate >= $now) {
+
+            return true;
+        }
+
+        return false;
+    }
+
+    public function isPast()
+    {
+        $now = new DateTime();
+        if ($this->endSubmissionDate < $now) {
+
             return true;
         }
 

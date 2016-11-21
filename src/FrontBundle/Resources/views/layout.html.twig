@@ -13,10 +13,9 @@
     <link rel="stylesheet" href="{{ asset('bundles/bmatznerfontawesome/css/font-awesome.css') }}" type="text/css"/>
     <link href="https://file.myfontastic.com/6FgmP4oJ7DyT3k5QBFvddi/icons.css" rel="stylesheet">
     {% stylesheets filter='cssrewrite, scssphp' output="css/app.css"
-        'public/css/animate.css'
-        'public/css/iconfont.css'
-        'bundles/front/css/*'
-    %}
+    'public/css/animate.css'
+    'public/css/iconfont.css'
+    'bundles/front/css/*' %}
     <link rel="stylesheet" href="{{ asset_url }}" type="text/css"/>
     {% endstylesheets %}
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -40,35 +39,34 @@
 {% endblock %}
 {% block footer_javascripts %}
     {% javascripts
-        'public/js/jquery-3.1.1.min.js'
-        '@FrontBundle/Resources/public/js/modernizr.js'
-        '@FrontBundle/Resources/public/js/main.js'
-    %}
+    'public/js/jquery-3.1.1.min.js'
+    '@FrontBundle/Resources/public/js/modernizr.js'
+    '@FrontBundle/Resources/public/js/main.js' %}
     <script type="text/javascript" src="{{ asset_url }}"></script>
 
     {% endjavascripts %}
     <script type="text/javascript">
         function squareGrid() {
-            $('.grid-item').each(function() {
+            $('.grid-item').each(function () {
                 var childImg = $(this).find('.grid-item-picture');
                 if (childImg.width() < childImg.height()) {
                     childImg.addClass('portrait');
                 }
-                $(this).css({'height':$(this).width()+'px'});
+                $(this).css({'height': $(this).width() + 'px'});
             });
         }
 
         $(document).ready(function () {
             squareGrid();
-            $( window ).resize(function() {
+            $(window).resize(function () {
                 squareGrid();
             });
         });
-        $(window).on("load", function() {
+        $(window).on("load", function () {
             $('.img-centered').each(function () {
                 var imgHeight = $(this).height();
                 var parentHeight = $(this).parent().height();
-                this.style.marginTop = Math.ceil((parentHeight - imgHeight)/2)+"px";
+                this.style.marginTop = Math.ceil((parentHeight - imgHeight) / 2) + "px";
             });
         });
 

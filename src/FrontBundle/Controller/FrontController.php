@@ -14,7 +14,7 @@ class FrontController extends Controller
         return $this->render('FrontBundle:Index:index.html.twig',
             array(
                 'ongoingFeaturedChallenges' => $ongoingFeaturedChallenges,
-                'posts' => $posts
+                'posts'                     => $posts
             )
         );
     }

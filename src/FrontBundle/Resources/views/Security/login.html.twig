@@ -13,13 +13,15 @@
                 <form action="{{ path('front_login') }}" method="post">
                     <div class="control-group">
                         <label class="sr-only" for="email">Email</label>
-                        <input type="text" class="login-field" value="{{ last_username }}" placeholder="{{ 'user.form.placeholder.email'|trans }}"
+                        <input type="text" class="login-field" value="{{ last_username }}"
+                               placeholder="{{ 'user.form.placeholder.email'|trans }}"
                                id="username" name="_username">
                     </div>
 
                     <div class="control-group">
                         <label class="sr-only" for="password">{{ 'user.form.placeholder.password'|trans }}</label>
-                        <input type="password" class="login-field" value="" placeholder="{{ 'user.form.placeholder.password'|trans }}" id="password"
+                        <input type="password" class="login-field" value=""
+                               placeholder="{{ 'user.form.placeholder.password'|trans }}" id="password"
                                name="_password">
                     </div>
 

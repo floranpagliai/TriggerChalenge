@@ -45,7 +45,7 @@ class ChallengeSubjectManager extends AbstractManager
             ->from($this->class, 'cs')
             ->andWhere('cs.startSubmissionDate <= :now')
             ->setParameter('now', new DateTime())
-            ->orderBy('cs.startSubmissionDate' , 'ASC');
+            ->orderBy('cs.startSubmissionDate', 'ASC');
         if ($limit !== null) {
             $q->setMaxResults($limit);
         }
@@ -65,7 +65,7 @@ class ChallengeSubjectManager extends AbstractManager
             ->from($this->class, 'cs')
             ->andWhere('cs.startSubmissionDate >= :now')
             ->setParameter('now', new DateTime())
-            ->orderBy('cs.startSubmissionDate' , 'ASC');
+            ->orderBy('cs.startSubmissionDate', 'ASC');
         if ($limit !== null) {
             $q->setMaxResults($limit);
         }

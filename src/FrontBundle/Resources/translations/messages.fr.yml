@@ -44,6 +44,13 @@ post:
     action:
         publish: "Publier"
 picture:
+    title:
+        last_pictures: "Les dernières photos publiés"
     message:
         error:
             invalid_url: "L'url de l'image n'est pas valide"
+challenge_subject:
+    action:
+        show_past: "Voir les photos"
+        show_ongoing: "Soumettre une photo"
+        show_next: "Voir le sujet"

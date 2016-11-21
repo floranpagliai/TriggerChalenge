@@ -10,11 +10,12 @@
                 <img class="img-centered" src="{{ post.coverPicture.url }}"/>
             </div>
             <div class="post-sidebar">
-                    {% if post.author.profilePicture is not null %}
-                        <img class="avatar" src="{{ post.author.profilePicture.url }}" alt="{{ post.author.firstName }}"/>
-                    {% else %}
-                        <img class="avatar" src="{{ asset('bundles/front/img/user-unknow.png') }}" alt="{{ post.author.firstName }}"/>
-                    {% endif %}
+                {% if post.author.profilePicture is not null %}
+                    <img class="avatar" src="{{ post.author.profilePicture.url }}" alt="{{ post.author.firstName }}"/>
+                {% else %}
+                    <img class="avatar" src="{{ asset('bundles/front/img/user-unknow.png') }}"
+                         alt="{{ post.author.firstName }}"/>
+                {% endif %}
                 <span>{{ post.author.fullName }}</span>
                 <span class="small"><i class="fa fa-calendar-o"></i>{{ post.createdAt|date('d M') }}</span>
             </div>

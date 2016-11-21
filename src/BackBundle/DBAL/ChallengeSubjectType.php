@@ -16,7 +16,7 @@ class ChallengeSubjectType extends EnumType
     const NATURE = 'NATURE';
     const ARCHITECTURE = 'ARCHITECTURE';
     const STREET = 'STREET';
-    
+
     protected $name = 'challengesubject';
-    protected $values = array('PORTRAIT','LANDSCAPE','ARTISTIC','NATURE','ARCHITECTURE','STREET');
+    protected $values = array('PORTRAIT', 'LANDSCAPE', 'ARTISTIC', 'NATURE', 'ARCHITECTURE', 'STREET');
 }

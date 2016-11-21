@@ -15,5 +15,5 @@ class ChallengeFrequencyType extends EnumType
     const MONTHLY = 'MONTHLY';
 
     protected $name = 'challengefrequency';
-    protected $values = array('DAILY','WEEKLY','MONTHLY');
+    protected $values = array('DAILY', 'WEEKLY', 'MONTHLY');
 }

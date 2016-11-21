@@ -34,7 +34,7 @@ class ChallengeSubjectProvider
     public function getOngoingFeatured($subjectToShow = 3)
     {
         $ongoingFeaturedSubjects = array();
-        $featuredChallenges = $this->challengeManager->loadBy(array('isFeatured' => true));
+        $featuredChallenges = $this->challengeManager->loadBy(array('featured' => true));
         foreach ($featuredChallenges as $featuredChallenge) {
             $ongoingSubjects = $this->challengeSubjectManager->getOngoing(1);
             $subjectToShow -= sizeof($ongoingSubjects);
@@ -46,9 +46,9 @@ class ChallengeSubjectProvider
                 $subjectToShow += sizeof($previousSubjects);
                 $previousSubjects = $this->challengeSubjectManager->getPrevious($subjectToShow);
             }
-            $subjects = array_merge($previousSubjects,$ongoingSubjects,$nextSubject);
+            $subjects = array_merge($previousSubjects, $ongoingSubjects, $nextSubject);
             $ongoingFeaturedSubjects[] = array('challenge' => $featuredChallenge,
-                'subjects' => $subjects);
+                                               'subjects'  => $subjects);
         }
 
         return $ongoingFeaturedSubjects;

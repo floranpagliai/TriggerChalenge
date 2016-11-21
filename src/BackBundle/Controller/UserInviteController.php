@@ -46,7 +46,7 @@ class UserInviteController extends Controller
                 $mailer->sendUserInvitation($userInvite);
 
                 return $this->redirectToRoute('back_user_invite_index');
-            } catch(\Exception $e) {
+            } catch (\Exception $e) {
                 $form->addError(new FormError($e->getMessage()));
             }
         }
@@ -54,7 +54,7 @@ class UserInviteController extends Controller
         return $this->render(
             'BackBundle:UserInvite:add.html.twig',
             array(
-                'form' => $form->createView(),
+                'form'   => $form->createView(),
                 'errors' => $errors
             )
         );
