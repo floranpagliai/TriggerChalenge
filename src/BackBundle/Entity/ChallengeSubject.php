@@ -25,8 +25,15 @@ class ChallengeSubject
     protected $id;
 
     /**
+     * @var Challenge
+     * @ORM\ManyToOne(targetEntity="BackBundle\Entity\Challenge")
+     * @ORM\JoinColumn(name="challenge_id", referencedColumnName="id")
+     */
+    private $challenge;
+
+    /**
      * @var Picture
-     * @ORM\ManyToOne(targetEntity="BackBundle\Entity\Picture", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="BackBundle\Entity\Picture")
      * @ORM\JoinColumn(name="cover_picture_id", referencedColumnName="id", nullable=true)
      */
     private $coverPicture;
@@ -75,6 +82,22 @@ class ChallengeSubject
     public function setId($id)
     {
         $this->id = $id;
+    }
+
+    /**
+     * @return Challenge
+     */
+    public function getChallenge()
+    {
+        return $this->challenge;
+    }
+
+    /**
+     * @param Challenge $challenge
+     */
+    public function setChallenge($challenge)
+    {
+        $this->challenge = $challenge;
     }
 
     /**

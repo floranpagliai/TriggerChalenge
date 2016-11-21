@@ -36,6 +36,12 @@ class Challenge
     private $frequency;
 
     /**
+     * @var ChallengeSubject[]
+     * @ORM\OneTomany(targetEntity="BackBundle\Entity\ChallengeSubject", mappedBy="challenge")
+     */
+    private $subjects;
+
+    /**
      * @return mixed
      */
     public function getId()
@@ -81,5 +87,21 @@ class Challenge
     public function setFrequency($frequency)
     {
         $this->frequency = $frequency;
+    }
+
+    /**
+     * @return ChallengeSubject[]
+     */
+    public function getSubjects()
+    {
+        return $this->subjects;
+    }
+
+    /**
+     * @param ChallengeSubject[] $subjects
+     */
+    public function setSubjects($subjects)
+    {
+        $this->subjects = $subjects;
     }
 }
