@@ -1,5 +1,6 @@
 {
     "name": "floran/trigger-challenge",
+    "description": "Photography challenge project",
     "license": "proprietary",
     "type": "project",
     "autoload": {

@@ -9,7 +9,6 @@ namespace BackBundle\Controller;
 
 use BackBundle\Entity\UserInvite;
 use BackBundle\Form\UserInvitationForm;
-use Mailjet\Api\RequestApi;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\FormError;
 use Symfony\Component\HttpFoundation\Request;
@@ -47,7 +46,7 @@ class UserInviteController extends Controller
                 $mailer->sendUserInvitation($userInvite);
 
                 return $this->redirectToRoute('back_user_invite_index');
-            } catch(\Exception $e) {
+            } catch (\Exception $e) {
                 $form->addError(new FormError($e->getMessage()));
             }
         }
@@ -55,7 +54,7 @@ class UserInviteController extends Controller
         return $this->render(
             'BackBundle:UserInvite:add.html.twig',
             array(
-                'form' => $form->createView(),
+                'form'   => $form->createView(),
                 'errors' => $errors
             )
         );

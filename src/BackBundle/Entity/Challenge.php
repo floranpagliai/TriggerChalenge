@@ -42,6 +42,12 @@ class Challenge
     private $subjects;
 
     /**
+     * @var boolean
+     * @ORM\Column(name="is_featured", type="boolean", options={"default" : false})
+     */
+    private $featured = false;
+
+    /**
      * @return mixed
      */
     public function getId()
@@ -103,5 +109,21 @@ class Challenge
     public function setSubjects($subjects)
     {
         $this->subjects = $subjects;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function isFeatured()
+    {
+        return $this->featured;
+    }
+
+    /**
+     * @param boolean $featured
+     */
+    public function setFeatured($featured)
+    {
+        $this->featured = $featured;
     }
 }

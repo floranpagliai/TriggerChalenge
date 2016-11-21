@@ -25,7 +25,9 @@
                         <td>{{ invite.invitingUser.fullName }}</td>
                         <td>{{ url('front_register', {'email': invite.email, 'code': invite.code})|trim }}</td>
                         <td class="td-actions text-right">
-                            <button type="button" title="" class="btn btn-danger btn-simple btn-xs ajax-remove" data-url="{{ path('api_user_invite_delete', {'idUserInvite': invite.id}) }}" data-target="#user-invite-{{ invite.id }}">
+                            <button type="button" title="" class="btn btn-danger btn-simple btn-xs ajax-remove"
+                                    data-url="{{ path('api_user_invite_delete', {'idUserInvite': invite.id}) }}"
+                                    data-target="#user-invite-{{ invite.id }}">
                                 <i class="fa fa-times"></i>
                             </button>
                         </td>

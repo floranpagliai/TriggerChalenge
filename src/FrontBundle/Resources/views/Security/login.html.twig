@@ -13,21 +13,25 @@
                 <form action="{{ path('front_login') }}" method="post">
                     <div class="control-group">
                         <label class="sr-only" for="email">Email</label>
-                        <input type="text" class="login-field" value="{{ last_username }}" placeholder="{{ 'user.form.placeholder.email'|trans }}"
+                        <input type="text" class="login-field" value="{{ last_username }}"
+                               placeholder="{{ 'user.form.placeholder.email'|trans }}"
                                id="username" name="_username">
                     </div>
 
                     <div class="control-group">
                         <label class="sr-only" for="password">{{ 'user.form.placeholder.password'|trans }}</label>
-                        <input type="password" class="login-field" value="" placeholder="{{ 'user.form.placeholder.password'|trans }}" id="password"
+                        <input type="password" class="login-field" value=""
+                               placeholder="{{ 'user.form.placeholder.password'|trans }}" id="password"
                                name="_password">
                     </div>
 
-                    <input class="btn btn-primary btn-large" type="submit" value="{{ 'user.action.login'|trans }}"/>
+                    <input class="btn btn-primary btn-lg" type="submit" value="{{ 'user.action.login'|trans }}"/>
                     <a class="login-link" href="#">{{ 'user.paragraph.reset_password'|trans }}</a>
                 </form>
             </div>
         </div>
     </div>
 
+{% endblock %}
+{% block footer %}
 {% endblock %}

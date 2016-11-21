@@ -16,18 +16,21 @@ interface TimestampableInterface
      * @return \DateTime Created at
      */
     public function getCreatedAt();
+
     /**
      * Set created at
      *
      * @param \DateTime $createdAt Created at
      */
     public function setCreatedAt(\DateTime $createdAt);
+
     /**
      * Get updated at
      *
      * @return \DateTime Updated at
      */
     public function getUpdatedAt();
+
     /**
      * Set updated at
      *

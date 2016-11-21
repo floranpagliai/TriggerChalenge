@@ -12,8 +12,6 @@ use FrontBundle\Form\RegistrationType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Security\Core\Exception\AuthenticationException;
-use Symfony\Component\Security\Core\Security;
 
 class SecurityController extends Controller
 {
@@ -63,6 +61,7 @@ class SecurityController extends Controller
             $user->setPassword($password);
 
             $this->get('manager.user')->save($user);
+
             // TODO : add flash
 
             return $this->redirectToRoute('front_login');
@@ -71,7 +70,7 @@ class SecurityController extends Controller
         return $this->render(
             'FrontBundle:Security:register.html.twig',
             array(
-                'form' => $form->createView(),
+                'form'   => $form->createView(),
                 'errors' => $errors
             )
         );
