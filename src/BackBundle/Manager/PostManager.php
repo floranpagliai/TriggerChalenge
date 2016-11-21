@@ -23,8 +23,6 @@ class PostManager extends AbstractManager
         $q = $this->em->createQueryBuilder()
             ->select('post')
             ->from($this->class, 'post')
-            ->leftJoin("post.coverPicture", "coverPicture")
-            ->leftJoin("post.author", "author")
             ->orderBy('post.createdAt', $orderBy);
         if ($limit != null) {
             $q->setMaxResults($limit);

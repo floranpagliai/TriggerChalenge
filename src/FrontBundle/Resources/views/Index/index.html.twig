@@ -3,12 +3,15 @@
 {% block body %}
     <div class="main">
         <section>
-            <h2 class="section-title">Challenges</h2>
+                {% for ongoingFeaturedChallenge in ongoingFeaturedChallenges %}
+            <h2 class="section-title">{{ ongoingFeaturedChallenge.challenge.name }}</h2>
             <div class="row">
-                {% for challengeSubject in challengeSubjects %}
+                {% for challengeSubject in ongoingFeaturedChallenge.subjects %}
                     {% include 'FrontBundle:ChallengeSubject:thumbnail.html.twig' with { 'challengeSubject': challengeSubject} %}
                 {% endfor %}
-            </div>
+                    </div>
+                {% endfor %}
+
         </section>
 
         <section class="grid">

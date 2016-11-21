@@ -23,8 +23,39 @@ class ChallengeSubjectManager extends AbstractManager
         $q = $this->em->createQueryBuilder()
             ->select('cs')
             ->from($this->class, 'cs')
+            ->andWhere('cs.startSubmissionDate <= :now')
             ->andWhere('cs.endSubmissionDate >= :now')
             ->setParameter('now', new DateTime());
+        if ($limit != null) {
+            $q->setMaxResults($limit);
+        }
+
+        return $q->getQuery()->getResult();
+    }
+
+    public function getPrevious($limit = null)
+    {
+        $q = $this->em->createQueryBuilder()
+            ->select('cs')
+            ->from($this->class, 'cs')
+            ->andWhere('cs.startSubmissionDate <= :now')
+            ->setParameter('now', new DateTime())
+            ->orderBy('cs.startSubmissionDate' , 'ASC');
+        if ($limit != null) {
+            $q->setMaxResults($limit);
+        }
+
+        return $q->getQuery()->getResult();
+    }
+
+    public function getNext($limit = null)
+    {
+        $q = $this->em->createQueryBuilder()
+            ->select('cs')
+            ->from($this->class, 'cs')
+            ->andWhere('cs.startSubmissionDate >= :now')
+            ->setParameter('now', new DateTime())
+            ->orderBy('cs.startSubmissionDate' , 'ASC');
         if ($limit != null) {
             $q->setMaxResults($limit);
         }
