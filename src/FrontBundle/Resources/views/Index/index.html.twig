@@ -4,11 +4,11 @@
     <div class="main">
         <section>
             <h2 class="section-title">Challenges</h2>
-            {% for challengeSubject in challengeSubjects %}
-                <div class="row">
+            <div class="row">
+                {% for challengeSubject in challengeSubjects %}
                     {% include 'FrontBundle:ChallengeSubject:thumbnail.html.twig' with { 'challengeSubject': challengeSubject} %}
-                </div>
-            {% endfor %}
+                {% endfor %}
+            </div>
         </section>
 
         <section class="grid">
