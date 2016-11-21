@@ -171,17 +171,8 @@ input:focus {
   background: $dark-primary-color;
   color: #ffffff;
   font-size: 16px;
-  line-height: 25px;
-  padding: 10px 0;
-  text-decoration: none;
-  text-shadow: none;
-  @include border-radius(3px);
   box-shadow: none;
   transition: 0.25s;
-  display: block;
-  width: 250px;
-  margin: 0 auto;
-  cursor: pointer;
 }
 
 .btn:hover,
@@ -312,17 +303,13 @@ span.tooltip {
   margin-bottom: 0.83em;
 }
 
-.container-fluid {
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
 .section-title {
   text-align: center;
   padding: 20px;
   font-size: 20px;
   width: 100%;
 }
+
 .overlay {
   position: absolute;
   top: 0;

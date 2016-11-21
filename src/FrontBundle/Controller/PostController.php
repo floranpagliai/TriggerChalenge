@@ -51,6 +51,7 @@ class PostController extends Controller
         }
         if ($form->isSubmitted() && $form->isValid()) {
             $this->get('manager.post')->save($post);
+
             // TODO : Add flash
 
             return $this->redirect($this->generateUrl('front_post_show', array('postId' => $post->getId())));
@@ -59,7 +60,7 @@ class PostController extends Controller
         return $this->render(
             'FrontBundle:Post:add.html.twig',
             array(
-                'form' => $form->createView(),
+                'form'   => $form->createView(),
                 'errors' => $errors
             )
         );
@@ -74,6 +75,7 @@ class PostController extends Controller
         ));
 
         $form->handleRequest($request);
+
         return $this->render(
             'FrontBundle:Post:form.html.twig',
             array(

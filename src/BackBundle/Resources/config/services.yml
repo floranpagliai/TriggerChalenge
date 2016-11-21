@@ -1,5 +1,8 @@
 services:
 # MANAGERS
+    manager.challenge:
+        class: BackBundle\Manager\ChallengeManager
+        arguments: ["@doctrine.orm.default_entity_manager", BackBundle\Entity\Challenge]
     manager.challenge_subject:
         class: BackBundle\Manager\ChallengeSubjectManager
         arguments: ["@doctrine.orm.default_entity_manager", BackBundle\Entity\ChallengeSubject]
@@ -13,12 +16,15 @@ services:
         class: BackBundle\Manager\UserInviteManager
         arguments: ["@doctrine.orm.default_entity_manager", BackBundle\Entity\UserInvite]
 # PROVIDERS
-    provider.user_invite:
-        class: BackBundle\Provider\UserInviteProvider
-        arguments: ["@manager.user_invite", "@manager.user"]
+    provider.challenge_subject:
+        class: BackBundle\Provider\ChallengeSubjectProvider
+        arguments: ["@manager.challenge_subject", "@manager.challenge"]
     provider.mailer:
         class: BackBundle\Provider\MailerProvider
         arguments: ["@mailer", "@templating"]
+    provider.user_invite:
+        class: BackBundle\Provider\UserInviteProvider
+        arguments: ["@manager.user_invite", "@manager.user"]
 # SERVICES
     timestampable_entity.pre_persist.listener:
         class: BackBundle\EventListener\PrePersistListener

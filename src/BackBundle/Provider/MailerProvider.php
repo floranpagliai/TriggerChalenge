@@ -7,10 +7,8 @@
 
 namespace BackBundle\Provider;
 
-
 use BackBundle\Entity\UserInvite;
 use Symfony\Bridge\Twig\TwigEngine;
-use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
 
 class MailerProvider
 {

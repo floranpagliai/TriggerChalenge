@@ -1,7 +1,7 @@
 {% set currentPath = app.request.attributes.get('_route') %}
 <nav id="main-nav">
     <ul>
-        <li class="{% if currentPath == 'front_homepage'  %}active{% endif %}">
+        <li class="{% if currentPath == 'front_homepage' %}active{% endif %}">
             <a href="{{ path('front_homepage') }}"><i class="icon-home icon-1_5x"></i></a>
         </li>
         <li class="{% if currentPath == 'front_user_profile' or currentPath == 'front_login' or currentPath == 'front_register' %}active{% endif %}">
@@ -23,11 +23,11 @@
             </li>
         {% endif %}
         {% if is_granted('ROLE_ADMIN') %}
-        <li class="{% if currentPath == 'back_index' %}active{% endif %}">
+            <li class="{% if currentPath == 'back_index' %}active{% endif %}">
                 <a href="{{ path('back_index') }}">
                     <i class="icon-monitor icon-1_5x"></i>
                 </a>
-        </li>
+            </li>
         {% endif %}
     </ul>
 </nav>
