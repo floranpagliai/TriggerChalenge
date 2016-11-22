@@ -1,0 +1,18 @@
+.logo {
+    text-align: center;
+}
+
+.app-title {
+    color: #ffa000;
+    font-family: 'Satisfy', cursive;
+    font-size: 32px;
+    font-weight: bold;
+    margin-top: 0.83em;
+    margin-bottom: 0.83em;
+}
+
+.app-title:hover,
+.app-title:focus,
+.app-title:active {
+    color: #ffa000;
+}
