@@ -29,8 +29,8 @@ class MailerProvider
 
     public function sendUserInvitation(UserInvite $userInvite)
     {
-        $from = 'floran.pagliai@gmail.com';
-        $fromName = 'Floran Pagliai';
+        $from = 'hello@triggerchallenge.com';
+        $fromName = 'Trigger Challenge';
         $to = $userInvite->getEmail();
         $subject = 'Bienvenue dans l\'aventure photographique !';
         $body = $this->templating->render('BackBundle:Mails:invitation.html.twig', array('invite' => $userInvite));
