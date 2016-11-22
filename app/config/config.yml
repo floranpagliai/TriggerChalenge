@@ -97,14 +97,5 @@ assetic:
             output: css/bootstrap.css
         bootstrap_js:
             inputs:
-                - %kernel.root_dir%/../vendor/twbs/bootstrap/js/src/alert.js
-                - %kernel.root_dir%/../vendor/twbs/bootstrap/js/src/button.js
-                - %kernel.root_dir%/../vendor/twbs/bootstrap/js/src/carousel.js
-                - %kernel.root_dir%/../vendor/twbs/bootstrap/js/src/collapse.js
-                - %kernel.root_dir%/../vendor/twbs/bootstrap/js/src/dropdown.js
-                - %kernel.root_dir%/../vendor/twbs/bootstrap/js/src/modal.js
-                - %kernel.root_dir%/../vendor/twbs/bootstrap/js/src/tooltip.js
-                - %kernel.root_dir%/../vendor/twbs/bootstrap/js/src/popover.js
-                - %kernel.root_dir%/../vendor/twbs/bootstrap/js/src/scrollspy.js
-                - %kernel.root_dir%/../vendor/twbs/bootstrap/js/src/tab.js
+                - %kernel.root_dir%/../vendor/twbs/bootstrap/dist/js/bootstrap.min.js
             output: js/bootstrap.js
