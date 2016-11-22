@@ -171,9 +171,9 @@
     </div>
 </div>
 {% block javascript %}
+    <script type="text/javascript" src="{{ 'public/js/jquery-3.1.1.min.js' }}"></script>
+    <script type="text/javascript" src="{{ 'js/bootstrap.js' }}"></script>
     {% javascripts
-    'public/js/jquery-3.1.1.min.js'
-    'js/bootstrap.js'
     'public/js/ajax-request.js'
     'bundles/back/js/*' %}
     <script type="text/javascript" src="{{ asset_url }}"></script>
