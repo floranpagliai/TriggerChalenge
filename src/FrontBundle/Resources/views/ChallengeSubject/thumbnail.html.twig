@@ -9,17 +9,12 @@
         {#{% endif %}#}
         <img class="card-img-top img-fluid" src="{{ challengeSubject.coverPicture.url }}" alt="" style="width: 100%;">
         <div class="card-block">
-            <div class="card-block text-xs-center">
+            <div class="text-xs-center">
+                {#<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>#}
                 <h4 class="card-title">{{ challengeSubject.name }}</h4>
                 <p class="card-text">{{ challengeSubject.description }}</p>
                 <a href="#" class="btn btn-primary btn-block">
-                    {% if challengeSubject.isOpen %}
-                        {{ 'challenge_subject.action.show_ongoing'|trans }}
-                    {% elseif challengeSubject.isPast %}
-                        {{ 'challenge_subject.action.show_past'|trans }}
-                    {% else  %}
-                        {{ 'challenge_subject.action.show_next'|trans }}
-                    {% endif %}
+                    {{ ('challenge_subject.action.show_'~challengeSubject.state)|trans }}
                 </a>
             </div>
         </div>

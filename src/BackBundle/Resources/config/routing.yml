@@ -1,6 +1,15 @@
 back_index:
     path:     /
     defaults: { _controller: BackBundle:Back:index }
+# Challenge Routing
+back_challenge_index:
+    path:     /challenges
+    defaults: { _controller: BackBundle:Challenge:index }
+# Challenge Subject Routing
+back_challenge_subject_index:
+    path:     /challenges/{idChallenge}/subjects
+    defaults: { _controller: BackBundle:ChallengeSubject:index }
+# User Invite Routing
 back_user_invite_index:
     path:     /invitations
     defaults: { _controller: BackBundle:UserInvite:index }

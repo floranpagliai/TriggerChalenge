@@ -53,4 +53,4 @@ challenge_subject:
     action:
         show_past: "Voir les photos"
         show_ongoing: "Soumettre une photo"
-        show_next: "Voir le sujet"
+        show_future: "Voir le sujet"

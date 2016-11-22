@@ -17,6 +17,10 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class ChallengeSubject
 {
+    const STATE_PAST = 'past';
+    const STATE_ONGOING = 'ongoing';
+    const STATE_FUTURE = 'future';
+
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")
@@ -216,5 +220,20 @@ class ChallengeSubject
         }
 
         return false;
+    }
+
+    public function getState()
+    {
+        if ($this->isOpen()) {
+
+            return self::STATE_ONGOING;
+
+        } elseif ($this->isPast()) {
+
+            return self::STATE_PAST;
+        } else {
+
+            return self::STATE_FUTURE;
+        }
     }
 }
