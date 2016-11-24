@@ -59,6 +59,10 @@ challenge:
         create: "Créer un challenge"
         show_subjects: "Afficher les sujets"
 challenge_subject:
+    title:
+        the_subject_daily: "Le sujet du jour"
+        the_subject_weekly: "Le sujet de la semaine"
+        the_subject_monthly: "Le sujet du mois"
     element:
         name: "Nom"
         type: "Type"
@@ -74,6 +78,10 @@ challenge_frequency_type:
     DAILY: "Journalier"
     WEEKLY: "Hebdomadaire"
     MONTHLY: "Mensuel"
+    element:
+        DAILY: "Jour"
+        WEEKLY: "Semaine"
+        MONTHLY: "Mois"
 challenge_subject_type:
     LANDSCAPE: "Paysage"
     PORTRAIT: "Portrait"

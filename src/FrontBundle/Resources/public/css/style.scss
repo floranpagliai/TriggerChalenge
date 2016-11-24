@@ -109,6 +109,12 @@ p {
 
 .grid-item .grid-item-title {
   color: #FFF;
+  font-size: 30px;
+  font-weight: 300;
+  letter-spacing: 12px;
+  text-transform: uppercase;
+  margin-top: 0.83em;
+  margin-bottom: 0.83em;
 }
 
 .grid-item:hover .grid-item-title {
@@ -293,14 +299,24 @@ span.tooltip {
     left: -20px;
   }
 }
+.page-title {
+  text-align: center;
+  padding: 1px;
 
-.picture-title {
-  font-size: 30px;
-  font-weight: 300;
-  letter-spacing: 12px;
-  text-transform: uppercase;
-  margin-top: 0.83em;
-  margin-bottom: 0.83em;
+  h1, h2 {
+    font-size: 30px;
+    font-weight: 300;
+    letter-spacing: 12px;
+    text-transform: uppercase;
+    margin-top: 0.83em;
+    margin-bottom: 0.83em;
+  }
+
+  .subtitle {
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 2px;
+  }
 }
 
 .section-title {
