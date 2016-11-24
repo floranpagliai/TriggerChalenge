@@ -8,6 +8,7 @@
 namespace BackBundle\Entity;
 
 use BackBundle\DBAL\ChallengeSubjectType;
+use BackBundle\Traits\SlugTrait;
 use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -17,6 +18,12 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class ChallengeSubject
 {
+    use SlugTrait;
+
+    const STATE_PAST = 'past';
+    const STATE_ONGOING = 'ongoing';
+    const STATE_FUTURE = 'future';
+
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")
@@ -216,5 +223,28 @@ class ChallengeSubject
         }
 
         return false;
+    }
+
+    public function getState()
+    {
+        if ($this->isOpen()) {
+
+            return self::STATE_ONGOING;
+
+        } elseif ($this->isPast()) {
+
+            return self::STATE_PAST;
+        } else {
+
+            return self::STATE_FUTURE;
+        }
+    }
+
+    /**
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slugify($this->getName());
     }
 }

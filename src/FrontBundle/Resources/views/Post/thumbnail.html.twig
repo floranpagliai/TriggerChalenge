@@ -1,5 +1,7 @@
 <div class="grid-item">
-    <img class="grid-item-picture" src="{{ post.coverPicture.url }}" width="300" height="300"/>
+    {% if post.coverPicture is not null %}
+        <img class="grid-item-picture" src="{{ post.coverPicture.url }}" width="300" height="300"/>
+    {% endif %}
     <a href="{{ path('front_post_show', {'postId': post.publicId}) }}">
         <div class="overlay"></div>
         <div>

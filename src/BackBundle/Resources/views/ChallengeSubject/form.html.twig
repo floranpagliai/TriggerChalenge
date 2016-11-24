@@ -1,0 +1,68 @@
+{% extends '@Back/layout.html.twig' %}
+
+{% block body %}
+    <div class="card">
+        {#<div class="header">#}
+        {#<h4 class="title">User Invites</h4>#}
+        {#<p class="category">Invite user by email</p>#}
+        {#</div>#}
+        <div class="content">
+            {{ form_start(form) }}
+            {% if form.vars.errors|length %}
+                {% for error in form.vars.errors %}
+                    <div class="control-group error-message"><p>{{ error.message|trans }}</p></div>
+                {% endfor %}
+            {% endif %}
+            <div class="form-group {% if form.name.vars.errors|length %} has-danger{% endif %}">
+                <label>{{ 'challenge_subject.element.name'|trans }}</label>
+                {{ form_widget(form.name, {'attr': {'class': 'form-control'}}) }}
+            </div>
+            <div class="form-group {% if form.coverPicture.vars.errors|length %} has-danger{% endif %}">
+                <label>{{ 'challenge_subject.element.cover_piture'|trans }}</label>
+                {{ form_widget(form.coverPicture.url, {'attr': {'class': 'form-control'}}) }}
+            </div>
+            <div class="form-group {% if form.type.vars.errors|length %} has-danger{% endif %}">
+                <label>{{ 'challenge_subject.element.type'|trans }}</label>
+                {{ form_widget(form.type, {'attr': {'class': 'form-control'}}) }}
+            </div>
+            <div class="form-group {% if form.description.vars.errors|length %} has-danger{% endif %}">
+                <label>{{ 'challenge_subject.element.description'|trans }}</label>
+                {{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
+            </div>
+            <div class="row text-center">
+                <div class="form-group col-sm-6 {% if form.startSubmissionDate.vars.errors|length %} has-danger{% endif %}">
+                    <label>{{ 'challenge_subject.element.start_submission'|trans }}</label>
+                    {{ form_widget(form.startSubmissionDate, {'attr': {'class': 'hide'}}) }}
+                </div>
+                <div class="form-group col-sm-6 {% if form.endSubmissionDate.vars.errors|length %} has-danger{% endif %}">
+                    <label>{{ 'challenge_subject.element.end_submission'|trans }}</label>
+                    {{ form_widget(form.endSubmissionDate, {'attr': {'class': 'hide'}}) }}
+                </div>
+            </div>
+
+            <input class="btn btn-info btn-fill btn-block" type="submit"
+                   value="{{ 'challenge.action.create'|trans }}"/>
+            {{ form_end(form) }}
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascript %}
+    {{ parent() }}
+    <script type="text/javascript">
+        jQuery(document).ready(function ($) {
+            $('#challenge_subject_form_startSubmissionDate, #challenge_subject_form_endSubmissionDate').each(function() {
+                $(this).datepicker({
+                    language: 'fr',
+                    inline: true,
+                    classes: 'datepicker-responsive',
+                    timepicker: true,
+                    dateFormat: 'yyyy-mm-dd',
+                    timeFormat: 'hh:ii:00',
+                    startDate: new Date(this.value)
+                })
+            });
+        });
+    </script>
+{% endblock %}
+

@@ -8,6 +8,7 @@
 namespace BackBundle\Entity;
 
 use BackBundle\DBAL\ChallengeFrequencyType;
+use BackBundle\Traits\SlugTrait;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -16,6 +17,8 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Challenge
 {
+    use SlugTrait;
+
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")
@@ -125,5 +128,13 @@ class Challenge
     public function setFeatured($featured)
     {
         $this->featured = $featured;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slugify($this->getName());
     }
 }

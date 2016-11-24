@@ -1,8 +1,23 @@
-# SECURITY ROUTING #
+# CHALLENGE SUBJECT ROUTING
+front_challenge_subject_show:
+    path:     /challenge/{challengeSlug}/subject/{idChallenge}-{ChallengeSubjectSlug}
+    defaults: { _controller: FrontBundle:ChallengeSubject:show }
+    methods:  [GET]
+# FRONT ROUTING
 front_homepage:
     path:     /
     defaults: { _controller: FrontBundle:Front:index }
     methods:  [GET]
+# POST ROUTING #
+front_post_show:
+    path:     /pictures/p{postId}
+    defaults:  { _controller: FrontBundle:Post:show }
+    methods:  [GET]
+front_post_add:
+    path:     /pictures/add
+    defaults:  { _controller: FrontBundle:Post:add }
+    methods:  [GET, POST]
+# SECURITY ROUTING #
 front_login:
     path:     /login
     defaults:  { _controller: FrontBundle:Security:login }
@@ -18,12 +33,3 @@ front_user_profile:
     path:     /users/{fullName}/u{userId}
     defaults:  { _controller: FrontBundle:User:profile }
     methods:  [GET]
-# POST ROUTING #
-front_post_show:
-    path:     /pictures/p{postId}
-    defaults:  { _controller: FrontBundle:Post:show }
-    methods:  [GET]
-front_post_add:
-    path:     /pictures/add
-    defaults:  { _controller: FrontBundle:Post:add }
-    methods:  [GET, POST]

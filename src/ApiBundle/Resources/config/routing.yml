@@ -1,3 +1,17 @@
+# Challenge Routing
+api_challenge_delete:
+    path:     /challenges/delete/{idChallenge}
+    defaults: { _controller: ApiBundle:Challenge:delete }
+    methods:  [DELETE]
+    requirements:
+            idChallenge: '\d+'
+# Challenge Subject Routing
+api_challenge_subject_delete:
+    path:     /challenges/subject/delete/{idChallengeSubject}
+    defaults: { _controller: ApiBundle:ChallengeSubject:delete }
+    methods:  [DELETE]
+    requirements:
+            idChallengeSubject: '\d+'
 # User Invite Routing
 api_user_invite_delete:
     path:     /invitations/delete/{idUserInvite}

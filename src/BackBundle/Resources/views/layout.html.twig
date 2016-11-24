@@ -24,38 +24,8 @@
 <body>
 
 <div class="wrapper">
-    <div class="sidebar" data-color="purple" data-image="{{ asset('bundles/back/img/sidebar.jpg') }}">
 
-        <!--
-
-            Tip 1: you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple"
-            Tip 2: you can also add an image using data-image tag
-
-        -->
-
-        <div class="sidebar-wrapper">
-            <div class="logo">
-                <a href="{{ path('front_homepage') }}" class="simple-text">
-                    {{ app_name }}
-                </a>
-            </div>
-
-            <ul class="nav">
-                <li>
-                    <a href="{{ path('back_index') }}">
-                        <i class="fa fa-television"></i>
-                        <p>Dashboard</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ path('back_user_invite_index') }}">
-                        <i class="fa fa-address-book-o"></i>
-                        <p>User Invite</p>
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </div>
+    {% include 'BackBundle::sidebar.html.twig' %}
 
     <div class="main-panel">
         <nav class="navbar navbar-default navbar-fixed">
@@ -128,18 +98,51 @@
             </div>
         </nav>
 
+
         <div class="content">
             <div class="container-fluid">
                 {% block body %}{% endblock %}
             </div>
         </div>
 
+
+        <footer class="footer">
+            <div class="container-fluid">
+                <nav class="pull-left">
+                    <ul>
+                        <li>
+                            <a href="#">
+                                Home
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                Company
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                Portfolio
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                Blog
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <p class="copyright pull-right">
+                    &copy; 2016 <a href="http://www.creative-tim.com">Creative Tim</a>, made with love for a better web
+                </p>
+            </div>
+        </footer>
+
     </div>
 </div>
 {% block javascript %}
-    <script type="text/javascript" src="{{ asset('public/js/jquery-3.1.1.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('public/js/tether.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('js/bootstrap.js') }}"></script>
+    <script type="text/javascript" src="{{ 'public/js/jquery-3.1.1.min.js' }}"></script>
+    <script type="text/javascript" src="{{ 'js/bootstrap.js' }}"></script>
     {% javascripts
     'public/js/ajax-request.js'
     'bundles/back/js/*' %}

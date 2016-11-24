@@ -8,6 +8,7 @@
 namespace BackBundle\Provider;
 
 
+use BackBundle\Entity\Challenge;
 use BackBundle\Manager\ChallengeManager;
 use BackBundle\Manager\ChallengeSubjectManager;
 
@@ -31,9 +32,15 @@ class ChallengeSubjectProvider
         $this->challengeManager = $challengeManager;
     }
 
+    /**
+     * @param int $subjectToShow
+     *
+     * @return array
+     */
     public function getOngoingFeatured($subjectToShow = 3)
     {
         $ongoingFeaturedSubjects = array();
+        /** @var Challenge[] $featuredChallenges */
         $featuredChallenges = $this->challengeManager->loadBy(array('featured' => true));
         foreach ($featuredChallenges as $featuredChallenge) {
             $ongoingSubjects = $this->challengeSubjectManager->getOngoing(1);
