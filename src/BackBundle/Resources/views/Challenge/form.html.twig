@@ -1,0 +1,31 @@
+{% extends '@Back/layout.html.twig' %}
+
+{% block body %}
+    <div class="card">
+        {#<div class="header">#}
+            {#<h4 class="title">User Invites</h4>#}
+            {#<p class="category">Invite user by email</p>#}
+        {#</div>#}
+        <div class="content">
+            {{ form_start(form) }}
+            {% if form.vars.errors|length %}
+                {% for error in form.vars.errors %}
+                    <div class="control-group error-message"><p>{{ error.message|trans }}</p></div>
+                {% endfor %}
+            {% endif %}
+            <div class="form-group {% if form.name.vars.errors|length %} has-danger{% endif %}">
+                <label>{{ 'challenge.element.name'|trans }}</label>
+                {{ form_widget(form.name, {'attr': {'class': 'form-control'}}) }}
+            </div>
+            <div class="form-group {% if form.frequency.vars.errors|length %} has-danger{% endif %}">
+                <label>{{ 'challenge.element.frequency'|trans }}</label>
+                {{ form_widget(form.frequency, {'attr': {'class': 'form-control'}}) }}
+            </div>
+
+            <input class="btn btn-info btn-fill btn-block" type="submit"
+                   value="{{ 'challenge.action.create'|trans }}"/>
+            {{ form_end(form) }}
+        </div>
+    </div>
+{% endblock %}
+

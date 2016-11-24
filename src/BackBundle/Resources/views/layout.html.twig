@@ -12,6 +12,7 @@
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
     {#<link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}" type="text/css"/>#}
     <link rel="stylesheet" href="{{ asset('bundles/bmatznerfontawesome/css/font-awesome.css') }}" type="text/css"/>
+    <link rel="stylesheet" href="{{ asset('public/css/datepicker.min.css') }}" type="text/css"/>
     <link href="https://file.myfontastic.com/6FgmP4oJ7DyT3k5QBFvddi/icons.css" rel="stylesheet">
     {% stylesheets filter='cssrewrite, scssphp' output="css/admin.css"
     'public/css/animate.css'
@@ -144,6 +145,8 @@
 {% block javascript %}
     <script type="text/javascript" src="{{ asset('public/js/jquery-3.1.1.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/bootstrap.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/datepicker.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/i18n/datepicker.fr.js') }}"></script>
     {% javascripts
     'public/js/ajax-request.js'
     'bundles/back/js/*' %}

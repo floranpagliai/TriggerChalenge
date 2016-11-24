@@ -23,12 +23,19 @@
                     <tr id="challenge-subject-{{ challengeSubject.id }}">
                         <td>{{ challengeSubject.name }}</td>
                         <td>{{ ('challenge_subject_type.'~challengeSubject.type)|trans }}</td>
-                        <td>{{ challengeSubject.startSubmissionDate|date('Y-m-d H:i:s')}}</td>
+                        <td>{{ challengeSubject.startSubmissionDate|date('Y-m-d H:i:s') }}</td>
                         <td>{{ challengeSubject.endSubmissionDate|date('Y-m-d H:i:s') }}</td>
                         <td>{{ challengeSubject.coverPicture ? '<i class="fa fa-check"></i>':'' }}</td>
                         <td class="td-actions text-right">
-                            <button type="button" title="" class="btn btn-info btn-simple btn-xs">
-                                <i class="fa fa-pencil"></i>
+                            <a href="{{ path('back_challenge_subject_edit', {'idChallenge': idChallenge, 'idChallengeSubject': challengeSubject.id}) }}">
+                                <button type="button" title="" class="btn btn-info btn-simple btn-xs">
+                                    <i class="fa fa-pencil"></i>
+                                </button>
+                            </a>
+                            <button type="button" title="" class="btn btn-danger btn-simple btn-xs ajax-remove"
+                                    data-url="{{ path('api_challenge_subject_delete', {'idChallengeSubject': challengeSubject.id }) }}"
+                                    data-target="#challenge-subject-{{ challengeSubject.id }}">
+                                <i class="fa fa-times"></i>
                             </button>
                         </td>
                     </tr>
@@ -38,7 +45,7 @@
         </div>
     </div>
 
-    <a href="#">
+    <a href="{{ path('back_challenge_subject_add', {'idChallenge': idChallenge}) }}">
         <button class="btn btn-info btn-fill">{{ 'challenge_subject.action.create'|trans }}</button>
     </a>
 {% endblock %}

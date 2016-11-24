@@ -16,3 +16,8 @@
 .app-title:active {
     color: #ffa000;
 }
+
+.datepicker-responsive {
+    width: auto;
+    transition: 0.25s;
+}

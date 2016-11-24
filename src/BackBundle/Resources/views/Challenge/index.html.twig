@@ -26,12 +26,20 @@
                         <td>
                             {{ challenge.subjects|length }}
                             <a href="{{ path('back_challenge_subject_index', {'idChallenge': challenge.id}) }}">
-                                <button type="button" class="btn btn-secondary btn-xs">{{ 'challenge.action.show_subjects'|trans }}</button>
+                                <button type="button"
+                                        class="btn btn-secondary btn-xs">{{ 'challenge.action.show_subjects'|trans }}</button>
                             </a>
                         </td>
                         <td class="td-actions text-right">
-                            <button type="button" title="" class="btn btn-info btn-simple btn-xs">
-                                <i class="fa fa-pencil"></i>
+                            <a href="{{ path('back_challenge_edit', {'idChallenge': challenge.id}) }}">
+                                <button type="button" title="" class="btn btn-info btn-simple btn-xs">
+                                    <i class="fa fa-pencil"></i>
+                                </button>
+                            </a>
+                            <button type="button" title="" class="btn btn-danger btn-simple btn-xs ajax-remove"
+                                    data-url="{{ path('api_challenge_delete', {'idChallenge': challenge.id }) }}"
+                                    data-target="#challenge-{{ challenge.id }}">
+                                <i class="fa fa-times"></i>
                             </button>
                         </td>
                     </tr>
@@ -41,7 +49,7 @@
         </div>
     </div>
 
-    <a href="#">
+    <a href="{{ path('back_challenge_add') }}">
         <button class="btn btn-info btn-fill">{{ 'challenge.action.create'|trans }}</button>
     </a>
 {% endblock %}

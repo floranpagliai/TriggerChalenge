@@ -5,10 +5,22 @@ back_index:
 back_challenge_index:
     path:     /challenges
     defaults: { _controller: BackBundle:Challenge:index }
+back_challenge_add:
+    path:     /challenges/add
+    defaults: { _controller: BackBundle:Challenge:addOrEdit }
+back_challenge_edit:
+    path:     /challenges/edit/{idChallenge}
+    defaults: { _controller: BackBundle:Challenge:addOrEdit }
 # Challenge Subject Routing
 back_challenge_subject_index:
     path:     /challenges/{idChallenge}/subjects
     defaults: { _controller: BackBundle:ChallengeSubject:index }
+back_challenge_subject_add:
+    path:     /challenges/{idChallenge}/subjects/add
+    defaults: { _controller: BackBundle:ChallengeSubject:addOrEdit }
+back_challenge_subject_edit:
+    path:     /challenges/{idChallenge}/subjects/edit/{idChallengeSubject}
+    defaults: { _controller: BackBundle:ChallengeSubject:addOrEdit }
 # User Invite Routing
 back_user_invite_index:
     path:     /invitations
