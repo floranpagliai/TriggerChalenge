@@ -15,6 +15,7 @@
     <link href="https://file.myfontastic.com/6FgmP4oJ7DyT3k5QBFvddi/icons.css" rel="stylesheet">
     {% stylesheets filter='cssrewrite, scssphp' output="css/admin.css"
     'public/css/animate.css'
+    'public/css/datepicker.min.css'
     'bundles/back/css/*' %}
     <link rel="stylesheet" href="{{ asset_url }}" type="text/css"/>
     {% endstylesheets %}
@@ -105,44 +106,14 @@
             </div>
         </div>
 
-
-        <footer class="footer">
-            <div class="container-fluid">
-                <nav class="pull-left">
-                    <ul>
-                        <li>
-                            <a href="#">
-                                Home
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                Company
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                Portfolio
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                Blog
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-                <p class="copyright pull-right">
-                    &copy; 2016 <a href="http://www.creative-tim.com">Creative Tim</a>, made with love for a better web
-                </p>
-            </div>
-        </footer>
-
     </div>
 </div>
 {% block javascript %}
-    <script type="text/javascript" src="{{ 'public/js/jquery-3.1.1.min.js' }}"></script>
-    <script type="text/javascript" src="{{ 'js/bootstrap.js' }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/jquery-3.1.1.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/tether.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/bootstrap.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/datepicker.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/i18n/datepicker.fr.js') }}"></script>
     {% javascripts
     'public/js/ajax-request.js'
     'bundles/back/js/*' %}
