@@ -1,0 +1,30 @@
+<div class="sidebar" data-image="{{ asset('bundles/back/img/sidebar.jpg') }}">
+    <div class="sidebar-wrapper">
+        <div class="logo">
+            <a href="{{ path('front_homepage') }}" class="app-title">
+                {{ app_name }}
+            </a>
+        </div>
+
+        <ul class="nav">
+            <li>
+                <a href="{{ path('back_index') }}">
+                    <i class="fa fa-television"></i>
+                    <p>Dashboard</p>
+                </a>
+            </li>
+            <li>
+                <a href="{{ path('back_user_invite_index') }}">
+                    <i class="fa fa-address-book-o"></i>
+                    <p>User Invitations</p>
+                </a>
+            </li>
+            <li>
+                <a href="{{ path('back_challenge_index') }}">
+                    <i class="fa fa-trophy"></i>
+                    <p>Challenges</p>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>

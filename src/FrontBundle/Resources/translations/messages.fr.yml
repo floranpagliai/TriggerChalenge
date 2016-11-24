@@ -49,8 +49,43 @@ picture:
     message:
         error:
             invalid_url: "L'url de l'image n'est pas valide"
-challenge_subject:
+challenge:
+    element:
+        name: "Nom"
+        frequency: "Fréquence"
+        is_featured: "En vedette"
+        subjects: "Sujets"
     action:
+        create: "Créer un challenge"
+        show_subjects: "Afficher les sujets"
+challenge_subject:
+    title:
+        the_subject_daily: "Le sujet du jour"
+        the_subject_weekly: "Le sujet de la semaine"
+        the_subject_monthly: "Le sujet du mois"
+    element:
+        name: "Nom"
+        type: "Type"
+        start_submission: "Date d'ouverture"
+        end_submission: "Date de fermeture"
+        cover_piture: "Image de couverture"
+    action:
+        create: "Créer un sujet"
         show_past: "Voir les photos"
         show_ongoing: "Soumettre une photo"
-        show_next: "Voir le sujet"
+        show_future: "Voir le sujet"
+challenge_frequency_type:
+    DAILY: "Journalier"
+    WEEKLY: "Hebdomadaire"
+    MONTHLY: "Mensuel"
+    element:
+        DAILY: "Jour"
+        WEEKLY: "Semaine"
+        MONTHLY: "Mois"
+challenge_subject_type:
+    LANDSCAPE: "Paysage"
+    PORTRAIT: "Portrait"
+    ARTISTIC: "Artistique"
+    NATURE: "Nature"
+    ARCHITECTURE: "Architecture"
+    STREET: "Urbain"
