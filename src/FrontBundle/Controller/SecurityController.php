@@ -61,8 +61,8 @@ class SecurityController extends Controller
             $user->setPassword($password);
 
             $this->get('manager.user')->save($user);
-
-            // TODO : add flash
+            $message = $this->get('translator')->trans('user.message.success.registered');
+            $this->addFlash('success', $message);
 
             return $this->redirectToRoute('front_login');
         }

@@ -15,7 +15,7 @@
                     <div class="page-title">
                         <h2 class="mt-0 mb-1">{{ user.fullName }}</h2>
                         {% if app.user == user %}
-                            <button class="btn btn-outline-secondary">Edit profile</button>
+                            <a href="{{ path('front_user_profile_edit_password') }}" class="btn btn-outline-secondary">{{ 'user.action.edit_profile'|trans }}</a>
                         {% endif %}
                     </div>
                     <br/>

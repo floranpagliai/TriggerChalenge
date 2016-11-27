@@ -4,7 +4,7 @@
 
 {% block form_errors %}
     {% if errors|length %}
-        <span class="tooltip has-danger">
+        <span class="my-tooltip has-danger">
             {% for error in errors %}
                 {{ error.messageTemplate|trans(error.messageParameters, 'validators') }}<br/>
             {% endfor %}

@@ -33,3 +33,7 @@ front_user_profile:
     path:     /users/{fullName}/u{userId}
     defaults:  { _controller: FrontBundle:User:show }
     methods:  [GET]
+front_user_profile_edit_password:
+    path:     /users/edit/password
+    defaults:  { _controller: FrontBundle:User:editPassword }
+    methods:  [GET, POST]
