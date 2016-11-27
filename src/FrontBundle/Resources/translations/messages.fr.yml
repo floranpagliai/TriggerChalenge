@@ -46,6 +46,8 @@ post:
 picture:
     title:
         last_pictures: "Les dernières photos publiés"
+    element:
+        pictures: "Photos"
     message:
         error:
             invalid_url: "L'url de l'image n'est pas valide"

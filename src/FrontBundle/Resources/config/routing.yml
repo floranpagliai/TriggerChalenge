@@ -31,5 +31,5 @@ front_logout:
 # USER ROUTING #
 front_user_profile:
     path:     /users/{fullName}/u{userId}
-    defaults:  { _controller: FrontBundle:User:profile }
+    defaults:  { _controller: FrontBundle:User:show }
     methods:  [GET]

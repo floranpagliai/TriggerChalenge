@@ -8,10 +8,10 @@
             <h2 class="grid-item-title picture-title">{{ post.title }}</h2>
             <div class="grid-item-footer">
                 {% if post.author.profilePicture is not null %}
-                    <img class="avatar" src="{{ post.author.profilePicture.url }}" alt="{{ post.author.firstName }}"/>
+                    <img class="avatar" src="{{ post.author.profilePicture.url }}" alt="{{ post.author.fullName }}"/>
                 {% else %}
                     <img class="avatar" src="{{ asset('bundles/front/img/user-unknow.png') }}"
-                         alt="{{ post.author.firstName }}"/>
+                         alt="{{ post.author.fullName }}"/>
                 {% endif %}
                 <span>{{ post.author.fullName }}</span>
                 <span class="small"><i class="fa fa-calendar-o"></i>{{ post.createdAt|date('d M') }}</span>

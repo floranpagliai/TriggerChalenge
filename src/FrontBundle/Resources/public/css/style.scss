@@ -151,6 +151,12 @@ p {
   height: 40px;
 }
 
+.avatar-big {
+  @extend .avatar;
+  width: 100px;
+  height: 100px;
+}
+
 .control-group {
   margin-bottom: 10px;
 }
@@ -173,21 +179,28 @@ input:focus {
 }
 
 .btn {
+  transition: 0.25s;
+
+  &:hover,
+  &:focus,
+  &:active
+  &:visited {
+    outline: none;
+  }
+}
+
+.btn-tc {
   border: 2px solid transparent;
   background: $dark-primary-color;
   color: #ffffff;
-  font-size: 16px;
-  box-shadow: none;
-  transition: 0.25s;
-}
 
-.btn:hover,
-.btn:focus,
-.btn:active
-.btn:visited {
-  background-color: $dark-primary-color !important;
-  border-color: $input-focus-color;
-  outline: none;
+  &:hover,
+  &:focus,
+  &:active
+  &:visited {
+    background-color: $dark-primary-color !important;
+    border-color: $input-focus-color;
+  }
 }
 
 @media screen and (min-width: 600px) {
