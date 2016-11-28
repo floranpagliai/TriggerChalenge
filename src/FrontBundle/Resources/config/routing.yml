@@ -26,10 +26,18 @@ front_register:
     path:     /register
     defaults:  { _controller: FrontBundle:Security:register }
     methods:  [GET, POST]
+front_reset_password:
+    path:     /resetting
+    defaults:  { _controller: FrontBundle:Security:forgotPassword }
+    methods:  [GET, POST]
 front_logout:
    path:      /logout
 # USER ROUTING #
 front_user_profile:
     path:     /users/{fullName}/u{userId}
-    defaults:  { _controller: FrontBundle:User:profile }
+    defaults:  { _controller: FrontBundle:User:show }
     methods:  [GET]
+front_user_profile_edit_password:
+    path:     /users/edit/password
+    defaults:  { _controller: FrontBundle:User:editPassword }
+    methods:  [GET, POST]

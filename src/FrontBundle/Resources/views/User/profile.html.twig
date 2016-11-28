@@ -1,0 +1,36 @@
+{% extends '@Front/layout.html.twig' %}
+
+{% block body %}
+    <div class="main">
+
+        <div class="row">
+            <div class="col-sm-4 offset-sm-4 text-xs-center">
+                <div class="card mt-1">
+                    {% if user.profilePicture is not null %}
+                        <img class="avatar-big" src="{{ user.profilePicture.url }}" alt="{{ user.fullName }}"/>
+                    {% else %}
+                        <img class="avatar-big" src="{{ asset('bundles/front/img/user-unknow.png') }}"
+                             alt="{{ user.fullName }}"/>
+                    {% endif %}
+                    <div class="page-title">
+                        <h2 class="mt-0 mb-1">{{ user.fullName }}</h2>
+                        {% if app.user == user %}
+                            <a href="{{ path('front_user_profile_edit_password') }}" class="btn btn-outline-secondary">{{ 'user.action.edit_profile'|trans }}</a>
+                        {% endif %}
+                    </div>
+                    <br/>
+                    <div class="card-footer text-muted text-small">
+                        <span>{{ stats.postCount }} {{ 'picture.element.pictures'|trans|lower }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section class="grid">
+            {% for post in posts %}
+                {% include 'FrontBundle:Post:thumbnail.html.twig' with { 'post': post } %}
+            {% endfor %}
+        </section>
+
+    </div>
+{% endblock %}

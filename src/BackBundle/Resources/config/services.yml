@@ -25,6 +25,9 @@ services:
     provider.user_invite:
         class: BackBundle\Provider\UserInviteProvider
         arguments: ["@manager.user_invite", "@manager.user"]
+    provider.user:
+        class: BackBundle\Provider\UserProvider
+        arguments: ["@manager.user", "@provider.mailer", "@security.password_encoder"]
 # SERVICES
     timestampable_entity.pre_persist.listener:
         class: BackBundle\EventListener\PrePersistListener

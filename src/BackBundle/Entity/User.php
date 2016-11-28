@@ -212,7 +212,7 @@ class User implements UserInterface, TimestampableInterface
 
     public function getSalt()
     {
-        return null;
+        return $this->publicId;
     }
 
     /**
@@ -250,8 +250,7 @@ class User implements UserInterface, TimestampableInterface
             $this->id,
             $this->email,
             $this->password,
-            // see section on salt below
-            // $this->salt,
+            $this->publicId
         ));
     }
 
@@ -264,8 +263,7 @@ class User implements UserInterface, TimestampableInterface
             $this->id,
             $this->email,
             $this->password,
-            // see section on salt below
-            // $this->salt
+            $this->publicId
             ) = unserialize($serialized);
     }
 }
