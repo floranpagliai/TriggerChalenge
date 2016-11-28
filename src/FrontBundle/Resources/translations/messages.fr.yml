@@ -3,6 +3,7 @@ user:
     title:
         login: "Connexion"
         register: "Inscription"
+        reset_password: "Mot de passe oublié"
     form:
         placeholder:
             email: "Email"
@@ -10,15 +11,29 @@ user:
             last_name: "Nom de famille"
             password: "Mot de passe"
             password_repeat: "Mot de passe (Confirmation)"
+            old_password: "Ancien mot de passe"
+        label:
+            new_password: "Nouveau mot de passe"
+            new_password_repeat: "Nouveau mot de passe (Confirmation)"
+            old_password: "Ancien mot de passe"
     action:
         login: "Se connecter"
         register: "S'inscrire"
+        change_password: "Changer le mot de passe"
+        edit_profile: "Editer profil"
+        reset_password: "Retrouvez votre compte"
     paragraph:
         reset_password: "Mot de passe oublié?"
         already_registered: "Déjà inscrit?"
     message:
         error:
             unique_email: "Cet email est déjà utilisé."
+            wrong_password: "Mot de passe incorrect."
+        warning:
+            unknown_email: "Aucun utilisateur connu avec cet email."
+        success:
+            registered: "Votre Inscription a été effectuée avec succès."
+            password_changed: "Votre mot de passe a été changé avec succès."
     warning:
         unique_email: "Cet email est déjà utilisé."
 user_invite:
@@ -46,6 +61,8 @@ post:
 picture:
     title:
         last_pictures: "Les dernières photos publiés"
+    element:
+        pictures: "Photos"
     message:
         error:
             invalid_url: "L'url de l'image n'est pas valide"

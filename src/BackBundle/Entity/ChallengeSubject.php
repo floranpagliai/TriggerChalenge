@@ -33,7 +33,7 @@ class ChallengeSubject
 
     /**
      * @var Challenge
-     * @ORM\ManyToOne(targetEntity="BackBundle\Entity\Challenge")
+     * @ORM\ManyToOne(targetEntity="BackBundle\Entity\Challenge", inversedBy="subjects")
      * @ORM\JoinColumn(name="challenge_id", referencedColumnName="id")
      */
     private $challenge;

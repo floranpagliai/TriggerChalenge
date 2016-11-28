@@ -1,0 +1,17 @@
+{%- block form_row -%}
+    <div>
+        {{- form_label(form) -}}
+        {{- form_widget(form) -}}
+        {{- form_errors(form) -}}
+    </div>
+{%- endblock form_row -%}
+
+{% block form_errors %}
+    {% if errors|length %}
+        <span class="my-tooltip has-danger">
+            {% for error in errors %}
+                {{ error.messageTemplate|trans(error.messageParameters) }}<br/>
+            {% endfor %}
+        </span>
+    {% endif %}
+{% endblock %}

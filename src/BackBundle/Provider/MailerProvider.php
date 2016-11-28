@@ -7,6 +7,7 @@
 
 namespace BackBundle\Provider;
 
+use BackBundle\Entity\User;
 use BackBundle\Entity\UserInvite;
 use Symfony\Bridge\Twig\TwigEngine;
 
@@ -56,5 +57,19 @@ class MailerProvider
             ->setContentType('text/html');
 
         $this->mailer->send($mail);
+    }
+
+    public function sendForgottenPassword(User $user, $newPassword)
+    {
+        $from = 'hello@triggerchallenge.com';
+        $fromName = 'Trigger Challenge';
+        $to = $user->getEmail();
+        $subject = 'Mot de passe oubliée';
+        $body = $this->templating->render('BackBundle:Mails:password.html.twig', array(
+            'user'     => $user,
+            'password' => $newPassword
+        ));
+
+        $this->sendMail($from, $fromName, $to, $subject, $body);
     }
 }

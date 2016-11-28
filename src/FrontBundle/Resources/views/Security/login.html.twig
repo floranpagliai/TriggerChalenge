@@ -25,8 +25,8 @@
                                name="_password">
                     </div>
 
-                    <input class="btn btn-primary btn-lg" type="submit" value="{{ 'user.action.login'|trans }}"/>
-                    <a class="login-link" href="#">{{ 'user.paragraph.reset_password'|trans }}</a>
+                    <input style="width: 250px" class="btn btn-tc btn-primary btn-lg" type="submit" value="{{ 'user.action.login'|trans }}"/>
+                    <a class="login-link" href="{{ path('front_reset_password') }}">{{ 'user.paragraph.reset_password'|trans }}</a>
                 </form>
             </div>
         </div>

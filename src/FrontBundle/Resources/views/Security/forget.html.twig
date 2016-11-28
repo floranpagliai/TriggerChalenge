@@ -1,0 +1,28 @@
+{% extends 'FrontBundle::layout.html.twig' %}
+{% block body_class %}full-picture{% endblock %}
+{% block body %}
+    <div class="main login">
+        <div class="login-screen">
+            {#<h1>{{ 'user.title.reset_password'|trans }}</h1>#}
+            <div class="login-form">
+                {{ form_start(form) }}
+                {% if errors is not null %}
+                    {% for error in errors %}
+                        <div class="control-group error-message animated jello"><p>{{ error.message|trans }}</p></div>
+                    {% endfor %}
+                {% endif %}
+                <div class="control-group{% if form.email.vars.errors|length %} has-danger{% endif %}">
+                    {{ form_widget(form.email) }}
+                </div>
+
+                <input style="width: 250px" class="btn btn-tc btn-primary btn-lg" type="submit" value="{{ 'user.action.reset_password'|trans }}"/>
+                <a class="login-link"
+                   href="{{ path('front_login') }}">{{ 'user.paragraph.already_registered'|trans }}</a>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block footer %}
+{% endblock %}
+

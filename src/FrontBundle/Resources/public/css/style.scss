@@ -151,43 +151,61 @@ p {
   height: 40px;
 }
 
+.avatar-big {
+  @extend .avatar;
+  width: 100px;
+  height: 100px;
+}
+
 .control-group {
   margin-bottom: 10px;
-}
 
-input {
-  text-align: center;
-  background-color: #ECF0F1;
-  border: 2px solid transparent;
-  @include border-radius(3px);
-  font-size: 16px;
-  font-weight: 200;
-  padding: 10px 0;
-  width: 250px;
-  transition: border .5s;
-}
-
-input:focus {
-  border: 2px solid $input-focus-color;
-  box-shadow: none;
+  input {
+    text-align: center;
+    background-color: #ECF0F1;
+    border: 1px solid transparent;
+    @include border-radius(3px);
+    font-size: 16px;
+    font-weight: 200;
+    padding: 10px 0;
+    width: 250px;
+    transition: border .5s;
+  }
 }
 
 .btn {
-  border: 2px solid transparent;
-  background: $dark-primary-color;
-  color: #ffffff;
-  font-size: 16px;
-  box-shadow: none;
   transition: 0.25s;
+
+  &:hover,
+  &:focus,
+  &:active
+  &:visited {
+    outline: none;
+  }
 }
 
-.btn:hover,
-.btn:focus,
-.btn:active
-.btn:visited {
-  background-color: $dark-primary-color !important;
-  border-color: $input-focus-color;
-  outline: none;
+.btn-tc {
+  border: 1px solid transparent;
+  background: $dark-primary-color;
+  color: #ffffff;
+
+  &:hover,
+  &:focus,
+  &:active
+  &:visited {
+    background-color: $dark-primary-color !important;
+    border-color: $input-focus-color;
+  }
+}
+
+span.my-tooltip {
+  line-height: 20px;
+  font-size: 15px;
+
+  &.has-danger {
+    color: $accent-color;
+  }
+
 }
 
 @media screen and (min-width: 600px) {
@@ -223,6 +241,41 @@ input:focus {
   .main {
     margin-top: 80px;
     margin-bottom: 80px;
+  }
+
+  span.my-tooltip {
+    position: absolute;
+    min-width: 250px;
+    line-height: 20px;
+    margin-left: 15px;
+    margin-right: 10px;
+    padding: 12px;
+    font-size: 15px;
+    @include border-radius(3px);
+    text-align: center;
+    color: #ffffff !important;
+    bottom: 0;
+    left: 100%;
+
+    &.has-danger {
+      border: 1px solid $accent-color;
+      background-color: $accent-color;
+
+      &:after {
+        border-style: solid;
+        border-color: transparent $accent-color transparent transparent;
+      }
+    }
+
+    &:after {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 0;
+      border-width: 10px;
+      top: 10px;
+      left: -20px;
+    }
   }
 }
 
@@ -266,39 +319,6 @@ input:focus {
   text-align: center;
 }
 
-span.tooltip {
-  position: absolute;
-  min-width: 100px;
-  line-height: 20px;
-  margin-left: 15px;
-  margin-right: 10px;
-  padding: 10px;
-  font-size: 15px;
-  @include border-radius(3px);
-  font-weight: 100;
-  text-align: center;
-  color: #ffffff;
-
-  &.has-danger {
-    border: 2px solid $accent-color;
-    background-color: $accent-color;
-
-    &:after {
-      border-style: solid;
-      border-color: transparent $accent-color transparent transparent;
-    }
-  }
-
-  &:after {
-    content: "";
-    position: absolute;
-    width: 0;
-    height: 0;
-    border-width: 10px;
-    top: 10px;
-    left: -20px;
-  }
-}
 .page-title {
   text-align: center;
   padding: 1px;

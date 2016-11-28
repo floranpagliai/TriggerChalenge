@@ -1,5 +1,31 @@
 @import 'vars';
 
+.form-group {
+  font-family: "Roboto", "Helvetica Neue", Arial, sans-serif;
+  position: relative;
+  label {
+    display: block;
+    font-size: 12px;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    font-weight: 400;
+  }
+
+  input {
+    border: 1px solid rgba(0, 0, 0, .15);;
+    @include border-radius(3px);
+    padding: 10px;
+    width: 100%;
+    transition: border .5s;
+    font-weight: 200;
+  }
+}
+
 .has-danger input {
   border-color: $accent-color;
+}
+
+input:focus {
+  border: 1px solid $input-focus-color;
+  box-shadow: none;
 }
