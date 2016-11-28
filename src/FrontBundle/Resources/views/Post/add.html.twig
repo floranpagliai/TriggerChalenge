@@ -1,20 +1,17 @@
 {% extends '@Front/layout.html.twig' %}
 
-{% form_theme form _self %}
-
-{% block form_errors %}
-    {% if errors|length %}
-        <span class="my-tooltip has-danger">
-            {% for error in errors %}
-                {{ error.messageTemplate|trans(error.messageParameters, 'validators') }}<br/>
-            {% endfor %}
-        </span>
-    {% endif %}
-{% endblock %}
-
 {% block body %}
     <div class="main">
-        {% include '@Front/Post/form.html.twig' %}
+        <div class="row">
+            <div class="col-md-4 offset-md-4">
+                <div class="card mt-1">
+
+                    <div class="card-block">
+                        {% include '@Front/Post/form.html.twig' %}
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 {% endblock %}
 

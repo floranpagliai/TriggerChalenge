@@ -6,11 +6,11 @@
         {% endfor %}
     {% endif %}
     {{ form_errors(form) }}
-    <div class="control-group{% if form.title.vars.errors|length %} has-danger{% endif %}">
+    <div class="form-group{% if form.title.vars.errors|length %} has-danger{% endif %}">
         {{ form_widget(form.title) }}
         {{ form_errors(form.title) }}
     </div>
-    <div class="control-group{% if form.coverPicture.url.vars.errors|length %} has-danger{% endif %}">
+    <div class="form-group{% if form.coverPicture.url.vars.errors|length %} has-danger{% endif %}">
         {{ form_widget(form.coverPicture.url) }}
         {{ form_errors(form.coverPicture.url) }}
     </div>

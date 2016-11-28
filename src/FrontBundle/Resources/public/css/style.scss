@@ -173,31 +173,6 @@ p {
   }
 }
 
-.form-group {
-  font-family: "Roboto", "Helvetica Neue", Arial, sans-serif;
-  label {
-    font-size: 12px;
-    margin-bottom: 5px;
-    text-transform: uppercase;
-    font-weight: 400;
-  }
-
-  input {
-    border: 1px solid rgba(0, 0, 0, .15);;
-    @include border-radius(3px);
-    padding: 10px;
-    width: 100%;
-    transition: border .5s;
-    font-weight: 200;
-  }
-}
-
-
-input:focus {
-  border: 1px solid $input-focus-color;
-  box-shadow: none;
-}
-
 .btn {
   transition: 0.25s;
 
@@ -221,6 +196,16 @@ input:focus {
     background-color: $dark-primary-color !important;
     border-color: $input-focus-color;
   }
+}
+
+span.my-tooltip {
+  line-height: 20px;
+  font-size: 15px;
+
+  &.has-danger {
+    color: $accent-color;
+  }
+
 }
 
 @media screen and (min-width: 600px) {
@@ -256,6 +241,41 @@ input:focus {
   .main {
     margin-top: 80px;
     margin-bottom: 80px;
+  }
+
+  span.my-tooltip {
+    position: absolute;
+    min-width: 250px;
+    line-height: 20px;
+    margin-left: 15px;
+    margin-right: 10px;
+    padding: 12px;
+    font-size: 15px;
+    @include border-radius(3px);
+    text-align: center;
+    color: #ffffff !important;
+    bottom: 0;
+    left: 100%;
+
+    &.has-danger {
+      border: 1px solid $accent-color;
+      background-color: $accent-color;
+
+      &:after {
+        border-style: solid;
+        border-color: transparent $accent-color transparent transparent;
+      }
+    }
+
+    &:after {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 0;
+      border-width: 10px;
+      top: 10px;
+      left: -20px;
+    }
   }
 }
 
@@ -299,39 +319,6 @@ input:focus {
   text-align: center;
 }
 
-span.my-tooltip {
-  position: absolute;
-  min-width: 200px;
-  line-height: 20px;
-  margin-left: 15px;
-  margin-right: 10px;
-  padding: 10px;
-  font-size: 15px;
-  @include border-radius(3px);
-  font-weight: 100;
-  text-align: center;
-  color: #ffffff;
-
-  &.has-danger {
-    border: 1px solid $accent-color;
-    background-color: $accent-color;
-
-    &:after {
-      border-style: solid;
-      border-color: transparent $accent-color transparent transparent;
-    }
-  }
-
-  &:after {
-    content: "";
-    position: absolute;
-    width: 0;
-    height: 0;
-    border-width: 10px;
-    top: 10px;
-    left: -20px;
-  }
-}
 .page-title {
   text-align: center;
   padding: 1px;
