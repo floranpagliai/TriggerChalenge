@@ -49,16 +49,12 @@ class UserController extends Controller
         $form = $this->createForm(ChangePasswordType::class);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            if ($this->get('security.password_encoder')->isPasswordValid($user, $form->getData()['oldPassword'])) {
-                $newPassword = $this->get('security.password_encoder')->encodePassword($user, $form->getData()['newPassword']);
-                $user->setPassword($newPassword);
+            try {
+                $this->get('provider.user')->changePassword($user, $form->getData()['newPassword'], $form->getData()['oldPassword']);
                 $message = $this->get('translator')->trans('user.message.success.password_changed');
                 $this->addFlash('success', $message);
-
-                $this->get('manager.user')->save($user);
-            } else {
-                $message = $this->get('translator')->trans('user.message.error.wrong_password');
-                $form->get('oldPassword')->addError(new FormError($message));
+            } catch (\Exception $e) {
+                $form->get('oldPassword')->addError(new FormError($e->getMessage()));
             }
         }
 

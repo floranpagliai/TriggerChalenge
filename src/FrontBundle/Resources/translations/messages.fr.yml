@@ -3,6 +3,7 @@ user:
     title:
         login: "Connexion"
         register: "Inscription"
+        reset_password: "Mot de passe oublié"
     form:
         placeholder:
             email: "Email"
@@ -20,6 +21,7 @@ user:
         register: "S'inscrire"
         change_password: "Changer le mot de passe"
         edit_profile: "Editer profil"
+        reset_password: "Retrouvez votre compte"
     paragraph:
         reset_password: "Mot de passe oublié?"
         already_registered: "Déjà inscrit?"
@@ -27,6 +29,8 @@ user:
         error:
             unique_email: "Cet email est déjà utilisé."
             wrong_password: "Mot de passe incorrect."
+        warning:
+            unknown_email: "Aucun utilisateur connu avec cet email."
         success:
             registered: "Votre Inscription a été effectuée avec succès."
             password_changed: "Votre mot de passe a été changé avec succès."

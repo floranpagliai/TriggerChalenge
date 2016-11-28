@@ -10,6 +10,8 @@ namespace FrontBundle\Controller;
 use BackBundle\Entity\User;
 use FrontBundle\Form\RegistrationType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\FormError;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -69,6 +71,38 @@ class SecurityController extends Controller
 
         return $this->render(
             'FrontBundle:Security:register.html.twig',
+            array(
+                'form'   => $form->createView(),
+                'errors' => $errors
+            )
+        );
+    }
+
+    public function forgotPasswordAction(Request $request)
+    {
+        if ($this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED')) {
+            return $this->redirectToRoute('front_homepage');
+        }
+
+        $errors = array();
+        $form = $this->createFormBuilder()
+            ->add('email', EmailType::class, array('attr' => array('placeholder' => 'user.form.placeholder.email')))
+            ->getForm();
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            try {
+                $this->get('provider.user')->resetPassword($form->getData()['email']);
+                $message = $this->get('translator')->trans('user.message.success.forgotten_password');
+                $this->addFlash('success', $message);
+
+                return $this->redirectToRoute('front_login');
+            } catch (\Exception $e) {
+                $errors[] = $e;
+            }
+        }
+
+        return $this->render(
+            'FrontBundle:Security:forget.html.twig',
             array(
                 'form'   => $form->createView(),
                 'errors' => $errors

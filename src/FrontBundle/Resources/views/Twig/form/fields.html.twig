@@ -10,7 +10,7 @@
     {% if errors|length %}
         <span class="my-tooltip has-danger">
             {% for error in errors %}
-                {{ error.messageTemplate|trans(error.messageParameters, 'validators') }}<br/>
+                {{ error.messageTemplate|trans(error.messageParameters) }}<br/>
             {% endfor %}
         </span>
     {% endif %}
