@@ -59,7 +59,7 @@ class ChallengeSubject
 
     /**
      * @var string
-     * @ORM\Column(name="description", type="string")
+     * @ORM\Column(name="description", type="string", length=200)
      */
     private $description;
 
