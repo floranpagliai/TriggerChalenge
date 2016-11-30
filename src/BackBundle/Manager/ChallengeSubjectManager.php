@@ -72,4 +72,23 @@ class ChallengeSubjectManager extends AbstractManager
 
         return $q->getQuery()->getResult();
     }
+
+    /**
+     * @param DateTime $startSubmissionDate
+     * @param $idChallenge
+     *
+     * @return int
+     */
+    public function countPreviousByChallenge(DateTime $startSubmissionDate, $idChallenge)
+    {
+        $q = $this->em->createQueryBuilder()
+            ->select('COUNT(cs)')
+            ->from($this->class, 'cs')
+            ->andWhere('cs.challenge = :idChallenge')
+            ->setParameter('idChallenge', $idChallenge)
+            ->andWhere('cs.startSubmissionDate <= :startSubmissionDate')
+            ->setParameter('startSubmissionDate', $startSubmissionDate);
+
+        return $q->getQuery()->getSingleScalarResult();
+    }
 }

@@ -1,17 +1,17 @@
 {% extends '@Front/layout.html.twig' %}
 
 {% block body %}
-    {% set challenge = challengeSubject.challenge  %}
+    {% set challenge = challengeSubject.challenge %}
     <div class="main">
         <div class="page-title">
             <h2>
                 <span class="clearfix subtitle">{{ ('challenge_frequency_type.element.'~challenge.frequency)|trans }}
-                    #42</span>
+                    #{{ challengeNumber }}</span>
                 {{ challengeSubject.name }}
             </h2>
         </div>
         <div class="row">
-            <div class="col-sm-6 offset-sm-3">
+            <div class="col-md-8 offset-md-2 col-lg-6 offset-lg-3">
                 <div class="card">
                     {% if challengeSubject.coverPicture is not null %}
                         <img class="card-img img-fluid" src="{{ challengeSubject.coverPicture.url }}"
@@ -21,7 +21,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-sm-6 offset-sm-3">
+            <div class="col-md-8 offset-md-2 col-lg-6 offset-lg-3">
                 <div class="card text-xs-center">
                     <div class="card-block">
                         <h4 class="card-title">{{ ('challenge_subject.title.the_subject_'~challenge.frequency|lower)|trans }}</h4>

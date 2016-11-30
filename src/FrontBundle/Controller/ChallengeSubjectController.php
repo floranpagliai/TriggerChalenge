@@ -14,12 +14,14 @@ class ChallengeSubjectController extends Controller
 
             return $this->redirect($this->generateUrl('front_homepage'));
         }
+        $challengeNumber = $this->get('manager.challenge_subject')->countPreviousByChallenge($challengeSubject->getEndSubmissionDate(), $challengeSubject->getChallenge()->getId());
         $posts = $this->get('manager.post')->getAll(8);
 
         return $this->render(
             'FrontBundle:ChallengeSubject:show.html.twig',
             array(
                 'challengeSubject' => $challengeSubject,
+                'challengeNumber' => $challengeNumber,
                 'posts' => $posts
             )
         );
