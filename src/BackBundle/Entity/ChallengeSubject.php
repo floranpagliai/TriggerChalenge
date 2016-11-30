@@ -47,7 +47,7 @@ class ChallengeSubject
 
     /**
      * @var string
-     * @ORM\Column(name="name", type="string")
+     * @ORM\Column(name="name", type="string", length=45)
      */
     private $name;
 
@@ -62,6 +62,12 @@ class ChallengeSubject
      * @ORM\Column(name="description", type="string")
      */
     private $description;
+
+    /**
+     * @var string
+     * @ORM\Column(name="subject", type="text", nullable=true)
+     */
+    private $subject;
 
     /**
      * @var DateTime
@@ -169,6 +175,22 @@ class ChallengeSubject
     public function setDescription($description)
     {
         $this->description = $description;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSubject()
+    {
+        return $this->subject;
+    }
+
+    /**
+     * @param string $subject
+     */
+    public function setSubject($subject)
+    {
+        $this->subject = $subject;
     }
 
     /**

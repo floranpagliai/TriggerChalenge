@@ -29,6 +29,10 @@
                 <label>{{ 'challenge_subject.element.description'|trans }}</label>
                 {{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
             </div>
+            <div class="form-group {% if form.subject.vars.errors|length %} has-danger{% endif %}">
+                <label>{{ 'challenge_subject.element.subject'|trans }}</label>
+                {{ form_widget(form.subject, {'attr': {'class': 'form-control'}}) }}
+            </div>
             <div class="row text-center">
                 <div class="form-group col-sm-6 {% if form.startSubmissionDate.vars.errors|length %} has-danger{% endif %}">
                     <label>{{ 'challenge_subject.element.start_submission'|trans }}</label>
