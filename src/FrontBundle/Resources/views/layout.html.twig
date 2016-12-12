@@ -15,6 +15,7 @@
     {% stylesheets filter='cssrewrite, scssphp' output="css/app.css"
     'public/css/animate.css'
     'public/css/iconfont.css'
+    'public/css/dropzone.min.css'
     'bundles/front/css/*' %}
     <link rel="stylesheet" href="{{ asset_url }}" type="text/css"/>
     {% endstylesheets %}
@@ -46,6 +47,8 @@
 {% block footer_javascripts %}
     {% javascripts
     'public/js/jquery-3.1.1.min.js'
+    'public/js/bootstrap-notify.js'
+    'public/js/dropzone.min.js'
     '@FrontBundle/Resources/public/js/modernizr.js'
     '@FrontBundle/Resources/public/js/main.js' %}
     <script type="text/javascript" src="{{ asset_url }}"></script>

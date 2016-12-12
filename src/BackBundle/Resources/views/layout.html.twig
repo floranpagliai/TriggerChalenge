@@ -109,12 +109,13 @@
     </div>
 </div>
 {% block javascript %}
-    <script type="text/javascript" src="{{ asset('public/js/jquery-3.1.1.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('public/js/tether.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('js/bootstrap.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('public/js/datepicker.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('public/js/i18n/datepicker.fr.js') }}"></script>
     {% javascripts
+    'public/js/jquery-3.1.1.min.js'
+    'public/js/tether.min.js'
+    'js/bootstrap.js'
+    'public/js/datepicker.min.js'
+    'public/js/i18n/datepicker.fr.js'
+    'public/js/bootstrap-notify.js'
     'public/js/ajax-request.js'
     'bundles/back/js/*' %}
     <script type="text/javascript" src="{{ asset_url }}"></script>

@@ -40,7 +40,7 @@ class ChallengeSubject
 
     /**
      * @var Picture
-     * @ORM\ManyToOne(targetEntity="BackBundle\Entity\Picture")
+     * @ORM\ManyToOne(targetEntity="BackBundle\Entity\Picture", cascade={"persist"})
      * @ORM\JoinColumn(name="cover_picture_id", referencedColumnName="id", nullable=true)
      */
     private $coverPicture;
