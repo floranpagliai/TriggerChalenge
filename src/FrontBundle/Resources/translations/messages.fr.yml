@@ -83,7 +83,8 @@ challenge_subject:
     form:
         placeholder:
             name: "Le nom du sujet"
-            description: "Une description détaillé de la photo a prendre pour répondre au sujet"
+            description: "Une courte description du sujet"
+            subject: "Une description détaillé de la photo a prendre pour répondre au sujet"
     title:
         the_subject_daily: "Le sujet du jour"
         the_subject_weekly: "Le sujet de la semaine"
@@ -94,7 +95,8 @@ challenge_subject:
         start_submission: "Date d'ouverture"
         end_submission: "Date de fermeture"
         cover_piture: "Image de couverture"
-        description: "Sujet"
+        description: "Description"
+        subject: "Sujet"
     action:
         create: "Créer un sujet"
         save: "Sauvegarder le sujet"

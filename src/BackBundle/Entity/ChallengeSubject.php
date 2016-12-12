@@ -40,14 +40,14 @@ class ChallengeSubject
 
     /**
      * @var Picture
-     * @ORM\ManyToOne(targetEntity="BackBundle\Entity\Picture")
+     * @ORM\ManyToOne(targetEntity="BackBundle\Entity\Picture", cascade={"persist"})
      * @ORM\JoinColumn(name="cover_picture_id", referencedColumnName="id", nullable=true)
      */
     private $coverPicture;
 
     /**
      * @var string
-     * @ORM\Column(name="name", type="string")
+     * @ORM\Column(name="name", type="string", length=45)
      */
     private $name;
 
@@ -59,9 +59,15 @@ class ChallengeSubject
 
     /**
      * @var string
-     * @ORM\Column(name="description", type="string")
+     * @ORM\Column(name="description", type="string", length=200)
      */
     private $description;
+
+    /**
+     * @var string
+     * @ORM\Column(name="subject", type="text", nullable=true)
+     */
+    private $subject;
 
     /**
      * @var DateTime
@@ -169,6 +175,22 @@ class ChallengeSubject
     public function setDescription($description)
     {
         $this->description = $description;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSubject()
+    {
+        return $this->subject;
+    }
+
+    /**
+     * @param string $subject
+     */
+    public function setSubject($subject)
+    {
+        $this->subject = $subject;
     }
 
     /**

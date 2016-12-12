@@ -5,7 +5,7 @@
         <section>
             {% for ongoingFeaturedChallenge in ongoingFeaturedChallenges %}
                 <h2 class="section-title">{{ ongoingFeaturedChallenge.challenge.name }}</h2>
-                <div class="row">
+                <div class="row card-group">
                     {% for challengeSubject in ongoingFeaturedChallenge.subjects %}
                         {% include 'FrontBundle:ChallengeSubject:thumbnail.html.twig' with { 'challengeSubject': challengeSubject} %}
                     {% endfor %}
