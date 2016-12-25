@@ -14,7 +14,7 @@ class ChallengeSubjectController extends Controller
 
             return $this->redirect($this->generateUrl('front_homepage'));
         }
-        $challengeNumber = $this->get('manager.challenge_subject')->countPreviousByChallenge($challengeSubject->getEndSubmissionDate(), $challengeSubject->getChallenge()->getId());
+        $challengeNumber = $this->get('manager.challenge_subject')->countPreviousByChallenge($challengeSubject->getStartSubmissionDate(), $challengeSubject->getChallenge()->getId());
         $posts = $this->get('manager.post')->getByChallengeSubject($challengeSubject->getId());
 
         return $this->render(
