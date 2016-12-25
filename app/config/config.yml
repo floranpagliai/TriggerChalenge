@@ -99,3 +99,16 @@ assetic:
             inputs:
                 - %kernel.root_dir%/../vendor/twbs/bootstrap/dist/js/bootstrap.min.js
             output: js/bootstrap.js
+
+knp_gaufrette:
+    adapters:
+        picture_storage:
+            google_cloud_storage:
+                service_id: 'google_cloud_storage.service'
+                bucket_name:  "%storage.bucket_name%"
+                options:
+                    acl: 'public'
+    filesystems:
+        picture_storage:
+            adapter:    picture_storage
+            alias:      picture_storage_filesystem

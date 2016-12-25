@@ -10,9 +10,13 @@
         {{ form_widget(form.title) }}
         {{ form_errors(form.title) }}
     </div>
-    <div class="form-group{% if form.coverPicture.url.vars.errors|length %} has-danger{% endif %}">
-        {{ form_widget(form.coverPicture.url) }}
-        {{ form_errors(form.coverPicture.url) }}
+    <div class="form-group{% if form.challengeSubject.vars.errors|length %} has-danger{% endif %}">
+        {{ form_widget(form.challengeSubject) }}
+        {{ form_errors(form.challengeSubject) }}
+    </div>
+    <div class="form-group{% if form.coverPicture.file.vars.errors|length %} has-danger{% endif %}">
+        {{ form_widget(form.coverPicture.file) }}
+        {{ form_errors(form.coverPicture.file) }}
     </div>
     <input class="btn btn-outline-secondary" type="submit" value="{{ 'post.action.publish'|trans }}"/>
     {{ form_end(form) }}

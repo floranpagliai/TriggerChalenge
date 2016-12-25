@@ -11,13 +11,18 @@
     font-weight: 400;
   }
 
-  input {
+  input, select {
     border: 1px solid rgba(0, 0, 0, .15);;
     @include border-radius(3px);
     padding: 10px;
     width: 100%;
     transition: border .5s;
     font-weight: 200;
+  }
+
+  select {
+    height: 46px;
+    background-color: transparent;
   }
 }
 
