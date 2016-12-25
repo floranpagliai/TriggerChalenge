@@ -91,7 +91,7 @@
                 "mailer_port": "MAILER_PORT",
                 "mailer_user": "MAILER_USER",
                 "mailer_password": "MAILER_PASSWORD",
-                "storage_bucket_name": "STORAGE_BUCKET_NAME"
+                "storage.bucket_name": "STORAGE_BUCKET_NAME"
           }
         }
     }
