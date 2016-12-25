@@ -21,3 +21,5 @@ parameters:
 
     app.name: TriggerChallenge
     app.description: Photography Challenges
+
+    storage.bucket_name: ~

@@ -24,9 +24,11 @@ class Picture
 
     /**
      * @var string
-     * @ORM\Column(name="url", type="text")
+     * @ORM\Column(name="filename", type="text")
      */
-    private $url;
+    private $filename;
+
+    private $file;
 
     /**
      * @return mixed
@@ -47,28 +49,37 @@ class Picture
     /**
      * @return string
      */
-    public function getUrl()
+    public function getFilename()
     {
-        return $this->url;
+        return $this->filename;
     }
 
     /**
-     * @param string $url
+     * @param string $filename
      */
-    public function setUrl($url)
+    public function setFilename($filename)
     {
-        $this->url = $url;
+        $this->filename = $filename;
     }
 
-    public function isBroken()
+    /**
+     * @return mixed
+     */
+    public function getFile()
     {
-        if (filter_var($this->url, FILTER_VALIDATE_URL) !== FALSE) {
-            $headers = getimagesize($this->url);
-            if (is_array($headers)) {
-                return false;
-            }
-        }
+        return $this->file;
+    }
 
-        return true;
+    /**
+     * @param mixed $file
+     */
+    public function setFile($file)
+    {
+        $this->file = $file;
+    }
+
+    public function getUrl()
+    {
+        return 'https://storage.googleapis.com/triggerchallenge-pictures/' . $this->filename;
     }
 }

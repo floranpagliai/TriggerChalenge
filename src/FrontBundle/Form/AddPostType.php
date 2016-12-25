@@ -7,6 +7,8 @@
 
 namespace FrontBundle\Form;
 
+use Doctrine\ORM\EntityRepository;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -26,6 +28,17 @@ class AddPostType extends AbstractType
         );
         $builder->add('title', TextType::class, array(
                 'attr' => array('placeholder' => 'post.form.placeholder.title')
+            )
+        );
+        $builder->add('challengeSubject', EntityType::class, array(
+                'class' => 'BackBundle:ChallengeSubject',
+                'choice_label' => 'name',
+                'query_builder' => function (EntityRepository $er) {
+                    return $er->createQueryBuilder('cs')
+                        ->andWhere('cs.startSubmissionDate <= :now')
+                        ->andWhere('cs.endSubmissionDate >= :now')
+                        ->setParameter('now', new \DateTime());
+                },
             )
         );
     }

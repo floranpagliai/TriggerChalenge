@@ -61,6 +61,7 @@ post:
 picture:
     title:
         last_pictures: "Les dernières photos publiés"
+        subject_pictures: "Les photos du challenge"
     element:
         pictures: "Photos"
     message:

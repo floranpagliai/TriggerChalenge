@@ -44,12 +44,10 @@ class PostController extends Controller
 
         $form->handleRequest($request);
         $errors = $this->get('validator')->validate($post);
-        if ($post->getCoverPicture() !== null && $post->getCoverPicture()->isBroken()) {
-            // TODO : Add check in validation
-            $message = $this->get('translator')->trans('picture.message.error.invalid_url');
-            $form->get('coverPicture')->get('url')->addError(new FormError($message));
-        }
         if ($form->isSubmitted() && $form->isValid()) {
+            $filename = $this->get('picture_uploader.service')->upload($post->getCoverPicture()->getFile());
+            $post->getCoverPicture()->setFilename($filename);
+
             $this->get('manager.post')->save($post);
 
             // TODO : Add flash

@@ -1,20 +1,16 @@
 {% extends '@Front/layout.html.twig' %}
 
 {% block body %}
-    {#<div class="main">#}
-        {#<div class="row">#}
-            {#<div class="col-lg-4 offset-lg-4">#}
-                {#<div class="card mt-1">#}
-
-                    {#<div class="card-block">#}
-                        {#{% include '@Front/Post/form.html.twig' %}#}
-                    {#</div>#}
-                {#</div>#}
-            {#</div>#}
-        {#</div>#}
-    {#</div>#}
-    <form enctype="multipart/form-data" class="dropzone" action="{{ app.request.uri }}" method="post" name="acme_dropzone_form" id="acme_dropzone_form">
-    {{ form_widget(form) }}
-    {{ form_end(form) }}
+    <div class="main">
+        <div class="row">
+            <div class="col-lg-4 offset-lg-4">
+                <div class="card mt-1">
+                    <div class="card-block">
+                        {% include '@Front/Post/form.html.twig' %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
 

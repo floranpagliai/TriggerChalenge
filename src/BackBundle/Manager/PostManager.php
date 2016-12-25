@@ -53,4 +53,20 @@ class PostManager extends AbstractManager
 
         return $q->getQuery()->getResult();
     }
+
+    public function getByChallengeSubject($subjectId, $limit = null, $orderBy = 'DESC')
+    {
+        $q = $this->em->createQueryBuilder()
+            ->select('post')
+            ->from($this->class, 'post')
+            ->leftJoin("post.coverPicture", "coverPicture")
+            ->leftJoin("post.author", "author")
+            ->where('post.challengeSubject = :subjectId')->setParameter('subjectId', $subjectId)
+            ->orderBy('post.createdAt', $orderBy);
+        if ($limit !== null) {
+            $q->setMaxResults($limit);
+        }
+
+        return $q->getQuery()->getResult();
+    }
 }

@@ -32,5 +32,31 @@
                 </div>
             </div>
         </div>
+
+        {% if challengeSubject.open or challengeSubject.past %}
+            <section>
+                <h2 class="section-title">{{ 'picture.title.subject_pictures'|trans }}</h2>
+                {% if challengeSubject.open %}
+                    <div class="row">
+                        <div class="col-md-8 offset-md-2 col-lg-6 offset-lg-3">
+                            <div class="card text-xs-center">
+                                <div class="card-block">
+                                    <p class="card-text">
+                                        <a href="{{ path('front_post_add') }}" class="btn btn-tc btn-primary">Soumettre
+                                            photo</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+                <div class="grid">
+                    {% for post in posts %}
+                        {% include 'FrontBundle:Post:thumbnail.html.twig' with { 'post': post } %}
+                    {% endfor %}
+                </div>
+            </section>
+        {% endif %}
+
     </div>
 {% endblock %}
