@@ -15,13 +15,13 @@
                 </a>
             {% endif %}
         </li>
-        {% if is_granted('ROLE_USER') %}
-            <li class="{% if currentPath == 'front_post_add' %}active{% endif %}">
-                <a href="{{ path('front_post_add') }}">
-                    <i class="icon-photo-camera icon-1_5x"></i>
-                </a>
-            </li>
-        {% endif %}
+        {#{% if is_granted('ROLE_USER') %}#}
+            {#<li class="{% if currentPath == 'front_post_add' %}active{% endif %}">#}
+                {#<a href="{{ path('front_post_add') }}">#}
+                    {#<i class="icon-photo-camera icon-1_5x"></i>#}
+                {#</a>#}
+            {#</li>#}
+        {#{% endif %}#}
         {% if is_granted('ROLE_ADMIN') %}
             <li class="{% if currentPath == 'back_index' %}active{% endif %}">
                 <a href="{{ path('back_index') }}">
