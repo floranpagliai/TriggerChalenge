@@ -49,7 +49,7 @@ class Post implements TimestampableInterface
     /**
      * @var ChallengeSubject
      * @ORM\ManyToOne(targetEntity="BackBundle\Entity\ChallengeSubject")
-     * @ORM\JoinColumn(name="challenge_subject_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="challenge_subject_id", referencedColumnName="id", nullable=false)
      */
     private $challengeSubject;
 
