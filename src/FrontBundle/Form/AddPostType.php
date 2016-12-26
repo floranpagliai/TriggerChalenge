@@ -31,8 +31,8 @@ class AddPostType extends AbstractType
             )
         );
         $builder->add('challengeSubject', EntityType::class, array(
-                'class' => 'BackBundle:ChallengeSubject',
-                'choice_label' => 'name',
+                'class'         => 'BackBundle:ChallengeSubject',
+                'choice_label'  => 'name',
                 'query_builder' => function (EntityRepository $er) {
                     return $er->createQueryBuilder('cs')
                         ->andWhere('cs.startSubmissionDate <= :now')
@@ -49,7 +49,8 @@ class AddPostType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'BackBundle\Entity\Post',
+            'data_class'         => 'BackBundle\Entity\Post',
+            'cascade_validation' => true,
         ));
     }
 }

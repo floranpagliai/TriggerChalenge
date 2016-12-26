@@ -8,6 +8,7 @@
 namespace BackBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity
@@ -28,6 +29,9 @@ class Picture
      */
     private $filename;
 
+    /**
+     * @Assert\Image()
+     */
     private $file;
 
     /**

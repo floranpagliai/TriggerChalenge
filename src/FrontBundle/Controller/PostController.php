@@ -45,14 +45,18 @@ class PostController extends Controller
         $form->handleRequest($request);
         $errors = $this->get('validator')->validate($post);
         if ($form->isSubmitted() && $form->isValid()) {
-            $filename = $this->get('picture_uploader.service')->upload($post->getCoverPicture()->getFile());
-            $post->getCoverPicture()->setFilename($filename);
+            try {
+                $filename = $this->get('picture_uploader.service')->upload($post->getCoverPicture()->getFile());
+                $post->getCoverPicture()->setFilename($filename);
 
-            $this->get('manager.post')->save($post);
+                $this->get('manager.post')->save($post);
 
-            // TODO : Add flash
+                // TODO : Add flash
 
-            return $this->redirect($this->generateUrl('front_post_show', array('postId' => $post->getId())));
+                return $this->redirect($this->generateUrl('front_post_show', array('postId' => $post->getPublicId())));
+            } catch (\Exception $e) {
+                $form->addError(new FormError($e->getMessage()));
+            }
         }
 
         return $this->render(
