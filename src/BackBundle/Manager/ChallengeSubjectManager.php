@@ -43,9 +43,9 @@ class ChallengeSubjectManager extends AbstractManager
         $q = $this->em->createQueryBuilder()
             ->select('cs')
             ->from($this->class, 'cs')
-            ->andWhere('cs.startSubmissionDate <= :now')
+            ->andWhere('cs.endSubmissionDate <= :now')
             ->setParameter('now', new DateTime())
-            ->orderBy('cs.startSubmissionDate', 'ASC');
+            ->orderBy('cs.endSubmissionDate', 'ASC');
         if ($limit !== null) {
             $q->setMaxResults($limit);
         }
