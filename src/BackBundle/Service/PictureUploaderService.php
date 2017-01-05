@@ -16,8 +16,7 @@ class PictureUploaderService
     private static $allowedMimeTypes = array(
         'image/jpeg',
         'image/png',
-        'image/gif',
-        'application/octet-stream'
+        'image/gif'
     );
 
     private $filesystem;
