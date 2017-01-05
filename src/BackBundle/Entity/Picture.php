@@ -30,7 +30,9 @@ class Picture
     private $filename;
 
     /**
-     * @Assert\Image()
+     * @Assert\Image(
+     *     maxSize = "20M",
+     * )
      */
     private $file;
 
