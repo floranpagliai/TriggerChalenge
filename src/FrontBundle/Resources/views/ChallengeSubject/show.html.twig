@@ -14,7 +14,7 @@
             <div class="col-md-8 offset-md-2 col-lg-6 offset-lg-3">
                 <div class="card">
                     {% if challengeSubject.coverPicture is not null %}
-                        <img class="card-img img-fluid" src="{{ challengeSubject.coverPicture.url }}"
+                        <img class="card-img img-fluid" src="{{ challengeSubject.coverPicture.url(storage_bucket_name) }}"
                              alt="{{ challengeSubject.slug }}" style="width: 100%;">
                     {% endif %}
                 </div>
@@ -36,7 +36,7 @@
         {% if challengeSubject.open or challengeSubject.past %}
             <section>
                 <h2 class="section-title">{{ 'picture.title.subject_pictures'|trans }}</h2>
-                {% if challengeSubject.open %}
+                {% if challengeSubject.open and is_granted('ROLE_USER') %}
                     <div class="row">
                         <div class="col-md-8 offset-md-2 col-lg-6 offset-lg-3">
                             <div class="card text-xs-center">

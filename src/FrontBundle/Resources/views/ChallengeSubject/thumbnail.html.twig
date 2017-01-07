@@ -1,7 +1,7 @@
 <div class="col-lg-4">
     <div class="card">
         {% if challengeSubject.coverPicture is not null %}
-            <img class="card-img-top img-fluid" src="{{ challengeSubject.coverPicture.url }}"  alt="{{ challengeSubject.slug }}" style="width: 100%;">
+            <img class="card-img-top img-fluid" src="{{ challengeSubject.coverPicture.url(storage_bucket_name) }}"  alt="{{ challengeSubject.slug }}" style="width: 100%;">
         {% endif %}
         <div class="card-block">
             <div class="text-xs-center">

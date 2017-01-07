@@ -84,8 +84,8 @@ class Picture
         $this->file = $file;
     }
 
-    public function getUrl()
+    public function getUrl($bucket)
     {
-        return 'https://storage.googleapis.com/triggerchallenge-pictures/' . $this->filename;
+        return 'https://storage.googleapis.com/' . $bucket . '/' . $this->filename;
     }
 }

@@ -19,7 +19,7 @@
             </div>
             <div class="form-group {% if form.coverPicture.vars.errors|length %} has-danger{% endif %}">
                 <label>{{ 'challenge_subject.element.cover_piture'|trans }}</label>
-                {{ form_widget(form.coverPicture.url, {'attr': {'class': 'form-control'}}) }}
+                {{ form_widget(form.coverPicture.file, {'attr': {'class': 'form-control'}}) }}
             </div>
             <div class="form-group {% if form.type.vars.errors|length %} has-danger{% endif %}">
                 <label>{{ 'challenge_subject.element.type'|trans }}</label>

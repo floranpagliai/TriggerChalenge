@@ -47,6 +47,8 @@ class ChallengeSubjectController extends Controller
         $errors = $this->get('validator')->validate($challengeSubject);
         if ($form->isSubmitted() && $form->isValid()) {
             try {
+                $filename = $this->get('picture_uploader.service')->upload($challengeSubject->getCoverPicture()->getFile());
+                $challengeSubject->getCoverPicture()->setFilename($filename);
                 $this->get('manager.challenge')->save($challengeSubject);
 
                 return $this->redirectToRoute('back_challenge_index');

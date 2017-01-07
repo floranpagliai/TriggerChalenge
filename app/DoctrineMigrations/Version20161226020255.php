@@ -19,7 +19,6 @@ class Version20161226020255 extends AbstractMigration
         $this->abortIf($this->connection->getDatabasePlatform()->getName() != 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
         $this->addSql('ALTER TABLE challenge_subjects CHANGE description description VARCHAR(200) NOT NULL');
-        $this->addSql('ALTER TABLE posts CHANGE challenge_subject_id challenge_subject_id INT NOT NULL');
     }
 
     /**
@@ -31,6 +30,5 @@ class Version20161226020255 extends AbstractMigration
         $this->abortIf($this->connection->getDatabasePlatform()->getName() != 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
         $this->addSql('ALTER TABLE challenge_subjects CHANGE description description VARCHAR(210) DEFAULT \'\' NOT NULL COLLATE utf8_unicode_ci');
-        $this->addSql('ALTER TABLE posts CHANGE challenge_subject_id challenge_subject_id INT DEFAULT NULL');
     }
 }
