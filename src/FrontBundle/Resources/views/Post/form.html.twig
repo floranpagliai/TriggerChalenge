@@ -1,4 +1,4 @@
-{{ form_start(form) }}
+{{ form_start(form, {'attr': {'id': 'post-form'}}) }}
 <div class="center">
     {% if errors is not null %}
         {% for error in errors %}
@@ -18,7 +18,8 @@
         {{ form_widget(form.coverPicture.file) }}
         {{ form_errors(form.coverPicture.file) }}
     </div>
-    <input class="btn btn-outline-secondary" type="submit" value="{{ 'post.action.publish'|trans }}"/>
+    <input id="post-form-submit" class="btn btn-outline-secondary" type="submit" value="{{ 'post.action.publish'|trans }}"/>
+    <i id="post-form-wheel" class="fa fa-circle-o-notch fa-spin fa-2x fa-fw" style="display: none;"></i>
     {{ form_end(form) }}
 </div>
 {{ form(form) }}
