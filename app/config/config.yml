@@ -30,7 +30,7 @@ framework:
     session:
         # http://symfony.com/doc/current/reference/configuration/framework.html#handler-id
         handler_id:  session.handler.native_file
-        save_path:   "%kernel.root_dir%/../var/sessions/%kernel.environment%"
+        save_path:   "/var/lib/php/sessions"
     fragments:       ~
     http_method_override: true
     assets: ~
@@ -42,6 +42,7 @@ twig:
     globals:
         app_name:     "%app.name%"
         app_description: "%app.description%"
+        storage_bucket_name : "%storage.bucket_name%"
 
 # Doctrine Configuration
 doctrine:
