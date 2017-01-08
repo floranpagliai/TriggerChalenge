@@ -1,5 +1,11 @@
 {% extends '@Front/layout.html.twig' %}
 
+{% block page_title %}
+    {% set challenge = challengeSubject.challenge %}
+    {% set subjectName = challengeSubject.name ~ ' - ' ~ ('challenge_frequency_type.element.'~challenge.frequency)|trans ~ ' #' ~ challengeNumber  %}
+    {{ subjectName }}
+{% endblock %}
+
 {% block body %}
     {% set challenge = challengeSubject.challenge %}
     <div class="main">
@@ -14,7 +20,8 @@
             <div class="col-md-8 offset-md-2 col-lg-6 offset-lg-3">
                 <div class="card">
                     {% if challengeSubject.coverPicture is not null %}
-                        <img class="card-img img-fluid" src="{{ challengeSubject.coverPicture.url(storage_bucket_name) }}"
+                        <img class="card-img img-fluid"
+                             src="{{ challengeSubject.coverPicture.url(storage_bucket_name) }}"
                              alt="{{ challengeSubject.slug }}" style="width: 100%;">
                     {% endif %}
                 </div>

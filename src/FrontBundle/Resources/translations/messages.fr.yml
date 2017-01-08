@@ -1,5 +1,6 @@
 "Bad credentials.": "Nom d'utilisateur ou mot de passe incorrect."
 "for": "pour"
+"by": "par"
 user:
     title:
         login: "Connexion"

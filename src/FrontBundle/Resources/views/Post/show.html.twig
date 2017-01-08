@@ -1,5 +1,9 @@
 {% extends '@Front/layout.html.twig' %}
 
+{% block page_title %}
+    {{ post.title }} {{ 'by'|trans }} {{ post.author.fullName }}
+{% endblock %}
+
 {% block body %}
     {% set challengeSubject = post.challengeSubject %}
     {% set challenge = challengeSubject.challenge %}
