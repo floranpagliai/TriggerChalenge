@@ -20,6 +20,6 @@ parameters:
     secret:            ThisTokenIsNotSoSecretChangeIt
 
     app.name: TriggerChallenge
-    app.description: Photography Challenges
+    app.description: Challenge de photographie
 
     storage.bucket_name: ~
