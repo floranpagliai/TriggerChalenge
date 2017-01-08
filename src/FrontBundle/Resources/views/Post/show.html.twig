@@ -1,13 +1,22 @@
 {% extends '@Front/layout.html.twig' %}
 
+{% block page_title %}
+    {{ post.title }} {{ 'by'|trans }} {{ post.author.fullName }}
+{% endblock %}
+
 {% block body %}
+    {% set challengeSubject = post.challengeSubject %}
+    {% set challenge = challengeSubject.challenge %}
+    {% set challengeNumber = challenge_subject_provider.getSequenceNumber(challengeSubject) %}
+    {% set subjectName = ('challenge_frequency_type.element.'~challenge.frequency)|trans ~ ' #' ~ challengeNumber ~ ' - ' ~ challengeSubject.name %}
+
     <div class="main">
         <div class="post">
             <div class="page-title">
                 <h2>{{ post.title }}</h2>
             </div>
             <div class="post-photo">
-                <img class="img-centered" src="{{ post.coverPicture.url(storage_bucket_name) }}"/>
+                <img class="img-centered" title="{{ post.author.fullName }} {{ 'for'|trans }} {{ subjectName }}" src="{{ post.coverPicture.url(storage_bucket_name) }}"/>
             </div>
             <div class="post-sidebar">
                 {% if post.author.profilePicture is not null %}

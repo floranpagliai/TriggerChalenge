@@ -36,7 +36,7 @@ class PostManager extends AbstractManager
      * @param null $limit
      * @param string $orderBy
      *
-     * @return \BackBundle\Entity\Post[]
+     * @return Post[]
      */
     public function getByUserId($userId, $limit = null, $orderBy = 'DESC')
     {
@@ -54,6 +54,13 @@ class PostManager extends AbstractManager
         return $q->getQuery()->getResult();
     }
 
+    /**
+     * @param $subjectId
+     * @param null $limit
+     * @param string $orderBy
+     *
+     * @return Post[]
+     */
     public function getByChallengeSubject($subjectId, $limit = null, $orderBy = 'DESC')
     {
         $q = $this->em->createQueryBuilder()

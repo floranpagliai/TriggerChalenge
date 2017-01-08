@@ -43,6 +43,7 @@ twig:
         app_name:     "%app.name%"
         app_description: "%app.description%"
         storage_bucket_name : "%storage.bucket_name%"
+        challenge_subject_provider: "@provider.challenge_subject"
 
 # Doctrine Configuration
 doctrine:
