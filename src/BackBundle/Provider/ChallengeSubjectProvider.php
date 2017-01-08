@@ -9,6 +9,7 @@ namespace BackBundle\Provider;
 
 
 use BackBundle\Entity\Challenge;
+use BackBundle\Entity\ChallengeSubject;
 use BackBundle\Manager\ChallengeManager;
 use BackBundle\Manager\ChallengeSubjectManager;
 
@@ -59,5 +60,15 @@ class ChallengeSubjectProvider
         }
 
         return $ongoingFeaturedSubjects;
+    }
+
+    /**
+     * @param ChallengeSubject $challengeSubject
+     *
+     * @return int
+     */
+    public function getSequenceNumber(ChallengeSubject $challengeSubject)
+    {
+        return $this->challengeSubjectManager->countPreviousByChallenge($challengeSubject->getStartSubmissionDate(), $challengeSubject->getChallenge()->getId());
     }
 }
