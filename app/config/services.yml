@@ -1,7 +1,7 @@
 services:
     google_cloud_storage.service:
         class: BackBundle\Service\GoogleCloudStorageService
-        arguments: ["TriggerChallenge-4915969a6695.json"]
+        arguments: ["@service_container", "TriggerChallenge-4915969a6695.json"]
     picture_uploader.service:
         class: BackBundle\Service\PictureUploaderService
         arguments: ["@picture_storage_filesystem"]
