@@ -48,6 +48,9 @@ class PostController extends Controller
             try {
                 $filename = $this->get('picture_uploader.service')->upload($post->getCoverPicture()->getFile());
                 $post->getCoverPicture()->setFilename($filename);
+//                $thumbnail = $this->get('picture_uploader.service')->crop($post->getCoverPicture()->getFile(), 300, 300);
+//                $filename = $this->get('picture_uploader.service')->upload($thumbnail, 'thumbnails/');
+//                $post->getThumbnailPicture()->setFilename($filename);
 
                 $this->get('manager.post')->save($post);
 
