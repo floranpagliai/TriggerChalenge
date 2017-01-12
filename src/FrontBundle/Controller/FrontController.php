@@ -9,7 +9,7 @@ class FrontController extends Controller
     public function indexAction()
     {
         $ongoingFeaturedChallenges = $this->get('provider.challenge_subject')->getOngoingFeatured();
-        $posts = $this->get('manager.post')->getAll(8);
+        $posts = $this->get('manager.post')->getAll(10);
 
         return $this->render('FrontBundle:Index:index.html.twig',
             array(

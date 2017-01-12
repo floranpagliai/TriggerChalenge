@@ -8,6 +8,7 @@
 namespace BackBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -69,7 +70,7 @@ class Picture
     }
 
     /**
-     * @return mixed
+     * @return UploadedFile
      */
     public function getFile()
     {
@@ -77,7 +78,7 @@ class Picture
     }
 
     /**
-     * @param mixed $file
+     * @param UploadedFile $file
      */
     public function setFile($file)
     {

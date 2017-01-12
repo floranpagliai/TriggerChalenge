@@ -60,13 +60,15 @@ class Version20170112201740 extends AbstractMigration implements ContainerAwareI
                 $image = new ImageResizer($post->getCoverPicture()->getUrl($this->container->getParameter('storage.bucket_name')));
                 $image->resizeImage(300, 300, 'crop');
                 $path = $this->container->get('kernel')->getRootDir() . '/../web';
-                $image->saveImage($path . '/tmp.jpg');
-                $file = new UploadedFile($path . '/tmp.jpg', 'tmp.jpg', 'image/jpeg', null, null, true);
-                $filename = $this->container->get('picture_uploader.service')->upload($file, 'thumbnails/');
+                $filename = '/tmp'.strrchr($post->getCoverPicture()->getFilename(),'.');
+                $image->saveImage($path . $filename);
+                $file = new UploadedFile($path . $filename, $filename, mime_content_type($path . $filename), null, null, true);
+                $filename2 = $this->container->get('picture_uploader.service')->upload($file, 'thumbnails/');
                 $picture = new Picture();
-                $picture->setFilename($filename);
+                $picture->setFilename($filename2);
                 $post->setThumbnailPicture($picture);
                 $postManager->save($post);
+                unlink($path . $filename);
             }
         }
     }

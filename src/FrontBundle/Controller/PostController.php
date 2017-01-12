@@ -7,10 +7,13 @@
 
 namespace FrontBundle\Controller;
 
+use BackBundle\Entity\Picture;
 use BackBundle\Entity\Post;
+use BackBundle\Utils\ImageResizer;
 use FrontBundle\Form\AddPostType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\FormError;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 
 class PostController extends Controller
@@ -48,9 +51,19 @@ class PostController extends Controller
             try {
                 $filename = $this->get('picture_uploader.service')->upload($post->getCoverPicture()->getFile());
                 $post->getCoverPicture()->setFilename($filename);
-//                $thumbnail = $this->get('picture_uploader.service')->crop($post->getCoverPicture()->getFile(), 300, 300);
-//                $filename = $this->get('picture_uploader.service')->upload($thumbnail, 'thumbnails/');
-//                $post->getThumbnailPicture()->setFilename($filename);
+
+                $file = $post->getCoverPicture()->getFile();
+                $image = new ImageResizer($post->getCoverPicture()->getUrl($this->getParameter('storage.bucket_name')));
+                $image->resizeImage(300, 300, 'crop');
+                $path = $this->get('kernel')->getRootDir() . '/../web';
+                $filename = '/tmp'.strrchr($post->getCoverPicture()->getFilename(),'.');;
+                $image->saveImage($path . $filename);
+                $file = new UploadedFile($path . $filename, $filename, $file->getMimeType(), null, null, true);
+                $filename2 = $this->get('picture_uploader.service')->upload($file, 'thumbnails/');
+                $picture = new Picture();
+                $picture->setFilename($filename2);
+                $post->setThumbnailPicture($picture);
+                unlink($path . $filename);
 
                 $this->get('manager.post')->save($post);
 
