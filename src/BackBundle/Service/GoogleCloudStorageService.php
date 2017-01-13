@@ -7,10 +7,10 @@
 
 namespace BackBundle\Service;
 
-
+use Google_Service_Storage;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
-class GoogleCloudStorageService extends \Google_Service_Storage
+class GoogleCloudStorageService extends Google_Service_Storage
 {
     /**
      * @param $privateKeyPath
@@ -21,7 +21,7 @@ class GoogleCloudStorageService extends \Google_Service_Storage
 
         $path = $container->get('kernel')->getRootDir() . '/../web/';
         $client->setAuthConfig($path.$privateKeyPath);
-        $client->addScope(\Google_Service_Storage::DEVSTORAGE_FULL_CONTROL);
+        $client->addScope(Google_Service_Storage::DEVSTORAGE_FULL_CONTROL);
 
         parent::__construct($client);
     }
