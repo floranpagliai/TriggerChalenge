@@ -33,9 +33,9 @@ class Version20170112201740 extends AbstractMigration implements ContainerAwareI
         // this up() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE posts ADD thumbnail_picture_id INT DEFAULT NULL');
-        $this->addSql('ALTER TABLE posts ADD CONSTRAINT FK_885DBAFAE2D73BDF FOREIGN KEY (thumbnail_picture_id) REFERENCES pictures (id)');
-        $this->addSql('CREATE INDEX IDX_885DBAFAE2D73BDF ON posts (thumbnail_picture_id)');
+//        $this->addSql('ALTER TABLE posts ADD thumbnail_picture_id INT DEFAULT NULL');
+//        $this->addSql('ALTER TABLE posts ADD CONSTRAINT FK_885DBAFAE2D73BDF FOREIGN KEY (thumbnail_picture_id) REFERENCES pictures (id)');
+//        $this->addSql('CREATE INDEX IDX_885DBAFAE2D73BDF ON posts (thumbnail_picture_id)');
     }
 
     /**
