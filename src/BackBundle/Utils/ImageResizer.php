@@ -9,7 +9,7 @@ class ImageResizer
     private $height;
     private $imageResized;
 
-    function __construct($fileName)
+    public function __construct($fileName)
     {
         // *** Open up the file
         $this->image = $this->openImage($fileName);
