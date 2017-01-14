@@ -16,16 +16,20 @@
                 <h2>{{ post.title }}</h2>
             </div>
             <div class="post-photo">
-                <img class="img-centered" title="{{ post.author.fullName }} {{ 'for'|trans }} {{ subjectName }}" src="{{ post.coverPicture.url(storage_bucket_name) }}"/>
+                <img class="img-centered" title="{{ post.author.fullName }} {{ 'for'|trans }} {{ subjectName }}"
+                     src="{{ post.coverPicture.url(storage_bucket_name) }}"/>
             </div>
             <div class="post-sidebar">
-                {% if post.author.profilePicture is not null %}
-                    <img class="avatar" src="{{ post.author.profilePicture.url }}" alt="{{ post.author.firstName }}"/>
-                {% else %}
-                    <img class="avatar" src="{{ asset('bundles/front/img/user-unknow.png') }}"
-                         alt="{{ post.author.firstName }}"/>
-                {% endif %}
-                <span>{{ post.author.fullName }}</span>
+                <a href="{{ path('front_user_profile', {'userId': post.author.publicId, 'fullName': post.author.fullName|lower|replace({' ':''})}) }}">
+                    {% if post.author.profilePicture is not null %}
+                        <img class="avatar" src="{{ post.author.profilePicture.url(storage_bucket_name) }}"
+                             alt="{{ post.author.firstName }}"/>
+                    {% else %}
+                        <img class="avatar" src="{{ asset('bundles/front/img/user-unknow.png') }}"
+                             alt="{{ post.author.firstName }}"/>
+                    {% endif %}
+                    <span>{{ post.author.fullName }}</span>
+                </a>
                 <span class="small"><i class="fa fa-calendar-o"></i>{{ post.createdAt|date('d M') }}</span>
             </div>
         </div>
