@@ -9,7 +9,7 @@ class ImageResizer
     private $height;
     private $imageResized;
 
-    function __construct($fileName)
+    public function __construct($fileName)
     {
         // *** Open up the file
         $this->image = $this->openImage($fileName);
@@ -171,7 +171,6 @@ class ImageResizer
         $cropStartY = ($optimalHeight / 2) - ($newHeight / 2);
 
         $crop = $this->imageResized;
-        //imagedestroy($this->imageResized);
 
         // *** Now crop from center to exact requested size
         $this->imageResized = imagecreatetruecolor($newWidth, $newHeight);
