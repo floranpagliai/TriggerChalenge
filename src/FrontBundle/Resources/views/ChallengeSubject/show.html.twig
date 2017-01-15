@@ -47,7 +47,7 @@
                         <div class="progress-bar-main-container">
                             <div class="row-fluid wrap">
                                 <div class="col-xs-3" style="padding: 0;">
-                                    <div class="progress-bar-number">{{ challengeSubject.startSubmissionDate|localizeddate('long', 'none') }}</div>
+                                    <div class="progress-bar-number">{{ challengeSubject.startSubmissionDate|localizeddate('long', 'none', app.request.locale) }}</div>
                                 </div>
                                 <div class="col-xs-6">
                                     {% set begin = date(challengeSubject.startSubmissionDate).timestamp %}
@@ -59,7 +59,7 @@
                                     </div>
                                 </div>
                                 <div class="col-xs-3" style="padding: 0;">
-                                    <div class="progress-bar-number">{{ challengeSubject.endSubmissionDate|localizeddate('long', 'none') }}</div>
+                                    <div class="progress-bar-number">{{ challengeSubject.endSubmissionDate|localizeddate('long', 'none', app.request.locale) }}</div>
                                 </div>
                             </div>
                         </div>
