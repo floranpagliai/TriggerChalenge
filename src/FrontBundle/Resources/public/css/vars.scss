@@ -12,6 +12,8 @@ $footer-background-color: transparent;
 $footer-color: #FFF;
 $input-focus-color: #296DB2;
 
+$link-hover-color: $dark-primary-color;
+
 @mixin border-radius($radius) {
   -webkit-border-radius: $radius;
   -moz-border-radius: $radius;
