@@ -1,4 +1,8 @@
 services:
+    twig.extension.intl:
+        class: Twig_Extensions_Extension_Intl
+        tags:
+            - { name: twig.extension }
     google_cloud_storage.service:
         class: BackBundle\Service\GoogleCloudStorageService
         arguments: ["@service_container", "TriggerChallenge-4915969a6695.json"]

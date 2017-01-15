@@ -34,6 +34,22 @@
 {% endif %}
 
 <body class="{% block body_class %}{% endblock %}">
+
+{% for flashMessage in app.session.flashbag.get('success') %}
+    <div id="messenger" class="messenger-success" data-message="{{ flashMessage|trans }}">
+    </div>
+{% endfor %}
+
+{% for flashMessage in app.session.flashbag.get('info') %}
+    <div id="messenger" class="messenger-info" data-message="{{ flashMessage|trans }}">
+    </div>
+{% endfor %}
+
+{% for flashMessage in app.session.flashbag.get('error') %}
+    <div id="messenger" class="messenger-error" data-message="{{ flashMessage|trans }}">
+    </div>
+{% endfor %}
+
 <div class="container-fluid">
     <header>
         <a href="{{ path('front_homepage') }}">
@@ -55,6 +71,7 @@
     'public/js/jquery-3.1.1.min.js'
     'public/js/bootstrap-notify.js'
     'public/js/dropzone.min.js'
+    'public/js/messenger.js'
     '@FrontBundle/Resources/public/js/modernizr.js'
     '@FrontBundle/Resources/public/js/main.js' %}
     <script type="text/javascript" src="{{ asset_url }}"></script>
@@ -79,6 +96,19 @@
             $('#post-form').submit(function() {
                 document.getElementById("post-form-submit").style.display = "none";
                 document.getElementById("post-form-wheel").style.display = "inline-block";
+            });
+
+            $('.progress-bar-container[data-percentage]').each(function () {
+                var progress = $(this);
+                var percentage = Math.ceil($(this).attr('data-percentage'));
+                $({countNum: 0}).animate({countNum: percentage}, {
+                    duration: 2000,
+                    easing: 'linear',
+                    step: function () {
+                        var pct = Math.floor(this.countNum) + '%';
+                        progress.children().first().css('width', pct);
+                    }
+                });
             });
         });
         $(window).on("load", function () {
