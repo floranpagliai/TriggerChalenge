@@ -1,5 +1,8 @@
 user_invite:
-    warning:
-        not_invited: "Cet email n'a pas été invité."
-        expired: "L'invitation à expiré."
-        wrong_code: "Le code d'invitation est faux."
+    message:
+        warning:
+            not_invited: "Cet email n'a pas été invité."
+            expired: "L'invitation à expiré."
+            wrong_code: "Le code d'invitation est faux."
+        success:
+            invited: "Cet email a été invité avec succès."

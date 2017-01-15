@@ -35,10 +35,10 @@ class UserInviteProvider
     {
         $invitation = $this->userInviteManager->getByEmailAndCode($email, $code);
         if (!$invitation) {
-            throw new \Exception('user_invite.warning.not_invited');
+            throw new \Exception('user_invite.message.warning.not_invited');
         }
         if ($invitation->getExpireAt() < new \DateTime()) {
-            throw new \Exception('user_invite.warning.expired');
+            throw new \Exception('user_invite.message.warning.expired');
         }
     }
 
@@ -46,7 +46,7 @@ class UserInviteProvider
     {
         $invitation = $this->userInviteManager->getOneByEmailNonExpired($email);
         if ($invitation) {
-            throw new \Exception('user_invite.warning.already_invited');
+            throw new \Exception('user_invite.message.warning.already_invited');
         }
         $user = $this->userManager->getOneByEmail($email);
         if ($user) {

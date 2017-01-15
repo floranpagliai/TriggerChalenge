@@ -24,6 +24,21 @@
 </head>
 <body>
 
+{% for flashMessage in app.session.flashbag.get('success') %}
+    <div id="messenger" class="messenger-success" data-message="{{ flashMessage|trans }}">
+    </div>
+{% endfor %}
+
+{% for flashMessage in app.session.flashbag.get('info') %}
+    <div id="messenger" class="messenger-info" data-message="{{ flashMessage|trans }}">
+    </div>
+{% endfor %}
+
+{% for flashMessage in app.session.flashbag.get('error') %}
+    <div id="messenger" class="messenger-error" data-message="{{ flashMessage|trans }}">
+    </div>
+{% endfor %}
+
 <div class="wrapper">
 
     {% include 'BackBundle::sidebar.html.twig' %}
@@ -117,6 +132,7 @@
     'public/js/i18n/datepicker.fr.js'
     'public/js/bootstrap-notify.js'
     'public/js/ajax-request.js'
+    'public/js/messenger.js'
     'bundles/back/js/*' %}
     <script type="text/javascript" src="{{ asset_url }}"></script>
     {% endjavascripts %}

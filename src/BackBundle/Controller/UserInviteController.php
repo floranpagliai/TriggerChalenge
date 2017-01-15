@@ -38,7 +38,9 @@ class UserInviteController extends Controller
             try {
                 $this->get('provider.user_invite')->isAlreadyInvited($userInvite->getEmail());
                 $this->get('manager.user_invite')->save($userInvite);
-                // TODO : add flash
+
+                $message = $this->get('translator')->trans('user_invite.message.success.invited');
+                $this->addFlash('success', $message);
 
                 $mailer = $this->get('provider.mailer');
                 $mailer->sendUserInvitation($userInvite);
