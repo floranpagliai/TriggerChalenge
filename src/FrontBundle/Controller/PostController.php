@@ -67,7 +67,8 @@ class PostController extends Controller
 
                 $this->get('manager.post')->save($post);
 
-                // TODO : Add flash
+                $message = $this->get('translator')->trans('post.message.success.added');
+                $this->addFlash('success', $message);
 
                 return $this->redirect($this->generateUrl('front_post_show', array('postId' => $post->getPublicId())));
             } catch (\Exception $e) {
