@@ -81,7 +81,7 @@
                 document.getElementById("post-form-wheel").style.display = "inline-block";
             });
 
-            $('.bar-container[data-percentage]').each(function () {
+            $('.progress-bar-container[data-percentage]').each(function () {
                 var progress = $(this);
                 var percentage = Math.ceil($(this).attr('data-percentage'));
                 $({countNum: 0}).animate({countNum: percentage}, {
