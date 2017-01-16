@@ -44,17 +44,17 @@ class ChallengeSubjectProvider
         /** @var Challenge[] $featuredChallenges */
         $featuredChallenges = $this->challengeManager->loadBy(array('featured' => true));
         foreach ($featuredChallenges as $featuredChallenge) {
-            $ongoingSubjects = $this->challengeSubjectManager->getOngoing(1);
+            $ongoingSubjects = $this->challengeSubjectManager->getOngoing($subjectToShow);
             $subjectToShow -= sizeof($ongoingSubjects);
             $previousSubjects = $this->challengeSubjectManager->getPrevious(1);
             $subjectToShow -= sizeof($previousSubjects);
-            $nextSubject = $this->challengeSubjectManager->getNext($subjectToShow);
-            $subjectToShow -= sizeof($nextSubject);
+            $nextSubjects = $this->challengeSubjectManager->getNext($subjectToShow);
+            $subjectToShow -= sizeof($nextSubjects);
             if ($subjectToShow > 0) {
                 $subjectToShow += sizeof($previousSubjects);
                 $previousSubjects = $this->challengeSubjectManager->getPrevious($subjectToShow);
             }
-            $subjects = array_merge($previousSubjects, $ongoingSubjects, $nextSubject);
+            $subjects = array_merge($previousSubjects, $ongoingSubjects, $nextSubjects);
             $ongoingFeaturedSubjects[] = array('challenge' => $featuredChallenge,
                                                'subjects'  => $subjects);
         }
