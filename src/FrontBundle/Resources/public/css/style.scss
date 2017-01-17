@@ -48,94 +48,6 @@ p {
   margin-bottom: 60px;
 }
 
-/* Grid container */
-.grid {
-  position: relative;
-  padding-top: 8px;
-}
-
-.grid-item {
-  /*padding: 45px 55px 30px;*/
-  /*position: relative;*/
-  cursor: pointer;
-  color: #fff;
-  text-align: center;
-  position: relative;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-direction: normal;
-  -webkit-box-orient: vertical;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-justify-content: center;
-  justify-content: center;
-  overflow: hidden;
-}
-
-.grid-item .grid-item-picture {
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  z-index: -10;
-  transition: transform 0.2s ease-in-out;
-  object-fit: cover;
-}
-
-.grid-item:hover .grid-item-picture {
-  transform: scale(1.15, 1.15);
-}
-
-.grid-item .overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: none;
-  color: #FFF;
-}
-
-.grid-item:hover .overlay {
-  display: block;
-  background: rgba(189, 189, 189, .2);
-}
-
-.grid-item .grid-item-picture.portrait {
-  width: 100%;
-  height: auto;
-}
-
-.grid-item .grid-item-title {
-  color: #FFF;
-  font-size: 30px;
-  font-weight: 300;
-  letter-spacing: 12px;
-  text-transform: uppercase;
-  margin-top: 0.83em;
-  margin-bottom: 0.83em;
-}
-
-.grid-item:hover .grid-item-title {
-  color: $dark-primary-color;
-}
-
-.grid-item-footer {
-  text-align: left;
-  width: 100%;
-  position: absolute;
-  bottom: 10px;
-  color: #FFF;
-}
-
-.grid-item-footer span,
-.grid-item-footer img {
-  margin-left: 8px;
-  vertical-align: middle;
-}
-
 .small {
   font-size: 12px;
   font-weight: 100;
@@ -209,36 +121,7 @@ span.my-tooltip {
 
 }
 
-@media screen and (min-width: 600px) {
-  .grid {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-flex-wrap: wrap;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
-  }
-
-  /* 2 columns */
-  .grid .grid-item {
-    width: 50%;
-  }
-}
-
-@media screen and (min-width: 900px) {
-  /* 3 columns */
-  .grid .grid-item {
-    width: 33.333%;
-  }
-}
-
 @media screen and (min-width: 1200px) {
-  /* 4 columns */
-  .grid .grid-item {
-    width: 25%;
-  }
-
   .main {
     margin-top: 80px;
     margin-bottom: 80px;
@@ -277,27 +160,6 @@ span.my-tooltip {
       top: 10px;
       left: -20px;
     }
-  }
-}
-
-@media screen and (min-width: 1500px) {
-  /* 5 columns */
-  .grid .grid-item {
-    width: 20%;
-  }
-}
-
-@media screen and (min-width: 1800px) {
-  /* 6 columns */
-  .grid .grid-item {
-    width: 16.66%;
-  }
-}
-
-@media screen and (min-width: 2100px) {
-  /* 7 columns */
-  .grid .grid-item {
-    width: 14.285%;
   }
 }
 
