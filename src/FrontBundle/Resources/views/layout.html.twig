@@ -97,19 +97,6 @@
                 document.getElementById("post-form-submit").style.display = "none";
                 document.getElementById("post-form-wheel").style.display = "inline-block";
             });
-
-            $('.progress-bar-container[data-percentage]').each(function () {
-                var progress = $(this);
-                var percentage = Math.ceil($(this).attr('data-percentage'));
-                $({countNum: 0}).animate({countNum: percentage}, {
-                    duration: 2000,
-                    easing: 'linear',
-                    step: function () {
-                        var pct = Math.floor(this.countNum) + '%';
-                        progress.children().first().css('width', pct);
-                    }
-                });
-            });
         });
         $(window).on("load", function () {
             $('.img-centered').each(function () {
@@ -151,7 +138,7 @@
             var js, fjs = d.getElementsByTagName(s)[0];
             if (d.getElementById(id)) {return;}
             js = d.createElement(s); js.id = id;
-            js.src = "//connect.facebook.net/fr_FR/sdk.js";
+            js.src = "//connect.facebook.net/en_US/sdk.js";
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));
     </script>
