@@ -53,6 +53,9 @@
                                 {% set now = date().timestamp %}
                                 {% set end = date(challengeSubject.endSubmissionDate).timestamp %}
                                 {% set percent = (now-begin) / (end-begin) * 100 %}
+                                {% if  percent < 0%}
+                                    {% set percent = 0 %}
+                                {% endif %}
                                 <div class="progress-bar-container">
                                     <div class="progress-bar" style="width: {{ percent }}%;"></div>
                                 </div>
