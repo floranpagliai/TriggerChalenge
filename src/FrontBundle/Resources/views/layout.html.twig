@@ -80,10 +80,6 @@
     <script type="text/javascript">
         function squareGrid() {
             $('.grid-item').each(function () {
-                var childImg = $(this).find('.grid-item-picture');
-                if (childImg.width() < childImg.height()) {
-                    childImg.addClass('portrait');
-                }
                 $(this).css({'height': $(this).width() + 'px'});
             });
         }
