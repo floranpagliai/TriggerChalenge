@@ -13,10 +13,15 @@
     {#<link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}" type="text/css"/>#}
     <link rel="stylesheet" href="{{ asset('bundles/bmatznerfontawesome/css/font-awesome.css') }}" type="text/css"/>
     <link href="https://file.myfontastic.com/6FgmP4oJ7DyT3k5QBFvddi/icons.css" rel="stylesheet">
-    {% stylesheets filter='cssrewrite, scssphp' output="css/admin.css"
+    {% stylesheets
     'public/css/animate.css'
     'public/css/datepicker.min.css'
-    'bundles/back/css/*' %}
+    %}
+    <link rel="stylesheet" href="{{ asset_url }}" type="text/css"/>
+    {% endstylesheets %}
+    {% stylesheets filter='cssrewrite, scssphp' output="css/admin.css"
+    'bundles/back/css/*'
+    %}
     <link rel="stylesheet" href="{{ asset_url }}" type="text/css"/>
     {% endstylesheets %}
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>

@@ -4,14 +4,26 @@
     <div class="main">
         <section>
             {% for ongoingFeaturedChallenge in ongoingFeaturedChallenges %}
-                <h2 class="section-title">{{ ongoingFeaturedChallenge.challenge.name }}</h2>
-                <div class="row card-group">
+                <div class="slider-nav">
+                    <div id="js-slider-prev" class="slider-arrow">
+                        <i class="fa fa-chevron-left fa-2x "></i>
+                        {#<span>Sujet précédent</span>#}
+                    </div>
+                    <h2 class="section-title">{{ ongoingFeaturedChallenge.challenge.name }}</h2>
+                    <div id="js-slider-next" class="slider-arrow">
+                        {#<span>Sujet suivant</span>#}
+                        <i class="fa fa-chevron-right fa-2x"></i>
+                    </div>
+                </div>
+                <div id="js-slider-container" class="row card-group">
+                    {% for challengeSubject in ongoingFeaturedChallenge.previousSubjects %}
+                        {% include 'FrontBundle:ChallengeSubject:thumbnail.html.twig' with { 'challengeSubject': challengeSubject, 'display': 'hide' } %}
+                    {% endfor %}
                     {% for challengeSubject in ongoingFeaturedChallenge.subjects %}
-                        {% include 'FrontBundle:ChallengeSubject:thumbnail.html.twig' with { 'challengeSubject': challengeSubject} %}
+                        {% include 'FrontBundle:ChallengeSubject:thumbnail.html.twig' with { 'challengeSubject': challengeSubject } %}
                     {% endfor %}
                 </div>
             {% endfor %}
-
         </section>
 
         <section class="grid">

@@ -1,4 +1,54 @@
 jQuery(document).ready(function ($) {
+    initSlider();
+    initNavigation();
+});
+
+function initSlider() {
+    var container = $('#js-slider-container');
+    $('#js-slider-prev').click(function (e) {
+        e.preventDefault();
+        if (!$(container).find('.col-lg-4').first().hasClass('active')) {
+            $(container).find('.col-lg-4.active').first().prev().removeClass('hide').addClass('active');
+            $(container).find('.col-lg-4.active').last().addClass('hide').removeClass('active');
+        }
+    });
+
+    $('#js-slider-next').click(function (e) {
+        e.preventDefault();
+        if (!$(container).find('.col-lg-4').last().hasClass('active')) {
+            $(container).find('.col-lg-4.active').last().next().addClass('active').removeClass('hide');
+            $(container).find('.col-lg-4.active').first().removeClass('active').addClass('hide');
+        }
+    });
+}
+
+function toggle_panel_visibility($lateral_panel, $background_layer, $body) {
+    if ($lateral_panel.hasClass('speed-in')) {
+        // firefox transitions break when parent overflow is changed, so we need to wait for the end of the trasition to give the body an overflow hidden
+        $lateral_panel.removeClass('speed-in').one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function () {
+            $body.removeClass('overflow-hidden');
+        });
+        $background_layer.removeClass('is-visible');
+
+    } else {
+        $lateral_panel.addClass('speed-in').one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function () {
+            $body.addClass('overflow-hidden');
+        });
+        $background_layer.addClass('is-visible');
+    }
+}
+
+function move_navigation($navigation, $MQ) {
+    if ($(window).width() >= $MQ) {
+        $navigation.detach();
+        $navigation.appendTo('header');
+    } else {
+        $navigation.detach();
+        $navigation.insertAfter('header');
+    }
+}
+
+function initNavigation() {
     //if you change this breakpoint in the style.css file (or _layout.scss if you use SASS), don't forget to update this value as well
     var $L = 1200,
         $menu_navigation = $('#main-nav'),
@@ -44,30 +94,4 @@ jQuery(document).ready(function ($) {
         }
 
     });
-});
-
-function toggle_panel_visibility($lateral_panel, $background_layer, $body) {
-    if ($lateral_panel.hasClass('speed-in')) {
-        // firefox transitions break when parent overflow is changed, so we need to wait for the end of the trasition to give the body an overflow hidden
-        $lateral_panel.removeClass('speed-in').one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function () {
-            $body.removeClass('overflow-hidden');
-        });
-        $background_layer.removeClass('is-visible');
-
-    } else {
-        $lateral_panel.addClass('speed-in').one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function () {
-            $body.addClass('overflow-hidden');
-        });
-        $background_layer.addClass('is-visible');
-    }
-}
-
-function move_navigation($navigation, $MQ) {
-    if ($(window).width() >= $MQ) {
-        $navigation.detach();
-        $navigation.appendTo('header');
-    } else {
-        $navigation.detach();
-        $navigation.insertAfter('header');
-    }
 }

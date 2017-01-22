@@ -35,10 +35,10 @@ class ChallengeSubjectManager extends AbstractManager
 
     /**
      * @param null $limit
-     *
+     * @param null $offset
      * @return ChallengeSubject[]
      */
-    public function getPrevious($limit = null)
+    public function getPrevious($limit = null, $offset = null)
     {
         $q = $this->em->createQueryBuilder()
             ->select('cs')
@@ -49,13 +49,15 @@ class ChallengeSubjectManager extends AbstractManager
         if ($limit !== null) {
             $q->setMaxResults($limit);
         }
+        if ($offset !== null) {
+            $q->setFirstResult($offset);
+        }
 
         return $q->getQuery()->getResult();
     }
 
     /**
      * @param null $limit
-     *
      * @return ChallengeSubject[]
      */
     public function getNext($limit = null)
