@@ -55,8 +55,13 @@ class ChallengeSubjectProvider
                 $previousSubjects = $this->challengeSubjectManager->getPrevious($subjectToShow);
             }
             $subjects = array_merge($previousSubjects, $ongoingSubjects, $nextSubjects);
-            $ongoingFeaturedSubjects[] = array('challenge' => $featuredChallenge,
-                                               'subjects'  => $subjects);
+            $previousSubjects = $this->challengeSubjectManager->getPrevious(null, sizeof($previousSubjects));
+            $previousSubjects = is_array($previousSubjects) ? array_reverse($previousSubjects) : null;
+            $ongoingFeaturedSubjects[] = array(
+                'challenge' => $featuredChallenge,
+                'subjects'  => $subjects,
+                'previousSubjects' => $previousSubjects
+            );
         }
 
         return $ongoingFeaturedSubjects;

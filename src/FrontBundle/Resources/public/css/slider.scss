@@ -1,0 +1,26 @@
+@import 'vars';
+
+.slider-nav {
+  display: flex;
+
+  .slider-arrow {
+    display: inline-block;
+    align-items: stretch;
+    margin: auto;
+    color: $primary-text-color;
+    cursor: pointer;
+    padding: 15px;
+
+    &#js-slider-next {
+      padding-right: 0;
+    }
+
+    &#js-slider-prev {
+      padding-left: 0;
+    }
+
+    &:hover {
+      color: $secondary-text-color;
+    }
+  }
+}

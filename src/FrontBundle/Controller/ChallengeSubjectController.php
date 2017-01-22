@@ -4,6 +4,7 @@ namespace FrontBundle\Controller;
 
 use BackBundle\Entity\ChallengeSubject;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 class ChallengeSubjectController extends Controller
 {

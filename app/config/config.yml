@@ -92,10 +92,7 @@ assetic:
     assets:
         bootstrap_css:
             inputs:
-                - %kernel.root_dir%/../vendor/twbs/bootstrap/scss/bootstrap.scss
-            filters:
-                - scssphp
-                - cssrewrite
+                - %kernel.root_dir%/../vendor/twbs/bootstrap/dist/css/bootstrap.min.css
             output: css/bootstrap.css
         bootstrap_js:
             inputs:
