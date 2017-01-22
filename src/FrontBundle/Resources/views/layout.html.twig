@@ -15,13 +15,15 @@
     <link rel="shortcut icon" href="{{ asset('bundles/front/img/favicon.ico') }}" type="image/x-icon">
     <link rel="icon" href="{{ asset('bundles/front/img/favicon.ico') }}" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css?family=Oswald:300,400,700|Satisfy" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}" type="text/css"/>
-    <link rel="stylesheet" href="{{ asset('bundles/bmatznerfontawesome/css/font-awesome.css') }}" type="text/css"/>
     <link href="https://file.myfontastic.com/6FgmP4oJ7DyT3k5QBFvddi/icons.css" rel="stylesheet">
-    {% stylesheets filter='cssrewrite, scssphp' output="css/app.css"
+    <link rel="stylesheet" href="{{ asset('bundles/bmatznerfontawesome/css/font-awesome.css') }}" type="text/css"/>
+    {% stylesheets
+    'css/bootstrap.css'
     'public/css/animate.css'
-    'public/css/iconfont.css'
-    'public/css/dropzone.min.css'
+    'public/css/iconfont.css' %}
+    <link rel="stylesheet" href="{{ asset_url }}" type="text/css"/>
+    {% endstylesheets %}
+    {% stylesheets filter='cssrewrite, scssphp' output="css/app.css"
     'bundles/front/css/*' %}
     <link rel="stylesheet" href="{{ asset_url }}" type="text/css"/>
     {% endstylesheets %}
@@ -69,6 +71,8 @@
 {% block footer_javascripts %}
     {% javascripts
     'public/js/jquery-3.1.1.min.js'
+    'public/js/tether.min.js'
+    'js/bootstrap.js'
     'public/js/bootstrap-notify.js'
     'public/js/dropzone.min.js'
     'public/js/messenger.js'
@@ -89,9 +93,26 @@
             $(window).resize(function () {
                 squareGrid();
             });
-            $('#post-form').submit(function() {
+            $('#post-form').submit(function () {
                 document.getElementById("post-form-submit").style.display = "none";
                 document.getElementById("post-form-wheel").style.display = "inline-block";
+            });
+
+            var container = $(this).find('.slider-container');
+            $('#js-slider-prev').click(function (e) {
+                e.preventDefault();
+                if (!$(container).find('.col-lg-4').first().hasClass('active')) {
+                    $(container).find('.col-lg-4.active').first().prev().removeClass('hide').addClass('active');
+                    $(container).find('.col-lg-4.active').last().addClass('hide').removeClass('active');
+                }
+            });
+
+            $('#js-slider-next').click(function (e) {
+                e.preventDefault();
+                if (!$(container).find('.col-lg-4').last().hasClass('active')) {
+                    $(container).find('.col-lg-4.active').last().next().addClass('active').removeClass('hide');
+                    $(container).find('.col-lg-4.active').first().removeClass('active').addClass('hide');
+                }
             });
         });
         $(window).on("load", function () {
@@ -107,10 +128,10 @@
         (function (i, s, o, g, r, a, m) {
             i['GoogleAnalyticsObject'] = r;
             i[r] = i[r] || function () {
-                        (i[r].q = i[r].q || []).push(arguments)
-                    }, i[r].l = 1 * new Date();
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date();
             a = s.createElement(o),
-                    m = s.getElementsByTagName(o)[0];
+                m = s.getElementsByTagName(o)[0];
             a.async = 1;
             a.src = g;
             m.parentNode.insertBefore(a, m)
@@ -121,19 +142,22 @@
 
     </script>
     <script>
-        window.fbAsyncInit = function() {
+        window.fbAsyncInit = function () {
             FB.init({
-                appId      : '151266185368113',
-                xfbml      : true,
-                version    : 'v2.8'
+                appId: '151266185368113',
+                xfbml: true,
+                version: 'v2.8'
             });
             FB.AppEvents.logPageView();
         };
 
-        (function(d, s, id){
+        (function (d, s, id) {
             var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) {return;}
-            js = d.createElement(s); js.id = id;
+            if (d.getElementById(id)) {
+                return;
+            }
+            js = d.createElement(s);
+            js.id = id;
             js.src = "//connect.facebook.net/en_US/sdk.js";
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));

@@ -60,8 +60,26 @@ $(document).ready(function () {
         ajaxRequestDelete(url, params, target, method)
     });
 
+    $(document).on('click', '.ajax-render-click', function () {
+        var url = $(this).attr('data-url');
+        var params = $(this).attr('data-params');
+        if (typeof params !== 'undefined') {
+            params = JSON.parse(params);
+        }
+        var target = $(this).attr('data-target');
+        if (typeof target !== 'undefined') {
+            target = $(target);
+        } else {
+            target = this;
+        }
+        var method = $(this).attr('data-method');
+        if (typeof method === 'undefined') {
+            method = 'GET'
+        }
+        ajaxRequestRender(url, params, target, method)
+    });
+
     $('.ajax-render').each(function (i, obj) {
-        console.log('test');
         var url = $(obj).attr('data-url');
         var params = $(obj).attr('data-params');
         if (typeof params !== 'undefined') {

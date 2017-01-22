@@ -1,4 +1,7 @@
-<div class="col-lg-4">
+{% if display is not defined %}
+    {% set display = 'active' %}
+{% endif %}
+<div class="col-lg-4 {{ display }}">
     <div class="card">
         {% if challengeSubject.coverPicture is not null %}
             <img class="card-img-top img-fluid" src="{{ challengeSubject.coverPicture.url(storage_bucket_name) }}"  alt="{{ challengeSubject.slug }}" style="width: 100%;">
