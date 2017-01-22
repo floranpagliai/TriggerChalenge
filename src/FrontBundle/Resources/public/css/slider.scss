@@ -7,7 +7,7 @@
     display: inline-block;
     align-items: stretch;
     margin: auto;
-    color: $secondary-text-color;
+    color: $primary-text-color;
     cursor: pointer;
     padding: 15px;
 
@@ -20,7 +20,7 @@
     }
 
     &:hover {
-      color: $dark-primary-color;
+      color: $secondary-text-color;
     }
   }
 }
