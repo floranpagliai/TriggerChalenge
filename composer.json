@@ -83,6 +83,8 @@
         "incenteev-parameters": {
             "file": "app/config/parameters.yml",
             "env-map": {
+                "app.name": "APP_NAME",
+                "app.description": "APP_DESCRIPTION",
                 "secret": "SECRET",
                 "database_driver": "DATABASE_DRIVER",
                 "database_host": "DATABASE_HOST",
