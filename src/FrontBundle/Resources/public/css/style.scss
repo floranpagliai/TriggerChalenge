@@ -51,6 +51,7 @@ a:active {
 }
 
 p {
+  font-family: 'Raleway', sans-serif;
   font-weight: 200;
 }
 
@@ -249,4 +250,12 @@ span.my-tooltip {
 
 .card-group {
   width: inherit;
+}
+
+.camera-pattern {
+  background: url("../img/camera-pattern.jpg") repeat;
+}
+
+.oswald {
+  font-family: 'Oswald', sans-serif;
 }

@@ -1,0 +1,22 @@
+{% if not is_granted('ROLE_USER') %}
+<div id="js-modal-before-exit" class="modal fade">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content center">
+            <div class="modal-header">
+                <h5 class="modal-title">Voulez-vous rejoindre l'aventure ?</h5>
+                <p class="mt-1">
+                    <b>Merci de votre visite</b>, actuellement la participation au projet 52 se fait uniquement sur invitation.
+                    <b>Pour recevoir le précieux ticket je vous invite à liker notre page Facebook et à nous envoyer un message.</b>
+                </p>
+            </div>
+            <div class="camera-pattern" style="padding: 44px">
+                <div class="fb-page" data-href="https://www.facebook.com/triggerchallenge/" data-small-header="false"
+                     data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="false" data-width="500" data-height="500">
+                    <blockquote cite="https://www.facebook.com/triggerchallenge/" class="fb-xfbml-parse-ignore"><a
+                                href="https://www.facebook.com/triggerchallenge/">TriggerChallenge</a></blockquote>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
