@@ -9,7 +9,7 @@
         <div class="card-block">
             <div class="text-xs-center">
                 <h4 class="card-title">{{ challengeSubject.name }}</h4>
-                <p class="card-text text-justify" style="min-height: 100px;">{{ challengeSubject.description }}</p>
+                <p class="card-text" style="min-height: 100px;">{{ challengeSubject.description }}</p>
                 <a href="{{ path('front_challenge_subject_show', {'challengeSlug': challengeSubject.challenge.slug,'idChallenge': challengeSubject.id, 'ChallengeSubjectSlug': challengeSubject.slug }) }}" class="btn btn-tc btn-primary btn-block">
                     {{ ('challenge_subject.action.show_'~challengeSubject.state)|trans }}
                 </a>

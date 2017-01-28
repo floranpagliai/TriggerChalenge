@@ -6,13 +6,13 @@
             {% for ongoingFeaturedChallenge in ongoingFeaturedChallenges %}
                 <div class="slider-nav">
                     <div id="js-slider-prev" class="slider-arrow">
-                        <i class="fa fa-chevron-left fa-2x "></i>
+                        <i class="icon-chevron-left icon-1_5x"></i>
                         {#<span>Sujet précédent</span>#}
                     </div>
                     <h2 class="section-title">{{ ongoingFeaturedChallenge.challenge.name }}</h2>
                     <div id="js-slider-next" class="slider-arrow">
                         {#<span>Sujet suivant</span>#}
-                        <i class="fa fa-chevron-right fa-2x"></i>
+                        <i class="icon-chevron-right icon-1_5x"></i>
                     </div>
                 </div>
                 <div id="js-slider-container" class="row card-group">
@@ -32,5 +32,6 @@
                 {% include 'FrontBundle:Post:thumbnail.html.twig' with { 'post': post } %}
             {% endfor %}
         </section>
+
     </div>
 {% endblock %}

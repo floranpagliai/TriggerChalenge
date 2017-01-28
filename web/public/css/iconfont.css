@@ -45,12 +45,24 @@
 .icon-user:before {
     content: "\61";
 }
-.icon-home:before {
-    content: "\62";
-}
 .icon-monitor:before {
     content: "\63";
 }
 .icon-photo-camera:before {
     content: "\64";
+}
+.icon-home:before {
+    content: "\62";
+}
+.icon-chevron-down:before {
+    content: "\65";
+}
+.icon-chevron-left:before {
+    content: "\66";
+}
+.icon-chevron-up:before {
+    content: "\67";
+}
+.icon-chevron-right:before {
+    content: "\68";
 }
