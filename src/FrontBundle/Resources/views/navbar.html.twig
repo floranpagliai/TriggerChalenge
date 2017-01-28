@@ -2,16 +2,16 @@
 <nav id="main-nav">
     <ul>
         <li class="{% if currentPath == 'front_homepage' %}active{% endif %}">
-            <a href="{{ path('front_homepage') }}"><i class="lnr lnr-home icon-1_5x"></i></a>
+            <a href="{{ path('front_homepage') }}"><i class="icon-home icon-1_5x"></i></a>
         </li>
         <li class="{% if currentPath == 'front_user_profile' or currentPath == 'front_login' or currentPath == 'front_register' %}active{% endif %}">
             {% if is_granted('ROLE_USER') %}
                 <a href="{{ path('front_user_profile', {'userId': app.user.publicId, 'fullName': app.user.fullName|lower|replace({' ':''})}) }}">
-                    <i class="lnr lnr-user icon-1_5x"></i>
+                    <i class="icon-user icon-1_5x"></i>
                 </a>
             {% else %}
                 <a href="{{ path('front_login') }}">
-                    <i class="lnr lnr-user icon-1_5x"></i>
+                    <i class="icon-user icon-1_5x"></i>
                 </a>
             {% endif %}
         </li>
@@ -25,7 +25,7 @@
         {% if is_granted('ROLE_ADMIN') %}
             <li class="{% if currentPath == 'back_index' %}active{% endif %}">
                 <a href="{{ path('back_index') }}">
-                    <i class="lnr lnr-cog icon-1_5x"></i>
+                    <i class="icon-monitor icon-1_5x"></i>
                 </a>
             </li>
         {% endif %}
