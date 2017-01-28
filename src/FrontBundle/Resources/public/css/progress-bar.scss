@@ -1,3 +1,5 @@
+@import 'vars';
+
 .progress-bar-main-container {
   height: 50px;
   -webkit-border-radius: 4px;
@@ -10,10 +12,12 @@
   background-color: #ffa000 !important;
 }
 
-.progress-bar-main-container .wrap { padding: 8px; }
+.progress-bar-main-container .wrap {
+  padding: 8px;
+}
 
 .progress-bar-number {
-  background: rgba(0,0,0,0.13);
+  background: rgba(0, 0, 0, 0.13);
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
@@ -26,7 +30,7 @@
   -moz-border-radius: 10px;
   border-radius: 10px;
   height: 10px;
-  background: rgba(0,0,0,0.13);
+  background: rgba(0, 0, 0, 0.13);
   margin: 12px 0;
   overflow: hidden;
   text-align: center;
@@ -43,4 +47,10 @@
   -moz-opacity: 1;
   -khtml-opacity: 1;
   opacity: 1;
+}
+
+@media only screen and (max-width: 400px) {
+  .progress-bar-number {
+    padding: 0;
+  }
 }
