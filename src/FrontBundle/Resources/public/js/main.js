@@ -5,12 +5,15 @@ jQuery(document).ready(function ($) {
 
 function initSlider() {
     var container = $('#js-slider-container');
+
+    updateSliderNavigation(container);
     $('#js-slider-prev').click(function (e) {
         e.preventDefault();
         if (!$(container).find('.col-lg-4').first().hasClass('active')) {
             $(container).find('.col-lg-4.active').first().prev().removeClass('hide').addClass('active');
             $(container).find('.col-lg-4.active').last().addClass('hide').removeClass('active');
         }
+        updateSliderNavigation(container);
     });
 
     $('#js-slider-next').click(function (e) {
@@ -19,7 +22,21 @@ function initSlider() {
             $(container).find('.col-lg-4.active').last().next().addClass('active').removeClass('hide');
             $(container).find('.col-lg-4.active').first().removeClass('active').addClass('hide');
         }
+        updateSliderNavigation(container);
     });
+}
+
+function updateSliderNavigation(container) {
+    if ($(container).find('.col-lg-4').last().hasClass('active')) {
+        $('#js-slider-next').addClass('disabled');
+    } else {
+        $('#js-slider-next').removeClass('disabled');
+    }
+    if ($(container).find('.col-lg-4').first().hasClass('active')) {
+        $('#js-slider-prev').addClass('disabled');
+    } else {
+        $('#js-slider-prev').removeClass('disabled');
+    }
 }
 
 function toggle_panel_visibility($lateral_panel, $background_layer, $body) {
