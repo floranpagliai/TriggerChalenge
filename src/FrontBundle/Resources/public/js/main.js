@@ -74,7 +74,6 @@ function initNavigation() {
         $shadow_layer = $('#cd-shadow-layer');
 
     $(window).on('click', function (event) {
-        event.preventDefault();
         if ($menu_navigation.hasClass('speed-in')) {
             toggle_panel_visibility($menu_navigation, $shadow_layer, $('body'));
         }
