@@ -85,6 +85,7 @@
             "env-map": {
                 "app.name": "APP_NAME",
                 "app.description": "APP_DESCRIPTION",
+                "app.activate_tracking": "APP_ACTIVATE_TRACKING",
                 "secret": "SECRET",
                 "database_driver": "DATABASE_DRIVER",
                 "database_host": "DATABASE_HOST",

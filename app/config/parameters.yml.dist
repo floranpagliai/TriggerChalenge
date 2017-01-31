@@ -21,5 +21,6 @@ parameters:
 
     app.name: TriggerChallenge
     app.description: Communauté d'amateurs de photographie qui propose un challenge toutes les semaines.
+    app.activate_tracking: false
 
     storage.bucket_name: bucket_name
