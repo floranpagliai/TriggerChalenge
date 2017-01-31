@@ -45,6 +45,8 @@ twig:
         app_description: "%app.description%"
         storage_bucket_name : "%storage.bucket_name%"
         challenge_subject_provider: "@provider.challenge_subject"
+        activate_tracking: "%app.activate_tracking%"
+
 
 # Doctrine Configuration
 doctrine:
