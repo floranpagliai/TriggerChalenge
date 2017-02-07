@@ -6,15 +6,18 @@ services:
     manager.challenge_subject:
         class: BackBundle\Manager\ChallengeSubjectManager
         arguments: ["@doctrine.orm.default_entity_manager", BackBundle\Entity\ChallengeSubject]
+    manager.post_like:
+        class: BackBundle\Manager\PostLikeManager
+        arguments: ["@doctrine.orm.default_entity_manager", BackBundle\Entity\PostLike]
     manager.post:
         class: BackBundle\Manager\PostManager
         arguments: ["@doctrine.orm.default_entity_manager", BackBundle\Entity\Post]
-    manager.user:
-        class: BackBundle\Manager\UserManager
-        arguments: ["@doctrine.orm.default_entity_manager", BackBundle\Entity\User]
     manager.user_invite:
         class: BackBundle\Manager\UserInviteManager
         arguments: ["@doctrine.orm.default_entity_manager", BackBundle\Entity\UserInvite]
+    manager.user:
+        class: BackBundle\Manager\UserManager
+        arguments: ["@doctrine.orm.default_entity_manager", BackBundle\Entity\User]
 # PROVIDERS
     provider.challenge_subject:
         class: BackBundle\Provider\ChallengeSubjectProvider
