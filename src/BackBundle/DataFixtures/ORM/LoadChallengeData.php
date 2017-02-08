@@ -1,19 +1,22 @@
 <?php
 /**
- * User: floran
- * Date: 20/11/2016
- * Time: 18:20
+ * Created by PhpStorm.
+ * User: floranpagliai
+ * Date: 08/02/2017
+ * Time: 16:21
  */
 
 namespace BackBundle\DataFixtures\ORM;
 
-use BackBundle\Entity\User;
+use BackBundle\DBAL\ChallengeFrequencyType;
+use BackBundle\Entity\Challenge;
+use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
-class LoadUserData implements FixtureInterface, ContainerAwareInterface
+class LoadChallengeData extends AbstractFixture implements FixtureInterface, ContainerAwareInterface
 {
     /**
      * @var ContainerInterface
@@ -37,21 +40,13 @@ class LoadUserData implements FixtureInterface, ContainerAwareInterface
      */
     public function load(ObjectManager $manager)
     {
-        $repository = $manager->getRepository('BackBundle:User');
+        $challenge = new Challenge();
+        $challenge->setName('Challenge de test mensuel');
+        $challenge->setFrequency(ChallengeFrequencyType::MONTHLY);
+        $challenge->setFeatured(true);
 
-        $email = 'floran.pagliai@gmail.com';
-        $user = $repository->findOneBy(array('email' => $email));
-        if (!$user) {
-            $user = new User();
-            $password = $this->container->get('security.password_encoder')->encodePassword($user, 'password');
-            $user->setPassword($password);
-        }
-        $user->setEmail($email);
-        $user->setFirstName('Floran');
-        $user->setLastName('Pagliai');
-        $user->setRoles('ROLE_ADMIN');
-
-        $manager->persist($user);
+        $manager->persist($challenge);
+        $this->setReference('challenge-monthly', $challenge);
 
         $manager->flush();
     }
@@ -63,7 +58,7 @@ class LoadUserData implements FixtureInterface, ContainerAwareInterface
      */
     public function getOrder()
     {
-        return 1;
+        return 2;
     }
 
     /**
@@ -73,6 +68,6 @@ class LoadUserData implements FixtureInterface, ContainerAwareInterface
      */
     protected function getEnvironments()
     {
-        return array('dev', 'test', 'preprod', 'prod');
+        return array('dev', 'test', 'preprod');
     }
 }

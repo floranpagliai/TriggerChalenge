@@ -146,7 +146,7 @@ class ChallengeSubject
     }
 
     /**
-     * @return ChallengeSubjectType
+     * @return string
      */
     public function getType()
     {
@@ -154,7 +154,7 @@ class ChallengeSubject
     }
 
     /**
-     * @param ChallengeSubjectType $type
+     * @param string $type
      */
     public function setType($type)
     {
