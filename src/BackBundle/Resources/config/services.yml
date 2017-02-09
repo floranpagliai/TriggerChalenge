@@ -28,10 +28,16 @@ services:
     provider.user_invite:
         class: BackBundle\Provider\UserInviteProvider
         arguments: ["@manager.user_invite", "@manager.user"]
+    provider.post_like:
+        class: BackBundle\Provider\PostLikeProvider
+        arguments: ["@manager.post_like"]
     provider.user:
         class: BackBundle\Provider\UserProvider
         arguments: ["@manager.user", "@provider.mailer", "@security.password_encoder"]
 # SERVICES
+    service.post_like:
+        class: BackBundle\Service\PostLikeService
+        arguments: ["@provider.post_like", "@manager.post_like", "@manager.post"]
     timestampable_entity.pre_persist.listener:
         class: BackBundle\EventListener\PrePersistListener
         tags:
