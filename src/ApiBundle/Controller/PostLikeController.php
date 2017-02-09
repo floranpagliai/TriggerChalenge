@@ -17,13 +17,16 @@ class PostLikeController extends Controller
     public function updateAction($idPost)
     {
         $postLikeService = $this->get('service.post_like');
+        $postLikeManager = $this->get('manager.post_like');
 
         if (!$this->isGranted('ROLE_USER')) {
+            $message = $this->get('translator')->trans('user.message.warning.need_login');
 
-            return new JsonResponse(array(), 401);
+            return new JsonResponse(array('message' => $message), 401);
         }
         $postLikeService->likeOrUnlikePost($idPost, $this->getUser());
+        $likesCount =  $postLikeManager->countByPost($idPost);
 
-        return new JsonResponse(array(), 200);
+        return new JsonResponse(array('likesCount' => $likesCount), 200);
     }
 }

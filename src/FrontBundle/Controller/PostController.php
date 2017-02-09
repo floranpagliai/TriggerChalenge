@@ -21,16 +21,24 @@ class PostController extends Controller
 
     public function showAction($postId)
     {
-        $post = $this->get('manager.post')->loadOneBy(array('publicId' => $postId));
-        if (!$post) {
+        $postManager = $this->get('manager.post');
+        $postLikeManager = $this->get('manager.post_like');
+        $postLikeProvider = $this->get('provider.post_like');
+
+        $post = $postManager->loadOneBy(array('publicId' => $postId));
+        if (!$post instanceof Post) {
 
             return $this->redirect($this->generateUrl('front_homepage'));
         }
+        $isLiking = $postLikeProvider->userIsLiking($post, $this->getUser());
+        $likesCount =  $postLikeManager->countByPost($post->getId());
 
         return $this->render(
             'FrontBundle:Post:show.html.twig',
             array(
-                'post' => $post
+                'post' => $post,
+                'likesCount' => $likesCount,
+                'isLiking' => $isLiking
             )
         );
     }

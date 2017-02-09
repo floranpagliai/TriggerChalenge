@@ -51,4 +51,16 @@ class PostLikeProvider
         $this->postLikeManager->save($postLike);
     }
 
+    public function userIsLiking(Post $post, User $user = null)
+    {
+        if ($user !== null) {
+            $count = $this->postLikeManager->countByPost($post->getId(), $user->getId());
+            if ($count > 0) {
+
+                return true;
+            }
+        }
+
+        return false;
+    }
 }

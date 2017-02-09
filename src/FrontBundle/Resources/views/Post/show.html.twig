@@ -35,10 +35,14 @@
                         <div class="row sidebar-section">
                             <div class="col-xs-12">
                             <span class="action-like">
-                                <a href="#">
-                                    <i class="fa fa-heart hvr-icon-pulse"></i>
+                                <a href="#" id="js-post-like" data-url="{{ path('api_post_like_update', {'idPost': post.id}) }}">
+                                   {% if isLiking %}
+                                        <i class="fa fa-heart hvr-icon-pulse"></i>
+                                    {% else %}
+                                       <i class="fa fa-heart-o hvr-icon-pulse"></i>
+                                    {% endif %}
                                 </a>
-                                    0
+                                    <span id="js-post-like-count">{{ likesCount }}</span>
                             </span>
                             </div>
                         </div>
@@ -70,4 +74,42 @@
             </div>
         </div>
     </div>
+{% endblock %}
+
+{% block footer_javascripts %}
+    {{ parent() }}
+    <script>
+        $(document).ready(function () {
+            $(document).on("click", "#js-post-like", function () {
+                var url = $(this).attr('data-url');
+                var likeIconElem = $(this.firstElementChild);
+                var likeCountElem = $('#js-post-like-count');
+                $.ajax({
+                    url: url,
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function (result) {
+                        if (likeIconElem.hasClass('fa-heart-o')) {
+                            likeIconElem.removeClass('fa-heart-o');
+                            likeIconElem.addClass('fa-heart');
+                        } else {
+                            likeIconElem.removeClass('fa-heart');
+                            likeIconElem.addClass('fa-heart-o');
+                        }
+                        likeCountElem.html(result.likesCount);
+                    },
+                    error: function (xhr,status,error) {
+                        $.notify({
+                            icon: 'fa fa-exclamation-circle',
+                            message: xhr.responseJSON.message
+
+                        }, {
+                            type: 'info',
+                            timer: 3000
+                        });
+                    }
+                });
+            });
+        });
+    </script>
 {% endblock %}

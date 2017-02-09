@@ -12,10 +12,10 @@ api_challenge_subject_delete:
     methods:  [DELETE]
     requirements:
             idChallengeSubject: '\d+'
-# User Invite Routing
+# Post Like Routing
 api_post_like_update:
     path:     /posts/{idPost}/like
-    defaults: { _controller: ApiBundle:UserInvite:delete }
+    defaults: { _controller: ApiBundle:PostLike:update }
     methods:  [GET]
     requirements:
             idPost: '\d+'
