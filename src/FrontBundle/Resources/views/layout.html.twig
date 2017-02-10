@@ -7,9 +7,7 @@
     <title>
         {% set _page_title = block('page_title') %}
         {% if _page_title is not empty %}
-            {% autoescape 'html' %}
-                {{ _page_title|raw }} |
-            {% endautoescape %}
+            {% autoescape 'html' %}{{ _page_title|raw }} |{% endautoescape %}
         {% endif %}
         {{ app_name }}
     </title>
