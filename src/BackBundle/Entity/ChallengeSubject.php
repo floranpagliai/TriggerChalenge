@@ -82,6 +82,15 @@ class ChallengeSubject
     private $endSubmissionDate;
 
     /**
+     * ChallengeSubject constructor.
+     * @param Challenge $challenge
+     */
+    public function __construct(Challenge $challenge)
+    {
+        $this->challenge = $challenge;
+    }
+
+    /**
      * @return mixed
      */
     public function getId()

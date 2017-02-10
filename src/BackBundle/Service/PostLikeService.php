@@ -25,15 +25,15 @@ class PostLikeService
 
     /**
      * PostLikeService constructor.
-     * @param PostLikeProvider $postLikeProvider
      * @param PostLikeManager $postLikeManager
      * @param PostManager $postManager
+     * @param PostLikeProvider $postLikeProvider
      */
-    public function __construct(PostLikeProvider $postLikeProvider, PostLikeManager $postLikeManager, PostManager $postManager)
+    public function __construct(PostLikeManager $postLikeManager, PostManager $postManager, PostLikeProvider $postLikeProvider)
     {
-        $this->postLikeProvider = $postLikeProvider;
         $this->postLikeManager = $postLikeManager;
         $this->postManager = $postManager;
+        $this->postLikeProvider = $postLikeProvider;
     }
 
 

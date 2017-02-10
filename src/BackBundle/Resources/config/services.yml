@@ -35,9 +35,15 @@ services:
         class: BackBundle\Provider\UserProvider
         arguments: ["@manager.user", "@provider.mailer", "@security.password_encoder"]
 # SERVICES
+    service.challenge_subject:
+        class: BackBundle\Service\ChallengeSubjectService
+        arguments: ["@manager.challenge_subject", "@picture_uploader.service"]
     service.post_like:
         class: BackBundle\Service\PostLikeService
-        arguments: ["@provider.post_like", "@manager.post_like", "@manager.post"]
+        arguments: ["@manager.post_like", "@manager.post", "@provider.post_like"]
+    service.post:
+        class: BackBundle\Service\PostService
+        arguments: ["@manager.post", "@picture_uploader.service", "%kernel.root_dir%"]
     timestampable_entity.pre_persist.listener:
         class: BackBundle\EventListener\PrePersistListener
         tags:

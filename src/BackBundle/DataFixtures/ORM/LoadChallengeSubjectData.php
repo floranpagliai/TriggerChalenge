@@ -29,8 +29,7 @@ class LoadChallengeSubjectData extends AbstractFixture implements FixtureInterfa
             $lastDayOfMonth = date('t', $month);
             $startDate = new \DateTime(date('Y-'.$i.'-01 00:00:00'));
             $endDate = new \DateTime(date('Y-'.$i.'-'.$lastDayOfMonth.' 23:59:50'));
-            $challengeSubject = new ChallengeSubject();
-            $challengeSubject->setChallenge($challenge);
+            $challengeSubject = new ChallengeSubject($challenge);
             $challengeSubject->setStartSubmissionDate($startDate);
             $challengeSubject->setEndSubmissionDate($endDate);
             $challengeSubject->setName('Sujet ' . $i);
