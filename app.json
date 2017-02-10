@@ -53,13 +53,11 @@
   "environments": {
     "prod": {
       "scripts": {
-        "migration": "bin/console --no-interaction doctrine:migrations:migrate",
         "fixtures": "bin/console doctrine:fixtures:load --env=prod"
       }
     },
     "preprod": {
       "scripts": {
-        "migration": "bin/console --no-interaction doctrine:migrations:migrate",
         "fixtures": "bin/console doctrine:fixtures:load --env=preprod"
       }
     }
