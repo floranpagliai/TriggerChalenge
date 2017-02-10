@@ -33,6 +33,7 @@ user:
             wrong_password: "Mot de passe incorrect."
         warning:
             unknown_email: "Aucun utilisateur connu avec cet email."
+            need_login: "Seul les utillisateurs connectés peuvent effectuer cette action."
         success:
             registered: "Votre Inscription a été effectuée avec succès."
             password_changed: "Votre mot de passe a été changé avec succès."

@@ -83,7 +83,7 @@ class Challenge
     }
 
     /**
-     * @return ChallengeFrequencyType
+     * @return string
      */
     public function getFrequency()
     {
@@ -91,7 +91,7 @@ class Challenge
     }
 
     /**
-     * @param ChallengeFrequencyType $frequency
+     * @param string $frequency
      */
     public function setFrequency($frequency)
     {

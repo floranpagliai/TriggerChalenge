@@ -21,16 +21,24 @@ class PostController extends Controller
 
     public function showAction($postId)
     {
-        $post = $this->get('manager.post')->loadOneBy(array('publicId' => $postId));
-        if (!$post) {
+        $postManager = $this->get('manager.post');
+        $postLikeManager = $this->get('manager.post_like');
+        $postLikeProvider = $this->get('provider.post_like');
+
+        $post = $postManager->loadOneBy(array('publicId' => $postId));
+        if (!$post instanceof Post) {
 
             return $this->redirect($this->generateUrl('front_homepage'));
         }
+        $isLiking = $postLikeProvider->userIsLiking($post, $this->getUser());
+        $likesCount =  $postLikeManager->countByPost($post->getId());
 
         return $this->render(
             'FrontBundle:Post:show.html.twig',
             array(
-                'post' => $post
+                'post' => $post,
+                'likesCount' => $likesCount,
+                'isLiking' => $isLiking
             )
         );
     }
@@ -49,23 +57,7 @@ class PostController extends Controller
         $errors = $this->get('validator')->validate($post);
         if ($form->isSubmitted() && $form->isValid()) {
             try {
-                $filename = $this->get('picture_uploader.service')->upload($post->getCoverPicture()->getFile());
-                $post->getCoverPicture()->setFilename($filename);
-
-                $file = $post->getCoverPicture()->getFile();
-                $image = new ImageResizer($post->getCoverPicture()->getUrl($this->getParameter('storage.bucket_name')));
-                $image->resizeImage(300, 300, 'crop');
-                $path = $this->get('kernel')->getRootDir() . '/../web';
-                $filename = '/tmp'.strrchr($post->getCoverPicture()->getFilename(),'.');;
-                $image->saveImage($path . $filename);
-                $file = new UploadedFile($path . $filename, $filename, $file->getMimeType(), null, null, true);
-                $filename2 = $this->get('picture_uploader.service')->upload($file, 'thumbnails/');
-                $picture = new Picture();
-                $picture->setFilename($filename2);
-                $post->setThumbnailPicture($picture);
-                unlink($path . $filename);
-
-                $this->get('manager.post')->save($post);
+                $this->get('service.post')->save($post);
 
                 $message = $this->get('translator')->trans('post.message.success.added');
                 $this->addFlash('success', $message);

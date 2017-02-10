@@ -63,6 +63,7 @@ doctrine:
         types:
             challengesubject: BackBundle\DBAL\ChallengeSubjectType
             challengefrequency: BackBundle\DBAL\ChallengeFrequencyType
+        server_version: 15.1
 
     orm:
         auto_generate_proxy_classes: "%kernel.debug%"

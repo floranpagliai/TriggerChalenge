@@ -37,19 +37,14 @@ class ChallengeSubjectController extends Controller
             return $this->redirectToRoute('back_challenge_index');
         }
         $challengeSubject = $this->get('manager.challenge_subject')->load($idChallengeSubject);
-        if (!$challengeSubject instanceof ChallengeSubject) {
-            $challengeSubject = new ChallengeSubject();
-        }
-        $challengeSubject->setChallenge($challenge);
+        $challengeSubject = $challengeSubject instanceof ChallengeSubject ? $challengeSubject : new ChallengeSubject($challenge);
         $form = $this->createForm(ChallengeSubjectForm::class, $challengeSubject);
 
         $form->handleRequest($request);
         $errors = $this->get('validator')->validate($challengeSubject);
         if ($form->isSubmitted() && $form->isValid()) {
             try {
-                $filename = $this->get('picture_uploader.service')->upload($challengeSubject->getCoverPicture()->getFile());
-                $challengeSubject->getCoverPicture()->setFilename($filename);
-                $this->get('manager.challenge')->save($challengeSubject);
+                $this->get('service.challenge_subject')->save($challengeSubject);
 
                 return $this->redirectToRoute('back_challenge_index');
             } catch (\Exception $e) {

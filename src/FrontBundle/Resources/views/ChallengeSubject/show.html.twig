@@ -23,6 +23,10 @@
                         <img class="card-img img-fluid"
                              src="{{ challengeSubject.coverPicture.url(storage_bucket_name) }}"
                              alt="{{ challengeSubject.slug }}" style="width: 100%;">
+                    {% else %}
+                        <img class="card-img img-fluid"
+                             src="{{ asset('bundles/front/img/default-subject.jpg') }}"
+                             alt="{{ challengeSubject.slug }}" style="width: 100%;">
                     {% endif %}
                 </div>
             </div>
@@ -71,7 +75,9 @@
 
         {% if challengeSubject.open or challengeSubject.past %}
             <section>
-                <h2 class="section-title">{{ 'picture.title.subject_pictures'|trans }}</h2>
+               {% if posts is not empty or (challengeSubject.open and is_granted('ROLE_USER'))%}
+                    <h2 class="section-title">{{ 'picture.title.subject_pictures'|trans }}</h2>
+               {% endif %}
                 {% if challengeSubject.open and is_granted('ROLE_USER') %}
                     <div class="row">
                         <div class="col-md-8 offset-md-2 col-lg-6 offset-lg-3">
