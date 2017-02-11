@@ -25,43 +25,49 @@ class PostMetadata
 
     /**
      * @var string
-     * @ORM\Column(name="camera_model", type="string")
+     * @ORM\Column(name="camera_model", type="string", nullable=true)
      */
     private $cameraModel;
 
     /**
      * @var string
-     * @ORM\Column(name="exposure", type="string")
+     * @ORM\Column(name="exposure", type="string", nullable=true)
      */
     private $exposure;
 
     /**
      * @var string
-     * @ORM\Column(name="iso", type="string")
+     * @ORM\Column(name="iso", type="string", nullable=true)
      */
     private $iso;
 
     /**
      * @var string
-     * @ORM\Column(name="shutter_speed", type="string")
-     */
-    private $shutterSpeed;
-
-    /**
-     * @var string
-     * @ORM\Column(name="aperture", type="string")
+     * @ORM\Column(name="aperture", type="string", nullable=true)
      */
     private $aperture;
 
     /**
+     * @var integer
+     * @ORM\Column(name="focal_length", type="integer", nullable=true)
+     */
+    private $focalLength;
+
+    /**
+     * @var integer
+     * @ORM\Column(name="focal_length_35mm", type="integer", nullable=true)
+     */
+    private $focalLengthIn35mm;
+
+    /**
      * @var string
-     * @ORM\Column(name="lens", type="string")
+     * @ORM\Column(name="lens", type="string", nullable=true)
      */
     private $lens;
 
     /**
      * @var \DateTime
-     * @ORM\Column(name="taken_date", type="datetime")
+     * @ORM\Column(name="taken_date", type="datetime", nullable=true)
      */
     private $takenDate;
 
@@ -132,22 +138,6 @@ class PostMetadata
     /**
      * @return string
      */
-    public function getShutterSpeed()
-    {
-        return $this->shutterSpeed;
-    }
-
-    /**
-     * @param string $shutterSpeed
-     */
-    public function setShutterSpeed($shutterSpeed)
-    {
-        $this->shutterSpeed = $shutterSpeed;
-    }
-
-    /**
-     * @return string
-     */
     public function getAperture()
     {
         return $this->aperture;
@@ -159,6 +149,38 @@ class PostMetadata
     public function setAperture($aperture)
     {
         $this->aperture = $aperture;
+    }
+
+    /**
+     * @return integer
+     */
+    public function getFocalLength()
+    {
+        return $this->focalLength;
+    }
+
+    /**
+     * @param integer $focalLength
+     */
+    public function setFocalLength($focalLength)
+    {
+        $this->focalLength = $focalLength;
+    }
+
+    /**
+     * @return integer
+     */
+    public function getFocalLengthIn35mm()
+    {
+        return $this->focalLengthIn35mm;
+    }
+
+    /**
+     * @param integer $focalLengthIn35mm
+     */
+    public function setFocalLengthIn35mm($focalLengthIn35mm)
+    {
+        $this->focalLengthIn35mm = $focalLengthIn35mm;
     }
 
     /**

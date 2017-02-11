@@ -2,6 +2,8 @@
 
 namespace BackBundle\Utils;
 
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+
 class ImageResizer
 {
     private $image;
@@ -9,10 +11,10 @@ class ImageResizer
     private $height;
     private $imageResized;
 
-    public function __construct($fileName)
+    public function __construct(UploadedFile $file)
     {
         // *** Open up the file
-        $this->image = $this->openImage($fileName);
+        $this->image = $this->openImage($file);
 
         // *** Get width and height
         $this->width = imagesx($this->image);
@@ -21,20 +23,20 @@ class ImageResizer
 
     ## --------------------------------------------------------
 
-    private function openImage($file)
+    private function openImage(UploadedFile $file)
     {
         // *** Get extension
-        $extension = strtolower(strrchr($file, '.'));
+        $extension = $file->getClientOriginalExtension();
 
         switch ($extension) {
-            case '.jpg':
-            case '.jpeg':
+            case 'jpg':
+            case 'jpeg':
                 $img = @imagecreatefromjpeg($file);
                 break;
-            case '.gif':
+            case 'gif':
                 $img = @imagecreatefromgif($file);
                 break;
-            case '.png':
+            case 'png':
                 $img = @imagecreatefrompng($file);
                 break;
             default:
@@ -190,6 +192,7 @@ class ImageResizer
             case '.jpg':
             case '.jpeg':
                 if (imagetypes() & IMG_JPG) {
+                    var_dump('test');
                     imagejpeg($this->imageResized, $savePath, $imageQuality);
                 }
                 break;

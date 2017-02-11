@@ -19,7 +19,7 @@ class Version20170211211349 extends AbstractMigration
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
         $this->addSql('SET FOREIGN_KEY_CHECKS = 0');
-        $this->addSql('CREATE TABLE post_metadatas (id INT AUTO_INCREMENT NOT NULL, camera_model VARCHAR(255) NOT NULL, exposure VARCHAR(255) NOT NULL, iso VARCHAR(255) NOT NULL, shutter_speed VARCHAR(255) NOT NULL, aperture VARCHAR(255) NOT NULL, lens VARCHAR(255) NOT NULL, taken_date DATETIME NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB');
+        $this->addSql('CREATE TABLE post_metadatas (id INT AUTO_INCREMENT NOT NULL, camera_model VARCHAR(255) DEFAULT NULL, exposure VARCHAR(255) DEFAULT NULL, iso VARCHAR(255) DEFAULT NULL, aperture VARCHAR(255) DEFAULT NULL, focal_length INT DEFAULT NULL, focal_length_35mm INT DEFAULT NULL, lens VARCHAR(255) DEFAULT NULL, taken_date DATETIME DEFAULT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB');
         $this->addSql('ALTER TABLE posts ADD metadata_id INT DEFAULT NULL, CHANGE thumbnail_picture_id thumbnail_picture_id INT NOT NULL');
         $this->addSql('ALTER TABLE posts ADD CONSTRAINT FK_885DBAFADC9EE959 FOREIGN KEY (metadata_id) REFERENCES post_metadatas (id)');
         $this->addSql('CREATE UNIQUE INDEX UNIQ_885DBAFADC9EE959 ON posts (metadata_id)');

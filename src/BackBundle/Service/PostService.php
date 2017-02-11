@@ -12,46 +12,46 @@ namespace BackBundle\Service;
 use BackBundle\Entity\Picture;
 use BackBundle\Entity\Post;
 use BackBundle\Manager\PostManager;
-use BackBundle\Utils\ImageResizer;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class PostService
 {
+    private static $allowedMimeTypes = array(
+        'image/jpeg'
+    );
 
     private $postManager;
     private $pictureUploaderService;
-    private $rootDir;
+    private $postMetadataService;
 
     /**
      * PostService constructor.
      * @param PostManager $postManager
      * @param PictureUploaderService $pictureUploaderService
-     * @param $rootDir
+     * @param PostMetadataService $postMetadataService
      */
-    public function __construct(PostManager $postManager, PictureUploaderService $pictureUploaderService, $rootDir)
+    public function __construct(PostManager $postManager, PictureUploaderService $pictureUploaderService, PostMetadataService $postMetadataService)
     {
         $this->postManager = $postManager;
         $this->pictureUploaderService = $pictureUploaderService;
-        $this->rootDir = $rootDir;
+        $this->postMetadataService = $postMetadataService;
     }
 
     public function save(Post $post)
     {
-        $filename = $this->pictureUploaderService->upload($post->getCoverPicture()->getFile());
+        $file = $post->getCoverPicture()->getFile();
+        if (!in_array($file->getClientMimeType(), self::$allowedMimeTypes)) {
+            throw new \InvalidArgumentException(sprintf('Files of type %s are not allowed.', $file->getClientMimeType()));
+        }
+        $filename = $this->pictureUploaderService->uploadThumbnail($file, 'thumbnails/');
+        $picture = new Picture();
+        $picture->setFilename($filename);
+        $post->setThumbnailPicture($picture);
+
+        $filename = $this->pictureUploaderService->upload($file);
         $post->getCoverPicture()->setFilename($filename);
 
-        $file = $post->getCoverPicture()->getFile();
-        $image = new ImageResizer($file->getRealPath());
-        $image->resizeImage(300, 300, 'crop');
-        $path = $this->rootDir . '/../web';
-        $filename = '/tmp'.strrchr($post->getCoverPicture()->getFilename(),'.');;
-        $image->saveImage($path . $filename);
-        $file = new UploadedFile($path . $filename, $filename, $file->getMimeType(), null, null, true);
-        $filename2 = $this->pictureUploaderService->upload($file, 'thumbnails/');
-        $picture = new Picture();
-        $picture->setFilename($filename2);
-        $post->setThumbnailPicture($picture);
-        unlink($path . $filename);
+        $postMetadata = $this->postMetadataService->create($file->getRealPath());
+        $post->setMetadata($postMetadata);
 
         $this->postManager->save($post);
     }
