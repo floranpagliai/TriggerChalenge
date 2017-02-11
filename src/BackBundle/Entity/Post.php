@@ -41,14 +41,14 @@ class Post implements TimestampableInterface
 
     /**
      * @var Picture
-     * @ORM\ManyToOne(targetEntity="BackBundle\Entity\Picture", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="BackBundle\Entity\Picture", cascade={"persist", "remove"})
      * @ORM\JoinColumn(name="cover_picture_id", referencedColumnName="id", nullable=false)
      */
     private $coverPicture;
 
     /**
      * @var Picture
-     * @ORM\ManyToOne(targetEntity="BackBundle\Entity\Picture", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="BackBundle\Entity\Picture", cascade={"persist", "remove"})
      * @ORM\JoinColumn(name="thumbnail_picture_id", referencedColumnName="id", nullable=false)
      */
     private $thumbnailPicture;
@@ -65,6 +65,13 @@ class Post implements TimestampableInterface
      * @ORM\Column(name="title", type="string")
      */
     private $title;
+
+    /**
+     * @var PostMetadata
+     * @ORM\OneToOne(targetEntity="BackBundle\Entity\PostMetadata", cascade={"persist"})
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $metadata;
 
     /**
      * Post constructor.
@@ -185,5 +192,21 @@ class Post implements TimestampableInterface
     public function setTitle($title)
     {
         $this->title = ucfirst(strtolower($title));
+    }
+
+    /**
+     * @return PostMetadata
+     */
+    public function getMetadata()
+    {
+        return $this->metadata;
+    }
+
+    /**
+     * @param PostMetadata $metadata
+     */
+    public function setMetadata($metadata)
+    {
+        $this->metadata = $metadata;
     }
 }
