@@ -8,6 +8,7 @@
 ### Changed
 - Responsive - N'afficher qu'un seul sujet sur mobile
 - Uniformisation de la police des boutons
+- Enregistrer si une invitation a été utilisé
 
 ## [0.10.6]
 ### Fixed
