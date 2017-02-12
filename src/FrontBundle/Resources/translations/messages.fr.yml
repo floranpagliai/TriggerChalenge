@@ -51,12 +51,11 @@ user_invite:
             deleted: "L'invitation a bien été supprimé"
             invited: "Cet email a été invité avec succès."
         warning:
-            not_invited: "Cet email n'a pas été invité."
             expired: "L'invitation à expiré."
             wrong_code: "Le code d'invitation est faux."
             already_invited: "Cet email a déjà été invité."
             not_invited: "Cet email n'a pas été invité."
-            expired: "L'invitation à expiré."
+            already_registered: "L'invitation à déjà été utilisé."
 post:
     form:
         placeholder:

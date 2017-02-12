@@ -2,7 +2,8 @@
 
 ## [Unreleased]
 ### Added
-- Ajout d'un changelog
+- Pouvoir Liker des photos
+- Affichage des informations de prise de vue d'une photo
 
 ### Changed
 - Responsive - N'afficher qu'un seul sujet sur mobile

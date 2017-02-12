@@ -52,6 +52,11 @@
     </div>
 {% endfor %}
 
+{% for flashMessage in app.session.flashbag.get('warnig') %}
+    <div id="messenger" class="messenger-warnig" data-message="{{ flashMessage|trans }}">
+    </div>
+{% endfor %}
+
 <div class="container-fluid">
     <header>
         <a href="{{ path('front_homepage') }}">
