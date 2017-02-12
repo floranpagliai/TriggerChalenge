@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "51fe2baa21861c224331d7a9b69f5c60",
+    "content-hash": "d7704c5f9dffe30bcca8dd87b8feebc4",
     "packages": [
         {
             "name": "bmatzner/fontawesome-bundle",
@@ -3568,7 +3568,9 @@
     "platform": {
         "php": ">=5.5.9",
         "ext-gd": "*",
-        "ext-intl": "*"
+        "ext-intl": "*",
+        "ext-exif": "*",
+        "ext-mbstring": "*"
     },
     "platform-dev": [],
     "platform-overrides": {
