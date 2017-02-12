@@ -33,7 +33,7 @@ class MailerProvider
         $from = 'hello@triggerchallenge.com';
         $fromName = 'Trigger Challenge';
         $to = $userInvite->getEmail();
-        $subject = 'Bienvenue dans l\'aventure photographique !';
+        $subject = $userInvite->getInvitingUser()->getFirstName() . ' vous invite a rejoindre une aventure photographique !';
         $body = $this->templating->render('BackBundle:Mails:invitation.html.twig', array('invite' => $userInvite));
 
         $this->sendMail($from, $fromName, $to, $subject, $body);
