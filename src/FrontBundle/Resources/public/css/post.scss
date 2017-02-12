@@ -50,6 +50,18 @@
   }
 }
 
+.post-metadata {
+  margin-right: 1px;
+  margin-left: 1px;
+
+  &:after {
+    content: '  | ';
+  }
+  &:last-child:after{
+    content: '';
+  }
+}
+
 .action-like {
   i {
     color: $accent-color;

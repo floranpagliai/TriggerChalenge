@@ -8,4 +8,4 @@ services:
         arguments: ["@service_container", "TriggerChallenge-4915969a6695.json"]
     picture_uploader.service:
         class: BackBundle\Service\PictureUploaderService
-        arguments: ["@picture_storage_filesystem"]
+        arguments: ["@picture_storage_filesystem", "%kernel.root_dir%"]

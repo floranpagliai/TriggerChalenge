@@ -43,7 +43,9 @@ services:
         arguments: ["@manager.post_like", "@manager.post", "@provider.post_like"]
     service.post:
         class: BackBundle\Service\PostService
-        arguments: ["@manager.post", "@picture_uploader.service", "%kernel.root_dir%"]
+        arguments: ["@manager.post", "@picture_uploader.service", "@service.post_metadata"]
+    service.post_metadata:
+        class: BackBundle\Service\PostMetadataService
     timestampable_entity.pre_persist.listener:
         class: BackBundle\EventListener\PrePersistListener
         tags:
