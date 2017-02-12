@@ -50,7 +50,7 @@ class PostService
         $filename = $this->pictureUploaderService->upload($file);
         $post->getCoverPicture()->setFilename($filename);
 
-        $postMetadata = $this->postMetadataService->create($file->getRealPath());
+        $postMetadata = $this->postMetadataService->get($file->getRealPath());
         $post->setMetadata($postMetadata);
 
         $this->postManager->save($post);

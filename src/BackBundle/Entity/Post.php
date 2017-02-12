@@ -68,8 +68,7 @@ class Post implements TimestampableInterface
 
     /**
      * @var PostMetadata
-     * @ORM\OneToOne(targetEntity="BackBundle\Entity\PostMetadata", cascade={"persist"})
-     * @ORM\JoinColumn(nullable=true)
+     * @ORM\OneToOne(targetEntity="BackBundle\Entity\PostMetadata", mappedBy="post", cascade={"persist"})
      */
     private $metadata;
 
@@ -207,6 +206,9 @@ class Post implements TimestampableInterface
      */
     public function setMetadata($metadata)
     {
+        if ($metadata instanceof PostMetadata) {
+            $metadata->setPost($this);
+        }
         $this->metadata = $metadata;
     }
 }

@@ -192,7 +192,6 @@ class ImageResizer
             case '.jpg':
             case '.jpeg':
                 if (imagetypes() & IMG_JPG) {
-                    var_dump('test');
                     imagejpeg($this->imageResized, $savePath, $imageQuality);
                 }
                 break;

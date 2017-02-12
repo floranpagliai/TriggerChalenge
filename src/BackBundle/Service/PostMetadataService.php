@@ -14,10 +14,10 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 class PostMetadataService
 {
 
-    public function create($filename)
+    public function get($filename, PostMetadata $postMetadata = null)
     {
-        $postMetadata = new PostMetadata();
-        $exifData = exif_read_data($filename);
+        $postMetadata = $postMetadata !== null ? $postMetadata : new PostMetadata();
+        $exifData = @exif_read_data($filename);
         $i = 0;
         if (!empty($exifData['Model'])) {
             $postMetadata->setCameraModel($exifData['Model']);

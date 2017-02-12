@@ -24,6 +24,13 @@ class PostMetadata
     protected $id;
 
     /**
+     * @var Post
+     * @ORM\OneToOne(targetEntity="BackBundle\Entity\Post", inversedBy="metadata")
+     * @ORM\JoinColumn(name="post_id", referencedColumnName="id", nullable=false)
+     */
+    private $post;
+
+    /**
      * @var string
      * @ORM\Column(name="camera_model", type="string", nullable=true)
      */
@@ -85,6 +92,22 @@ class PostMetadata
     public function setId($id)
     {
         $this->id = $id;
+    }
+
+    /**
+     * @return Post
+     */
+    public function getPost()
+    {
+        return $this->post;
+    }
+
+    /**
+     * @param Post $post
+     */
+    public function setPost($post)
+    {
+        $this->post = $post;
     }
 
     /**
