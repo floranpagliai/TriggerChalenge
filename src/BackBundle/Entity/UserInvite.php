@@ -34,6 +34,13 @@ class UserInvite implements TimestampableInterface
     private $invitingUser;
 
     /**
+     * @var User $invitedUser
+     * @ORM\OneToOne(targetEntity="BackBundle\Entity\User")
+     * @ORM\JoinColumn(name="invited_user_id", referencedColumnName="id", nullable=true)
+     */
+    private $invitedUser;
+
+    /**
      * @var string $email
      * @ORM\Column(name="email", type="string", length=200)
      */
@@ -93,6 +100,23 @@ class UserInvite implements TimestampableInterface
     {
         $this->invitingUser = $invitingUser;
     }
+
+    /**
+     * @return User
+     */
+    public function getInvitedUser()
+    {
+        return $this->invitedUser;
+    }
+
+    /**
+     * @param User $invitedUser
+     */
+    public function setInvitedUser($invitedUser)
+    {
+        $this->invitedUser = $invitedUser;
+    }
+
 
     /**
      * @return string

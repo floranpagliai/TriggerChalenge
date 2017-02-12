@@ -42,7 +42,7 @@ class SecurityController extends Controller
         $email = $request->get('email');
         $invitationCode = $request->get('code');
         try {
-            $this->get('provider.user_invite')->verify($email, $invitationCode);
+            $invitation = $this->get('provider.user_invite')->verify($email, $invitationCode);
         } catch (\Exception $e) {
             $this->addFlash('error', $e->getMessage());
 
@@ -58,6 +58,9 @@ class SecurityController extends Controller
             $password = $this->get('security.password_encoder')->encodePassword($user, $user->getPassword());
             $user->setPassword($password);
             $this->get('manager.user')->save($user);
+
+            $invitation->setInvitedUser($user);
+            $this->get('manager.user_invite')->save($invitation);
 
             $message = $this->get('translator')->trans('user.message.success.registered');
             $this->addFlash('success', $message);
