@@ -6,15 +6,18 @@ services:
     manager.challenge_subject:
         class: BackBundle\Manager\ChallengeSubjectManager
         arguments: ["@doctrine.orm.default_entity_manager", BackBundle\Entity\ChallengeSubject]
+    manager.post_like:
+        class: BackBundle\Manager\PostLikeManager
+        arguments: ["@doctrine.orm.default_entity_manager", BackBundle\Entity\PostLike]
     manager.post:
         class: BackBundle\Manager\PostManager
         arguments: ["@doctrine.orm.default_entity_manager", BackBundle\Entity\Post]
-    manager.user:
-        class: BackBundle\Manager\UserManager
-        arguments: ["@doctrine.orm.default_entity_manager", BackBundle\Entity\User]
     manager.user_invite:
         class: BackBundle\Manager\UserInviteManager
         arguments: ["@doctrine.orm.default_entity_manager", BackBundle\Entity\UserInvite]
+    manager.user:
+        class: BackBundle\Manager\UserManager
+        arguments: ["@doctrine.orm.default_entity_manager", BackBundle\Entity\User]
 # PROVIDERS
     provider.challenge_subject:
         class: BackBundle\Provider\ChallengeSubjectProvider
@@ -25,10 +28,24 @@ services:
     provider.user_invite:
         class: BackBundle\Provider\UserInviteProvider
         arguments: ["@manager.user_invite", "@manager.user"]
+    provider.post_like:
+        class: BackBundle\Provider\PostLikeProvider
+        arguments: ["@manager.post_like"]
     provider.user:
         class: BackBundle\Provider\UserProvider
         arguments: ["@manager.user", "@provider.mailer", "@security.password_encoder"]
 # SERVICES
+    service.challenge_subject:
+        class: BackBundle\Service\ChallengeSubjectService
+        arguments: ["@manager.challenge_subject", "@picture_uploader.service"]
+    service.post_like:
+        class: BackBundle\Service\PostLikeService
+        arguments: ["@manager.post_like", "@manager.post", "@provider.post_like"]
+    service.post:
+        class: BackBundle\Service\PostService
+        arguments: ["@manager.post", "@picture_uploader.service", "@service.post_metadata"]
+    service.post_metadata:
+        class: BackBundle\Service\PostMetadataService
     timestampable_entity.pre_persist.listener:
         class: BackBundle\EventListener\PrePersistListener
         tags:

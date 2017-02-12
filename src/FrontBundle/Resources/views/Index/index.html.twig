@@ -27,10 +27,12 @@
         </section>
 
         <section class="grid">
-            <h2 class="section-title">{{ 'picture.title.last_pictures'|trans }}</h2>
-            {% for post in posts %}
-                {% include 'FrontBundle:Post:thumbnail.html.twig' with { 'post': post } %}
-            {% endfor %}
+            {% if posts is not empty %}
+                <h2 class="section-title">{{ 'picture.title.last_pictures'|trans }}</h2>
+                {% for post in posts %}
+                    {% include 'FrontBundle:Post:thumbnail.html.twig' with { 'post': post } %}
+                {% endfor %}
+            {% endif %}
         </section>
 
     </div>

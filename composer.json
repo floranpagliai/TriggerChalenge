@@ -21,7 +21,9 @@
         "php": ">=5.5.9",
         "ext-gd": "*",
         "ext-intl": "*",
-        "symfony/symfony": "3.1.*",
+        "ext-exif": "*",
+        "ext-mbstring": "*",
+        "symfony/symfony": "3.2.*",
         "doctrine/orm": "^2.5",
         "doctrine/doctrine-bundle": "^1.6",
         "doctrine/doctrine-cache-bundle": "^1.2",
@@ -64,8 +66,7 @@
         "compile": [
             "bin/console assetic:dump --env=prod",
             "bin/console assets:install --env=prod",
-            "bin/console --no-interaction doctrine:migrations:migrate",
-            "bin/console doctrine:fixtures:load --append"
+            "bin/console --no-interaction doctrine:migrations:migrate"
         ]
     },
     "config": {

@@ -49,5 +49,17 @@
     {
       "url": "heroku/php"
     }
-  ]
+  ],
+  "environments": {
+    "prod": {
+      "scripts": {
+        "fixtures": "bin/console doctrine:fixtures:load --env=prod"
+      }
+    },
+    "preprod": {
+      "scripts": {
+        "fixtures": "bin/console doctrine:fixtures:load --env=preprod"
+      }
+    }
+  }
 }

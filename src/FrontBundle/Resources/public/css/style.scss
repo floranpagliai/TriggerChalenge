@@ -7,18 +7,17 @@
 html * {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  -webkit-touch-callout: none; /* iOS Safari */
-  -webkit-user-select: none; /* Safari*/
-  -khtml-user-select: none; /* Konqueror */
-  -moz-user-select: none; /* Firefox */
-  -ms-user-select: none; /* Internet Explorer/Edge */
-  user-select: none;
+  -webkit-user-select: text; /* Safari*/
+  -khtml-user-select: text; /* Konqueror */
+  -moz-user-select: text; /* Firefox */
+  -ms-user-select: text; /* Internet Explorer/Edge */
+  user-select: text;
 }
 
 body {
   background: $body-background-color;
   color: $primary-text-color;
-  font-family: 'Oswald', sans-serif;
+  font-family: 'Raleway', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow: hidden;
@@ -48,11 +47,18 @@ a:focus,
 a:active {
   text-decoration: none;
   color: $link-hover-color;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: color, background-color;
+  transition-property: color, background-color;
 }
 
 p {
-  font-family: 'Raleway', sans-serif;
   font-weight: 200;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Oswald', sans-serif;
 }
 
 .main {
@@ -227,6 +233,7 @@ span.my-tooltip {
     font-size: 12px;
     font-weight: bold;
     letter-spacing: 2px;
+    font-family: 'Oswald', sans-serif;
   }
 }
 
@@ -258,4 +265,12 @@ span.my-tooltip {
 
 .oswald {
   font-family: 'Oswald', sans-serif;
+}
+
+.hr-top {
+  border-top: solid 1px #eeeff2;
+}
+
+.hr-bottom {
+  border-bottom: solid 1px #eeeff2;
 }

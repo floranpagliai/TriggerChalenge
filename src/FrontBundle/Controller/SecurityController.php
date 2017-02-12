@@ -24,7 +24,6 @@ class SecurityController extends Controller
         if ($this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
             return $this->redirectToRoute('front_homepage');
         }
-
         $authenticationUtils = $this->get('security.authentication_utils');
 
         return $this->render('FrontBundle:Security:login.html.twig',
@@ -42,15 +41,13 @@ class SecurityController extends Controller
         }
         $email = $request->get('email');
         $invitationCode = $request->get('code');
-
         try {
-            $this->get('provider.user_invite')->verify($email, $invitationCode);
+            $invitation = $this->get('provider.user_invite')->verify($email, $invitationCode);
         } catch (\Exception $e) {
             $this->addFlash('error', $e->getMessage());
 
             return $this->redirectToRoute('front_homepage');
         }
-
         $user = new User();
         $user->setEmail($email);
         $form = $this->createForm(RegistrationType::class, $user);
@@ -60,8 +57,11 @@ class SecurityController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $password = $this->get('security.password_encoder')->encodePassword($user, $user->getPassword());
             $user->setPassword($password);
-
             $this->get('manager.user')->save($user);
+
+            $invitation->setInvitedUser($user);
+            $this->get('manager.user_invite')->save($invitation);
+
             $message = $this->get('translator')->trans('user.message.success.registered');
             $this->addFlash('success', $message);
 

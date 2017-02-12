@@ -9,6 +9,16 @@ $(function () {
             timer: 3000
         });
     });
+    $('.messenger-warning').each(function () {
+        $.notify({
+            icon: 'fa fa-exclamation-circle',
+            message: this.dataset.message
+
+        }, {
+            type: 'warning',
+            timer: 3000
+        });
+    });
     $('.messenger-info').each(function () {
         $.notify({
             icon: 'fa fa-question-circle',
@@ -21,11 +31,11 @@ $(function () {
     });
     $('.messenger-error').each(function () {
         $.notify({
-            icon: 'fa fa-exclamation-circle',
+            icon: 'fa fa-times-circle',
             message: this.dataset.message
 
         }, {
-            type: 'error',
+            type: 'danger',
             timer: 3000
         });
     });

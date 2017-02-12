@@ -11,27 +11,131 @@
     {% set subjectName = ('challenge_frequency_type.element.'~challenge.frequency)|trans ~ ' #' ~ challengeNumber ~ ' - ' ~ challengeSubject.name %}
 
     <div class="main">
-        <div class="post">
-            <div class="page-title">
-                <h2>{{ post.title }}</h2>
-            </div>
-            <div class="post-photo">
+        <div class="page-title">
+            <h2>{{ post.title }}</h2>
+        </div>
+        <div class="post row">
+            <div class="post-photo col-md-9 col-lg-10">
                 <img class="img-centered" title="{{ post.author.fullName }} {{ 'for'|trans }} {{ subjectName }}"
                      src="{{ post.coverPicture.url(storage_bucket_name) }}"/>
             </div>
-            <div class="post-sidebar">
-                <a href="{{ path('front_user_profile', {'userId': post.author.publicId, 'fullName': post.author.fullName|lower|replace({' ':''})}) }}">
-                    {% if post.author.profilePicture is not null %}
-                        <img class="avatar" src="{{ post.author.profilePicture.url(storage_bucket_name) }}"
-                             alt="{{ post.author.firstName }}"/>
-                    {% else %}
-                        <img class="avatar" src="{{ asset('bundles/front/img/user-unknow.png') }}"
-                             alt="{{ post.author.firstName }}"/>
-                    {% endif %}
-                    <span>{{ post.author.fullName }}</span>
-                </a>
-                <span class="small"><i class="fa fa-calendar-o"></i>{{ post.createdAt|date('d M') }}</span>
+            <div class="post-sidebar col-md-3 col-lg-2">
+                <div class="post-sidebar-inner">
+                    <a href="{{ path('front_user_profile', {'userId': post.author.publicId, 'fullName': post.author.fullName|lower|replace({' ':''})}) }}">
+                        {% if post.author.profilePicture is not null %}
+                            <img class="avatar mt-1" src="{{ post.author.profilePicture.url(storage_bucket_name) }}"
+                                 alt="{{ post.author.firstName }}"/>
+                        {% else %}
+                            <img class="avatar mt-1" src="{{ asset('bundles/front/img/user-unknow.png') }}"
+                                 alt="{{ post.author.firstName }}"/>
+                        {% endif %}
+                        <p>{{ post.author.fullName }}</p>
+                    </a>
+                    <div class="sidebar-sections">
+                        <div class="row sidebar-section">
+                            <div class="col-xs-12">
+                            <span class="action-like">
+                                <a href="javascript:void(0);" id="js-post-like"
+                                   data-url="{{ path('api_post_like_update', {'idPost': post.id}) }}">
+                                   {% if isLiking %}
+                                       <i class="fa fa-heart hvr-icon-pulse"></i>
+                                    {% else %}
+                                       <i class="fa fa-heart-o hvr-icon-pulse"></i>
+                                   {% endif %}
+                                </a>
+                                    <span id="js-post-like-count">{{ likesCount }}</span>
+                            </span>
+                            </div>
+                        </div>
+                        {% if post.metadata is not null %}
+                            {% set metadata = post.metadata %}
+                            <div class="row sidebar-section">
+                                <div class="col-xs-12">
+                                    <i class="icon-photo-camera"></i>
+                                    <p class="small">
+                                        {% if metadata.cameraModel is not null %}{{ metadata.cameraModel }}{% endif %}
+                                        {% if metadata.lens is not null %}
+                                            <br/>
+                                            {{ metadata.lens }}
+                                        {% endif %}
+                                        <br/>
+                                        {% if metadata.focalLength is not null %}
+                                            <span class="post-metadata">{{ metadata.focalLength }}mm</span>
+                                        {% endif %}
+                                        {% if metadata.aperture is not null %}
+                                            <span class="post-metadata">{{ metadata.aperture }}</span>
+                                        {% endif %}
+                                        {% if metadata.exposure is not null %}
+                                            <span class="post-metadata">{{ metadata.exposure }}s</span>
+                                        {% endif %}
+                                        {% if metadata.iso is not null %}
+                                            <span class="post-metadata">ISO {{ metadata.iso }}</span>
+                                        {% endif %}
+                                    </p>
+                                </div>
+                            </div>
+                        {% endif %}
+
+                        <div class="row sidebar-section">
+                            <div class="col-xs-12">
+                                <table style="width: 100%">
+                                    <tbody class="small">
+                                    {% if post.metadata.takenDate is not null %}
+                                        <tr>
+                                            <td style="text-align: left;"><b>Prise le</b></td>
+                                            <td style="text-align: right;">{{ post.metadata.takenDate|localizeddate('long', 'none') }}</td>
+                                        </tr>
+                                    {% endif %}
+                                    <tr>
+                                        <td style="text-align: left;"><b>Posté le</b></td>
+                                        <td style="text-align: right;">{{ post.createdAt|localizeddate('long', 'none') }}</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+{% endblock %}
+
+{% block footer_javascripts %}
+    {{ parent() }}
+    <script>
+        $(document).ready(function () {
+            $(document).on("click", "#js-post-like", function () {
+                var url = $(this).attr('data-url');
+                var likeIconElem = $(this.firstElementChild);
+                var likeCountElem = $('#js-post-like-count');
+                $.ajax({
+                    url: url,
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function (result) {
+                        if (likeIconElem.hasClass('fa-heart-o')) {
+                            likeIconElem.removeClass('fa-heart-o');
+                            likeIconElem.addClass('fa-heart');
+                        } else {
+                            likeIconElem.removeClass('fa-heart');
+                            likeIconElem.addClass('fa-heart-o');
+                        }
+                        likeCountElem.html(result.likesCount);
+                    },
+                    error: function (xhr, status, error) {
+                        $.notify({
+                            icon: 'fa fa-exclamation-circle',
+                            message: xhr.responseJSON.message
+
+                        }, {
+                            type: 'warning',
+                            timer: 3000
+                        });
+                    }
+                });
+            });
+        });
+    </script>
 {% endblock %}

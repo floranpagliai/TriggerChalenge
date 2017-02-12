@@ -8,6 +8,7 @@
 namespace BackBundle\Provider;
 
 
+use BackBundle\Entity\UserInvite;
 use BackBundle\Manager\UserInviteManager;
 use BackBundle\Manager\UserManager;
 
@@ -31,15 +32,26 @@ class UserInviteProvider
         $this->userManager = $userManager;
     }
 
+    /**
+     * @param $email
+     * @param $code
+     * @return UserInvite
+     * @throws \Exception
+     */
     public function verify($email, $code)
     {
         $invitation = $this->userInviteManager->getByEmailAndCode($email, $code);
         if (!$invitation) {
             throw new \Exception('user_invite.message.warning.not_invited');
         }
+        if ($invitation->getInvitedUser() !== null) {
+            throw new \Exception('user_invite.message.warning.already_registered');
+        }
         if ($invitation->getExpireAt() < new \DateTime()) {
             throw new \Exception('user_invite.message.warning.expired');
         }
+
+        return $invitation;
     }
 
     public function isAlreadyInvited($email)

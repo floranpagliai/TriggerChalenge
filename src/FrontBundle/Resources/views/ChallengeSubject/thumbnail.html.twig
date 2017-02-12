@@ -1,10 +1,12 @@
 {% if display is not defined %}
     {% set display = 'active' %}
 {% endif %}
-<div class="col-lg-4 {{ display }}">
+<div class="col-xs-12 col-lg-4 {{ display }}">
     <div class="card">
         {% if challengeSubject.coverPicture is not null %}
             <img class="card-img-top img-fluid" src="{{ challengeSubject.coverPicture.url(storage_bucket_name) }}"  alt="{{ challengeSubject.slug }}" style="width: 100%;">
+        {% else %}
+            <img class="card-img-top img-fluid" src="{{ asset('bundles/front/img/default-subject.jpg') }}"  alt="{{ challengeSubject.slug }}" style="width: 100%;">
         {% endif %}
         <div class="card-block">
             <div class="text-xs-center">
