@@ -26,7 +26,7 @@ class ImageResizer
     private function openImage(UploadedFile $file)
     {
         // *** Get extension
-        $extension = $file->getClientOriginalExtension();
+        $extension = strtolower($file->getClientOriginalExtension());
 
         switch ($extension) {
             case 'jpg':
