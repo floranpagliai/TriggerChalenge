@@ -23,7 +23,7 @@
                     {% for challengeSubject in ongoingFeaturedChallenge.subjects %}
                         {% if count == 1 %}
                             {% if challengeSubject.coverPicture is not null %}
-                                <meta property="og:image" content="{{ challengeSubject.coverPicture.url(storage_bucket_name) }}" />
+                                {% block open_graph_image %}{{ challengeSubject.coverPicture.url(storage_bucket_name) }}{% endblock %}
                             {% endif %}
                         {% endif %}
                         {% include 'FrontBundle:ChallengeSubject:thumbnail.html.twig' with { 'challengeSubject': challengeSubject } %}
