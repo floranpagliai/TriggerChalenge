@@ -79,6 +79,24 @@ class PostMetadata
     private $takenDate;
 
     /**
+     * @var integer
+     * @ORM\Column(name="height", type="integer", nullable=true)
+     */
+    private $height;
+
+    /**
+     * @var integer
+     * @ORM\Column(name="width", type="integer", nullable=true)
+     */
+    private $width;
+
+    /**
+     * @var integer
+     * @ORM\Column(name="file_size", type="integer", nullable=true)
+     */
+    private $fileSize;
+
+    /**
      * @return mixed
      */
     public function getId()
@@ -236,5 +254,53 @@ class PostMetadata
     public function setTakenDate($takenDate)
     {
         $this->takenDate = $takenDate;
+    }
+
+    /**
+     * @return int
+     */
+    public function getHeight()
+    {
+        return $this->height;
+    }
+
+    /**
+     * @param int $height
+     */
+    public function setHeight($height)
+    {
+        $this->height = $height;
+    }
+
+    /**
+     * @return int
+     */
+    public function getWidth()
+    {
+        return $this->width;
+    }
+
+    /**
+     * @param int $width
+     */
+    public function setWidth($width)
+    {
+        $this->width = $width;
+    }
+
+    /**
+     * @return int
+     */
+    public function getFileSize()
+    {
+        return $this->fileSize;
+    }
+
+    /**
+     * @param int $fileSize
+     */
+    public function setFileSize($fileSize)
+    {
+        $this->fileSize = $fileSize;
     }
 }

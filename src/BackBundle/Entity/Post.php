@@ -68,7 +68,7 @@ class Post implements TimestampableInterface
 
     /**
      * @var PostMetadata
-     * @ORM\OneToOne(targetEntity="BackBundle\Entity\PostMetadata", mappedBy="post", cascade={"persist"})
+     * @ORM\OneToOne(targetEntity="BackBundle\Entity\PostMetadata", mappedBy="post", cascade={"persist", "remove"})
      */
     private $metadata;
 
