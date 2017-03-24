@@ -1,10 +1,11 @@
 {% extends '@Front/layout.html.twig' %}
 
-{% block page_title %}
-    {{ post.title }} {{ 'by'|trans }} {{ post.author.fullName }}
-{% endblock %}
+{% block page_title %}{{ post.author.fullName }} {{ 'for'|trans }} {{ post.challengeSubject.name }}{% endblock %}
 
 {% block open_graph_image %}{{ post.coverPicture.url(storage_bucket_name) }}{% endblock %}
+{% block open_graph_image_width %}{% if post.metadata is not null %}{{ post.metadata.width }}{% endif %}{% endblock %}
+{% block open_graph_image_height %}{% if post.metadata is not null %}{{ post.metadata.height }}{% endif %}
+{% endblock %}
 
 {% block body %}
     {% set challengeSubject = post.challengeSubject %}

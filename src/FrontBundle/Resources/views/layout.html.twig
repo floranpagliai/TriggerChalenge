@@ -16,6 +16,8 @@
     <meta property="og:title" content="{{ _page_title }}"/>
     <meta property="og:url" content="{{ url(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) }}"/>
     <meta property="og:image" content="{% block open_graph_image %}{% endblock %}"/>
+    <meta property="og:image:width" content="{% block open_graph_image_width %}{% endblock %}"/>
+    <meta property="og:image:height" content="{% block open_graph_image_height %}{% endblock %}"/>
 
     <link rel="shortcut icon" href="{{ asset('bundles/front/img/favicon.ico') }}" type="image/x-icon">
     <link rel="icon" href="{{ asset('bundles/front/img/favicon.ico') }}" type="image/x-icon">
