@@ -19,8 +19,15 @@
                     {% for challengeSubject in ongoingFeaturedChallenge.previousSubjects %}
                         {% include 'FrontBundle:ChallengeSubject:thumbnail.html.twig' with { 'challengeSubject': challengeSubject, 'display': 'hide' } %}
                     {% endfor %}
+                    {% set count = 0 %}
                     {% for challengeSubject in ongoingFeaturedChallenge.subjects %}
+                        {% if count == 1 %}
+                            {% if challengeSubject.coverPicture is not null %}
+                                <meta property="og:image" content="{{ challengeSubject.coverPicture.url(storage_bucket_name) }}" />
+                            {% endif %}
+                        {% endif %}
                         {% include 'FrontBundle:ChallengeSubject:thumbnail.html.twig' with { 'challengeSubject': challengeSubject } %}
+                        {% set count = count + 1 %}
                     {% endfor %}
                 </div>
             {% endfor %}
