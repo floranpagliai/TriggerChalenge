@@ -4,6 +4,8 @@
     {{ post.title }} {{ 'by'|trans }} {{ post.author.fullName }}
 {% endblock %}
 
+{% block open_graph_image %}{{ post.coverPicture.url(storage_bucket_name) }}{% endblock %}
+
 {% block body %}
     {% set challengeSubject = post.challengeSubject %}
     {% set challenge = challengeSubject.challenge %}
