@@ -46,6 +46,7 @@ twig:
         storage_bucket_name : "%storage.bucket_name%"
         challenge_subject_provider: "@provider.challenge_subject"
         activate_tracking: "%app.activate_tracking%"
+        facebook_client_id: "%facebook_client_id%"
 
 
 # Doctrine Configuration

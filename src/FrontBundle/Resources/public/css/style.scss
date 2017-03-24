@@ -274,3 +274,13 @@ span.my-tooltip {
 .hr-bottom {
   border-bottom: solid 1px #eeeff2;
 }
+
+.social-facebook {
+  background-color: #4267b2;
+
+  &:hover,
+  &:active,
+  &:focus {
+    background-color: #4080ff;
+  }
+}
