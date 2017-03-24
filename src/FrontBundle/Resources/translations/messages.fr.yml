@@ -127,3 +127,6 @@ challenge_subject_type:
     NATURE: "Nature"
     ARCHITECTURE: "Architecture"
     STREET: "Urbain"
+social:
+    action:
+        facebook_share: "Partager"

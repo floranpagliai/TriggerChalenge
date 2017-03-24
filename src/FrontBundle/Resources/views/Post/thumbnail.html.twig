@@ -12,19 +12,21 @@
         <div class="overlay"></div>
         <div>
             <h2 class="grid-item-title picture-title">{{ post.title }}</h2>
-            <div class="grid-item-footer">
-                <a href="{{ path('front_user_profile', {'userId': post.author.publicId, 'fullName': post.author.fullName|lower|replace({' ':''})}) }}">
-                    {% if post.author.profilePicture is not null %}
-                        <img class="avatar" src="{{ post.author.profilePicture.url(storage_bucket_name) }}"
-                             alt="{{ post.author.fullName }}"/>
-                    {% else %}
-                        <img class="avatar" src="{{ asset('bundles/front/img/user-unknow.png') }}"
-                             alt="{{ post.author.fullName }}"/>
-                    {% endif %}
-                    <span>{{ post.author.fullName }}</span>
-                </a>
-                {#<span class="small"><i class="fa fa-calendar-o"></i>{{ post.createdAt|date('d M') }}</span>#}
-            </div>
+            {% if showFooter is not defined or showFooter != false %}
+                <div class="grid-item-footer">
+                    <a href="{{ path('front_user_profile', {'userId': post.author.publicId, 'fullName': post.author.fullName|lower|replace({' ':''})}) }}">
+                        {% if post.author.profilePicture is not null %}
+                            <img class="avatar" src="{{ post.author.profilePicture.url(storage_bucket_name) }}"
+                                 alt="{{ post.author.fullName }}"/>
+                        {% else %}
+                            <img class="avatar" src="{{ asset('bundles/front/img/user-unknow.png') }}"
+                                 alt="{{ post.author.fullName }}"/>
+                        {% endif %}
+                        <span>{{ post.author.fullName }}</span>
+                    </a>
+                    {#<span class="small"><i class="fa fa-calendar-o"></i>{{ post.createdAt|date('d M') }}</span>#}
+                </div>
+            {% endif %}
         </div>
     </a>
 </div>

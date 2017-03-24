@@ -12,10 +12,12 @@
         {{ app_name }}
     </title>
     <meta name="description" content="{{ app_description }}"/>
-    <meta property="fb:app_id" content="151266185368113"/>
+    <meta property="fb:app_id" content="{{ facebook_client_id }}"/>
     <meta property="og:title" content="{{ _page_title }}"/>
     <meta property="og:url" content="{{ url(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) }}"/>
     <meta property="og:image" content="{% block open_graph_image %}{% endblock %}"/>
+    <meta property="og:image:width" content="{% block open_graph_image_width %}{% endblock %}"/>
+    <meta property="og:image:height" content="{% block open_graph_image_height %}{% endblock %}"/>
 
     <link rel="shortcut icon" href="{{ asset('bundles/front/img/favicon.ico') }}" type="image/x-icon">
     <link rel="icon" href="{{ asset('bundles/front/img/favicon.ico') }}" type="image/x-icon">
@@ -128,7 +130,7 @@
     <script>
         window.fbAsyncInit = function () {
             FB.init({
-                appId: '151266185368113',
+                appId: {{ facebook_client_id }},
                 xfbml: true,
                 version: 'v2.8'
             });

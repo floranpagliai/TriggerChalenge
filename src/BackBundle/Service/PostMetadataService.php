@@ -55,6 +55,18 @@ class PostMetadataService
             $postMetadata->setTakenDate(new \DateTime($exifData['DateTimeOriginal']));
             $i++;
         }
+        if (!empty($exifData['COMPUTED']['Height'])) {
+            $postMetadata->setHeight($exifData['COMPUTED']['Height']);
+            $i++;
+        }
+        if (!empty($exifData['COMPUTED']['Width'])) {
+            $postMetadata->setWidth((int)$exifData['COMPUTED']['Width']);
+            $i++;
+        }
+        if (!empty($exifData['FileSize'])) {
+            $postMetadata->setFileSize($exifData['FileSize']);
+            $i++;
+        }
 
         $postMetadata = $i != 0 ? $postMetadata : null;
 

@@ -21,7 +21,6 @@
                     {% endfor %}
                     {% for challengeSubject in ongoingFeaturedChallenge.subjects %}
                         {% include 'FrontBundle:ChallengeSubject:thumbnail.html.twig' with { 'challengeSubject': challengeSubject } %}
-                        {% set count = count + 1 %}
                     {% endfor %}
                 </div>
             {% endfor %}
