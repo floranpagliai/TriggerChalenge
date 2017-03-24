@@ -4,13 +4,13 @@
     {{ post.title }} {{ 'by'|trans }} {{ post.author.fullName }}
 {% endblock %}
 
+{% block open_graph_image %}{{ post.coverPicture.url(storage_bucket_name) }}{% endblock %}
+
 {% block body %}
     {% set challengeSubject = post.challengeSubject %}
     {% set challenge = challengeSubject.challenge %}
     {% set challengeNumber = challenge_subject_provider.getSequenceNumber(challengeSubject) %}
     {% set subjectName = ('challenge_frequency_type.element.'~challenge.frequency)|trans ~ ' #' ~ challengeNumber ~ ' - ' ~ challengeSubject.name %}
-
-    {% block open_graph_image %}{{ post.coverPicture.url(storage_bucket_name) }}{% endblock %}
 
     <div class="main">
         <div class="page-title">
