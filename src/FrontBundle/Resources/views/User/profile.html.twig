@@ -28,7 +28,7 @@
 
         <section class="grid">
             {% for post in posts %}
-                {% include 'FrontBundle:Post:thumbnail.html.twig' with { 'post': post } %}
+                {% include 'FrontBundle:Post:thumbnail.html.twig' with { 'post': post, 'showFooter': false } %}
             {% endfor %}
         </section>
 

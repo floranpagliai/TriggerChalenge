@@ -99,7 +99,9 @@
                 "mailer_port": "MAILER_PORT",
                 "mailer_user": "MAILER_USER",
                 "mailer_password": "MAILER_PASSWORD",
-                "storage.bucket_name": "STORAGE_BUCKET_NAME"
+                "storage.bucket_name": "STORAGE_BUCKET_NAME",
+                "facebook_client_id": "FACEBOOK_CLIENT_ID",
+                "facebook_client_secret": "FACEBOOK_CLIENT_SECRET"
           }
         }
     }

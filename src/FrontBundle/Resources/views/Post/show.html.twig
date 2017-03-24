@@ -34,17 +34,23 @@
                     <div class="sidebar-sections">
                         <div class="row sidebar-section">
                             <div class="col-xs-12">
-                            <span class="action-like">
-                                <a href="javascript:void(0);" id="js-post-like"
-                                   data-url="{{ path('api_post_like_update', {'idPost': post.id}) }}">
-                                   {% if isLiking %}
-                                       <i class="fa fa-heart hvr-icon-pulse"></i>
-                                    {% else %}
-                                       <i class="fa fa-heart-o hvr-icon-pulse"></i>
-                                   {% endif %}
-                                </a>
+                                <span class="action-like">
+                                    <a href="javascript:void(0);" id="js-post-like"
+                                       data-url="{{ path('api_post_like_update', {'idPost': post.id}) }}">
+                                        {% if isLiking %}
+                                            <i class="fa fa-heart hvr-icon-pulse"></i>
+                                        {% else %}
+                                            <i class="fa fa-heart-o hvr-icon-pulse"></i>
+                                        {% endif %}
+                                    </a>
                                     <span id="js-post-like-count">{{ likesCount }}</span>
-                            </span>
+                                </span>
+
+                                <div class="action-share">
+                                    <a href="javascript:void(0);" class="js-fb-share-button btn-primary btn-sm social-facebook" data-url="{{ url(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) }}">
+                                        <i class="fa fa-facebook-official"></i> {{ 'social.action.facebook_share'|trans }}
+                                    </a>
+                                </div>
                             </div>
                         </div>
                         {% if post.metadata is not null %}
@@ -99,6 +105,7 @@
                 </div>
             </div>
         </div>
+
     </div>
 {% endblock %}
 
@@ -106,6 +113,15 @@
     {{ parent() }}
     <script>
         $(document).ready(function () {
+            $(document).on("click", ".js-fb-share-button", function () {
+                FB.ui({
+                    app_id: {{ facebook_client_id }},
+                    method: 'share',
+                    display: 'popup',
+                    href: $(this).attr('data-url')
+                }, function (response) {
+                });
+            });
             $(document).on("click", "#js-post-like", function () {
                 var url = $(this).attr('data-url');
                 var likeIconElem = $(this.firstElementChild);

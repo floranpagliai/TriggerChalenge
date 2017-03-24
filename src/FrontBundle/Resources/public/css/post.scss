@@ -2,7 +2,7 @@
 
 .post {
   //margin: auto;
-  height: 500px;
+  height: 600px;
   overflow: hidden;
   background-color: $body-background-second-color;
   text-align: center;
@@ -70,7 +70,7 @@
 
 @media only screen and (max-width: 1200px) {
   .post {
-    height: 375px;
+    height: 450px;
   }
 }
 
@@ -81,7 +81,7 @@
       padding: 0;
     }
     .post-photo {
-      height: 250px;
+      height: 375px;
     }
   }
 }
