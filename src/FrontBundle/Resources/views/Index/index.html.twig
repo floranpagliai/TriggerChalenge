@@ -19,13 +19,7 @@
                     {% for challengeSubject in ongoingFeaturedChallenge.previousSubjects %}
                         {% include 'FrontBundle:ChallengeSubject:thumbnail.html.twig' with { 'challengeSubject': challengeSubject, 'display': 'hide' } %}
                     {% endfor %}
-                    {% set count = 0 %}
                     {% for challengeSubject in ongoingFeaturedChallenge.subjects %}
-                        {% if count == 1 %}
-                            {% if challengeSubject.coverPicture is not null %}
-                                {% block open_graph_image %}{{ challengeSubject.coverPicture.url(storage_bucket_name) }}{% endblock %}
-                            {% endif %}
-                        {% endif %}
                         {% include 'FrontBundle:ChallengeSubject:thumbnail.html.twig' with { 'challengeSubject': challengeSubject } %}
                         {% set count = count + 1 %}
                     {% endfor %}
