@@ -38,7 +38,7 @@ class PictureUploaderService
         if (!in_array($file->getClientMimeType(), self::$allowedMimeTypes)) {
             throw new \InvalidArgumentException(sprintf('Files of type %s are not allowed.', $file->getClientMimeType()));
         }
-        $filename = sprintf($dir . '%s/%s/%s.%s', date('Y'), date('m'), uniqid(), strtolower($file->getClientOriginalExtension()));
+        $filename = sprintf($dir . uniqid(), strtolower($file->getClientOriginalExtension()));
         $adapter = $this->filesystem->getAdapter();
         $adapter->setMetadata($filename, array('contentType' => $file->getClientMimeType()));
         $adapter->write($filename, file_get_contents($file->getPathname()));

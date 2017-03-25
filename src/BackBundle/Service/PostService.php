@@ -42,7 +42,7 @@ class PostService
         if (!in_array($file->getClientMimeType(), self::$allowedMimeTypes)) {
             throw new \InvalidArgumentException(sprintf('Files of type %s are not allowed.', $file->getClientMimeType()));
         }
-        $filename = $this->pictureUploaderService->uploadThumbnail($file, 'thumbnails/');
+        $filename = $this->pictureUploaderService->uploadThumbnail($file);
         $picture = new Picture();
         $picture->setFilename($filename);
         $post->setThumbnailPicture($picture);
