@@ -1,6 +1,11 @@
 # Change Log
 
-## [Unreleased]
+## [0.12]
+### Added
+- Pouvoir partager une photo sur Facebook
+- Ajouter taille de l'image dans les metadata
+- Intégration des meta open graph page post
+
 ### Fixed
 - Bug extension des images en majuscule
 
@@ -18,6 +23,7 @@
 ### Fixed
 - Fixed method to activate tracking
 
-[Unreleased]: https://github.com/shked0wn/TriggerChalenge/compare/0.11...HEAD
+[Unreleased]: https://github.com/shked0wn/TriggerChalenge/compare/0.12...HEAD
+[0.12]: https://github.com/shked0wn/TriggerChalenge/compare/0.11...0.12
 [0.11]: https://github.com/shked0wn/TriggerChalenge/compare/0.10...0.11
 [0.10]: https://github.com/shked0wn/TriggerChalenge/compare/0.09...0.10

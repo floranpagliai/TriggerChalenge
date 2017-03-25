@@ -21,6 +21,7 @@ class PostController extends Controller
 
     public function showAction($postId)
     {
+        $trans = $this->get('translator');
         $postManager = $this->get('manager.post');
         $postLikeManager = $this->get('manager.post_like');
         $postLikeProvider = $this->get('provider.post_like');
@@ -32,13 +33,20 @@ class PostController extends Controller
         }
         $isLiking = $postLikeProvider->userIsLiking($post, $this->getUser());
         $likesCount =  $postLikeManager->countByPost($post->getId());
+        $challengeSubject = $post->getChallengeSubject();
+        $challenge = $challengeSubject->getChallenge();
+        $subjectName = $trans->trans('challenge_frequency_type.element.'.$challenge->getFrequency()) . ' #' . $this->get('provider.challenge_subject')->getSequenceNumber($challengeSubject) . ' - ' . $challengeSubject->getName();
 
         return $this->render(
             'FrontBundle:Post:show.html.twig',
             array(
                 'post' => $post,
+                'metadata' => $post->getMetadata(),
+                'challengeSubject' => $challengeSubject,
+                'challenge' => $challenge,
                 'likesCount' => $likesCount,
-                'isLiking' => $isLiking
+                'isLiking' => $isLiking,
+                'subjectName' => $subjectName
             )
         );
     }

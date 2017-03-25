@@ -31,13 +31,9 @@ class UpdatePostMetadataCommand extends ContainerAwareCommand
         foreach ($posts as $post) {
             $coverPicture = $post->getCoverPicture();
             $postMetadata = $postMetadataService->get($coverPicture->getUrl($container->getParameter('storage.bucket_name')), $post->getMetadata());
-            if ($postMetadata) {
-                $post->setMetadata($postMetadata);
-                $postManager->save($postMetadata);
-                $output->writeln('[UpdatePostMetadataCommand] Metadata for post with id = ' . $post->getId() . ' saved');
-            } else {
-                $output->writeln('[UpdatePostMetadataCommand] No Metadata for post with id = ' . $post->getId() . ' found');
-            }
+            $post->setMetadata($postMetadata);
+            $postManager->save($postMetadata);
+            $output->writeln('[UpdatePostMetadataCommand] Metadata for post with id = ' . $post->getId() . ' saved');
         }
 
     }

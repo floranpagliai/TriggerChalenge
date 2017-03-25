@@ -50,26 +50,4 @@ class Version20170112201740 extends AbstractMigration implements ContainerAwareI
         $this->addSql('DROP INDEX IDX_885DBAFAE2D73BDF ON posts');
         $this->addSql('ALTER TABLE posts DROP thumbnail_picture_id');
     }
-
-    public function postUp(Schema $schema)
-    {
-        $postManager = $this->container->get('manager.post');
-        $posts = $postManager->getAll();
-        foreach ($posts as $post) {
-            if ($post->getThumbnailPicture() === null) {
-                $image = new ImageResizer($post->getCoverPicture()->getUrl($this->container->getParameter('storage.bucket_name')));
-                $image->resizeImage(300, 300, 'crop');
-                $path = $this->container->get('kernel')->getRootDir() . '/../web';
-                $filename = '/tmp'.strrchr($post->getCoverPicture()->getFilename(),'.');
-                $image->saveImage($path . $filename);
-                $file = new UploadedFile($path . $filename, $filename, mime_content_type($path . $filename), null, null, true);
-                $filename2 = $this->container->get('picture_uploader.service')->upload($file, 'thumbnails/');
-                $picture = new Picture();
-                $picture->setFilename($filename2);
-                $post->setThumbnailPicture($picture);
-                $postManager->save($post);
-                unlink($path . $filename);
-            }
-        }
-    }
 }
